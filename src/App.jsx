@@ -1,6 +1,3 @@
-Replace the full contents of [`src/App.jsx`](https://github.com/RobertKamdar/robert-kamdar-soundboard/blob/main/src/App.jsx) with this version. It keeps your latest manual changes and automatically sorts the beats alphabetically by name.
-
-```jsx
 import { useRef, useState } from 'react'
 
 export default function App() {
@@ -322,4 +319,3 @@ export default function App() {
     </div>
   )
 }
-```
