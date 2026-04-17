@@ -6,10 +6,9 @@ export default function App() {
   const audioRef = useRef(null)
 
   const beats = [
-  { name: 'NFS', file: '/nfs.mp3' },
-  { name: 'SAYONARA', file: '/sayonara.mp3' }
-]
-
+    { name: 'NFS', file: '/nfs.mp3' },
+    { name: 'SAYONARA', file: '/sayonara.mp3' }
+  ]
 
   const handleBeatClick = (beat) => {
     if (audioRef.current && currentFile === beat.file) {
@@ -45,38 +44,43 @@ export default function App() {
   }
 
   return (
-    <div
-  style={{
-    marginTop: 20,
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    gap: 12
-  }}
->
-  {beats.map((beat) => {
-    const isPlaying = currentFile === beat.file
+    <div style={{ padding: 30, textAlign: 'center' }}>
+      <h1 style={{ color: 'red', fontSize: 32 }}>
+        Robert Kamdar, The Producer
+      </h1>
 
-    return (
-      <button
-        key={beat.name}
-        onClick={() => handleBeatClick(beat)}
+      <div
         style={{
-          width: 260,
-          padding: 18,
-          background: isPlaying ? 'red' : '#111',
-          border: '1px solid red',
-          color: 'white',
-          cursor: 'pointer',
-          display: 'block',
-          textAlign: 'center'
+          marginTop: 20,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: 12
         }}
       >
-        {isPlaying ? `Pause ${beat.name}` : `Play ${beat.name}`}
-      </button>
-    )
-  })}
-</div>
+        {beats.map((beat) => {
+          const isPlaying = currentFile === beat.file
+
+          return (
+            <button
+              key={beat.name}
+              onClick={() => handleBeatClick(beat)}
+              style={{
+                width: 260,
+                padding: 18,
+                background: isPlaying ? 'red' : '#111',
+                border: '1px solid red',
+                color: 'white',
+                cursor: 'pointer',
+                display: 'block',
+                textAlign: 'center'
+              }}
+            >
+              {isPlaying ? `Pause ${beat.name}` : `Play ${beat.name}`}
+            </button>
+          )
+        })}
+      </div>
 
       <p style={{ marginTop: 30, color: 'red' }}>
         Now Playing: {nowPlaying}
