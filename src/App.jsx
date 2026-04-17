@@ -75,7 +75,7 @@ export default function App() {
                 textAlign: 'center'
               }}
             >
-              {isPlaying ? `Pause ${beat.name}` : `Play ${beat.name}`}
+              {beat.name}
             </button>
           )
         })}
