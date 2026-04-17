@@ -47,53 +47,6 @@ export default function App() {
     <div
       style={{
         minHeight: '100vh',
-        padding: 30,
-        textAlign: 'center',
-        backgroundImage: "url('/background.jpg')",
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat'
-      }}
-    >
-      <h1 style={{ color: 'red', fontSize: 32 }}>
-        Robert Kamdar, The Producer
-      </h1>
-
-      <div
-        style={{
-          marginTop: 20,
-          display: 'grid',
-          gridTemplateColumns: 'repeat(3, 220px)',
-          justifyContent: 'center',
-          gap: 12
-        }}
-      >
-        {beats.map((beat) => {
-          const isPlaying = currentFile === beat.file
-
-          return (
-            <button
-              key={beat.name}
-              onClick={() => handleBeatClick(beat)}
-              style={{
-                width: 220,
-                padding: 18,
-                background: isPlaying ? 'red' : '#111',
-                border: '1px solid red',
-                color: 'white',
-                cursor: 'pointer',
-                textAlign: 'center'
-              }}
-            >
-              {beat.name}
-            </button>
-          )
-        })}
-      </div>
-
-      <p style={{ marginTop: 30, color: 'red' }}>
-        Now Playing: {nowPlaying}
-      </p>
-    </div>
-  )
-}
+        padding: '48px 24px',
+        backgroundImage:
+          "linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.
