@@ -3,13 +3,18 @@ import { useRef, useState } from 'react'
 export default function App() {
   const [nowPlaying, setNowPlaying] = useState('None')
   const [currentFile, setCurrentFile] = useState(null)
+  const [search, setSearch] = useState('')
   const audioRef = useRef(null)
 
   const beats = [
-    { name: 'NFS - 143', file: '/nfs.mp3' },
-    { name: 'SAYONARA - 142', file: '/sayonara.mp3' },
-    { name: 'TYPICAL - 140', file: '/typical.mp3' }
+    { name: 'NFS', file: '/nfs.mp3' },
+    { name: 'SAYONARA', file: '/sayonara.mp3' },
+    { name: 'TYPICAL', file: '/typical.mp3' }
   ]
+
+  const filteredBeats = beats.filter((beat) =>
+    beat.name.toLowerCase().includes(search.toLowerCase())
+  )
 
   const handleBeatClick = (beat) => {
     if (audioRef.current && currentFile === beat.file) {
@@ -141,6 +146,47 @@ export default function App() {
 
         <div
           style={{
+            maxWidth: 440,
+            margin: '0 auto 20px',
+            position: 'relative'
+          }}
+        >
+          <span
+            style={{
+              position: 'absolute',
+              left: 16,
+              top: '50%',
+              transform: 'translateY(-50%)',
+              color: '#b8b8b8',
+              fontSize: 14,
+              pointerEvents: 'none'
+            }}
+          >
+            🔍
+          </span>
+
+          <input
+            type="text"
+            value={search}
+            onChange={(event) => setSearch(event.target.value)}
+            placeholder="Search beats..."
+            style={{
+              width: '100%',
+              padding: '13px 16px 13px 42px',
+              borderRadius: 999,
+              border: '1px solid #9a9a9a',
+              background: '#2f2f2f',
+              color: 'white',
+              fontSize: 14,
+              outline: 'none',
+              boxSizing: 'border-box',
+              boxShadow: '0 8px 24px rgba(0, 0, 0, 0.22)'
+            }}
+          />
+        </div>
+
+        <div
+          style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(120px, 1fr))',
             gap: 10,
@@ -148,7 +194,7 @@ export default function App() {
             margin: '0 auto'
           }}
         >
-          {beats.map((beat) => {
+          {filteredBeats.map((beat) => {
             const isPlaying = currentFile === beat.file
 
             return (
