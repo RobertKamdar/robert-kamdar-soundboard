@@ -6,9 +6,9 @@ export default function App() {
   const audioRef = useRef(null)
 
   const beats = [
-    { name: 'NFS - 143', file: '/nfs.mp3' },
-    { name: 'SAYONARA - 142', file: '/sayonara.mp3' },
-    { name: 'TYPICAL - 140', file: '/typical.mp3' }
+    { name: 'NFS', file: '/nfs.mp3' },
+    { name: 'SAYONARA', file: '/sayonara.mp3' },
+    { name: 'TYPICAL', file: '/typical.mp3' }
   ]
 
   const handleBeatClick = (beat) => {
@@ -142,9 +142,9 @@ export default function App() {
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))',
-            gap: 12,
-            maxWidth: 720,
+            gridTemplateColumns: 'repeat(auto-fit, minmax(120px, 1fr))',
+            gap: 10,
+            maxWidth: 560,
             margin: '0 auto'
           }}
         >
@@ -157,16 +157,16 @@ export default function App() {
                 onClick={() => handleBeatClick(beat)}
                 style={{
                   width: '100%',
-                  padding: '14px 12px',
+                  padding: '12px 10px',
                   background: isPlaying ? '#c40000' : 'rgba(15, 15, 15, 0.88)',
                   border: '1px solid rgba(255, 255, 255, 0.16)',
                   borderRadius: 14,
                   color: 'white',
                   cursor: 'pointer',
                   textAlign: 'center',
-                  fontSize: 14,
+                  fontSize: 13,
                   fontWeight: 600,
-                  letterSpacing: 0.4,
+                  letterSpacing: 0.3,
                   boxShadow: isPlaying
                     ? '0 10px 30px rgba(196, 0, 0, 0.35)'
                     : '0 8px 24px rgba(0, 0, 0, 0.22)'
