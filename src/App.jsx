@@ -3,8 +3,9 @@ import { useState } from 'react'
 export default function App() {
   const [nowPlaying, setNowPlaying] = useState('None')
 
-  const beats = Array.from({ length: 50 }, (_, i) => `Beat ${i + 1}`)
-
+const beats = [
+  { name: "NFS", file: "/nfs.mp3" }
+]
   return (
     <div style={{ padding: 30 }}>
       <h1 style={{ color: 'red', fontSize: 32 }}>
