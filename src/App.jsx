@@ -29,6 +29,8 @@ export default function App() {
     }
   ]
 
+  const moodOptions = [...new Set(beats.map((beat) => beat.mood))]
+
   const filteredBeats = beats.filter((beat) => {
     const matchesSearch = beat.name.toLowerCase().includes(search.toLowerCase())
     const matchesBpm = selectedBpm === '' || beat.bpm === selectedBpm
@@ -252,9 +254,11 @@ export default function App() {
             }}
           >
             <option value="">Mood</option>
-            <option value="Dark">Dark</option>
-            <option value="Melodic">Melodic</option>
-            <option value="Aggressive">Aggressive</option>
+            {moodOptions.map((mood) => (
+              <option key={mood} value={mood}>
+                {mood}
+              </option>
+            ))}
           </select>
         </div>
 
