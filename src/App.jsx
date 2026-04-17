@@ -5,18 +5,35 @@ export default function App() {
   const [currentFile, setCurrentFile] = useState(null)
   const [search, setSearch] = useState('')
   const [selectedBpm, setSelectedBpm] = useState('')
+  const [selectedMood, setSelectedMood] = useState('')
   const audioRef = useRef(null)
 
   const beats = [
-    { name: 'NFS - 143', file: '/nfs.mp3', bpm: '143' },
-    { name: 'SAYONARA - 142', file: '/sayonara.mp3', bpm: '142' },
-    { name: 'TYPICAL - 140', file: '/typical.mp3', bpm: '140' }
+    {
+      name: 'NFS',
+      file: '/nfs.mp3',
+      bpm: '143',
+      mood: 'Ethnic'
+    },
+    {
+      name: 'SAYONARA',
+      file: '/sayonara.mp3',
+      bpm: '142',
+      mood: 'Melodic'
+    },
+    {
+      name: 'TYPICAL',
+      file: '/typical.mp3',
+      bpm: '140',
+      mood: 'Melodic'
+    }
   ]
 
   const filteredBeats = beats.filter((beat) => {
     const matchesSearch = beat.name.toLowerCase().includes(search.toLowerCase())
     const matchesBpm = selectedBpm === '' || beat.bpm === selectedBpm
-    return matchesSearch && matchesBpm
+    const matchesMood = selectedMood === '' || beat.mood === selectedMood
+    return matchesSearch && matchesBpm && matchesMood
   })
 
   const handleBeatClick = (beat) => {
@@ -150,10 +167,10 @@ export default function App() {
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'minmax(0, 280px) minmax(0, 120px)',
+            gridTemplateColumns: 'minmax(0, 240px) minmax(0, 100px) minmax(0, 130px)',
             justifyContent: 'center',
             gap: 10,
-            maxWidth: 420,
+            maxWidth: 500,
             margin: '0 auto 20px'
           }}
         >
@@ -216,6 +233,28 @@ export default function App() {
             <option value="140">140</option>
             <option value="142">142</option>
             <option value="143">143</option>
+          </select>
+
+          <select
+            value={selectedMood}
+            onChange={(event) => setSelectedMood(event.target.value)}
+            style={{
+              width: '100%',
+              padding: '11px 14px',
+              borderRadius: 999,
+              border: '1px solid #9a9a9a',
+              background: '#2f2f2f',
+              color: 'white',
+              fontSize: 13,
+              outline: 'none',
+              boxSizing: 'border-box',
+              boxShadow: '0 8px 24px rgba(0, 0, 0, 0.22)'
+            }}
+          >
+            <option value="">Mood</option>
+            <option value="Dark">Dark</option>
+            <option value="Melodic">Melodic</option>
+            <option value="Aggressive">Aggressive</option>
           </select>
         </div>
 
