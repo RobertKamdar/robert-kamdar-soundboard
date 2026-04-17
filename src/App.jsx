@@ -1,11 +1,14 @@
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 
 export default function App() {
   const [nowPlaying, setNowPlaying] = useState('None')
   const [currentFile, setCurrentFile] = useState(null)
   const [selectedBpm, setSelectedBpm] = useState('')
   const [selectedMood, setSelectedMood] = useState('')
+  const [elapsed, setElapsed] = useState(0)
+  const [duration, setDuration] = useState(0)
   const audioRef = useRef(null)
+  const intervalRef = useRef(null)
 
   const beats = [
     {
@@ -80,38 +83,78 @@ export default function App() {
     return matchesBpm && matchesMood
   })
 
+  const formatTime = (seconds) => {
+    if (!seconds || isNaN(seconds)) return '0:00'
+    const m = Math.floor(seconds / 60)
+    const s = Math.floor(seconds % 60)
+    return `${m}:${s.toString().padStart(2, '0')}`
+  }
+
+  const clearTimer = () => {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current)
+      intervalRef.current = null
+    }
+  }
+
   const handleBeatClick = (beat) => {
     if (audioRef.current && currentFile === beat.file) {
       audioRef.current.pause()
       audioRef.current.currentTime = 0
       audioRef.current = null
+      clearTimer()
       setCurrentFile(null)
       setNowPlaying('None')
+      setElapsed(0)
+      setDuration(0)
       return
     }
 
     if (audioRef.current) {
       audioRef.current.pause()
       audioRef.current.currentTime = 0
+      clearTimer()
     }
 
     const audio = new Audio(beat.file)
     audioRef.current = audio
     setCurrentFile(beat.file)
     setNowPlaying(beat.name)
+    setElapsed(0)
+    setDuration(0)
+
+    audio.addEventListener('loadedmetadata', () => {
+      setDuration(audio.duration)
+    })
 
     audio.onended = () => {
       audioRef.current = null
+      clearTimer()
       setCurrentFile(null)
       setNowPlaying('None')
+      setElapsed(0)
+      setDuration(0)
     }
 
     audio.play().catch(() => {
       audioRef.current = null
+      clearTimer()
       setCurrentFile(null)
       setNowPlaying('None')
+      setElapsed(0)
+      setDuration(0)
     })
+
+    intervalRef.current = setInterval(() => {
+      if (audioRef.current) {
+        setElapsed(audioRef.current.currentTime)
+      }
+    }, 500)
   }
+
+  useEffect(() => {
+    return () => clearTimer()
+  }, [])
 
   return (
     <div
@@ -359,11 +402,26 @@ export default function App() {
             {nowPlaying}
           </span>
 
+          {nowPlaying !== 'None' && (
+            <span
+              style={{
+                color: 'rgba(255, 255, 255, 0.75)',
+                fontSize: 12,
+                fontWeight: 500,
+                whiteSpace: 'nowrap',
+                fontVariantNumeric: 'tabular-nums'
+              }}
+            >
+              {formatTime(elapsed)} / {formatTime(duration)}
+            </span>
+          )}
+
           <span
             style={{
               width: 10,
               height: 10,
               borderRadius: 999,
+              flexShrink: 0,
               background: nowPlaying === 'None' ? '#666' : '#ff2a2a',
               boxShadow:
                 nowPlaying === 'None'
