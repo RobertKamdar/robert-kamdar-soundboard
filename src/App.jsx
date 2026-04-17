@@ -1,16 +1,45 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 
 export default function App() {
   const [nowPlaying, setNowPlaying] = useState('None')
+  const [currentFile, setCurrentFile] = useState(null)
+  const audioRef = useRef(null)
 
   const beats = [
-  { name: "NFS", file: "/nfs.mp3" }
-]
+    { name: 'NFS', file: '/nfs.mp3' }
+  ]
 
-  const playBeat = (beat) => {
+  const handleBeatClick = (beat) => {
+    if (audioRef.current && currentFile === beat.file) {
+      audioRef.current.pause()
+      audioRef.current.currentTime = 0
+      audioRef.current = null
+      setCurrentFile(null)
+      setNowPlaying('None')
+      return
+    }
+
+    if (audioRef.current) {
+      audioRef.current.pause()
+      audioRef.current.currentTime = 0
+    }
+
     const audio = new Audio(beat.file)
-    audio.play()
+    audioRef.current = audio
+    setCurrentFile(beat.file)
     setNowPlaying(beat.name)
+
+    audio.onended = () => {
+      audioRef.current = null
+      setCurrentFile(null)
+      setNowPlaying('None')
+    }
+
+    audio.play().catch(() => {
+      audioRef.current = null
+      setCurrentFile(null)
+      setNowPlaying('None')
+    })
   }
 
   return (
@@ -20,23 +49,27 @@ export default function App() {
       </h1>
 
       <div style={{ marginTop: 20 }}>
-        {beats.map((b) => (
-          <button
-            key={b.name}
-            onClick={() => playBeat(b)}
-            style={{
-              padding: 18,
-              background: '#111',
-              border: '1px solid red',
-              color: 'white',
-              cursor: 'pointer',
-              display: 'block',
-              marginBottom: 10
-            }}
-          >
-            {b.name}
-          </button>
-        ))}
+        {beats.map((beat) => {
+          const isPlaying = currentFile === beat.file
+
+          return (
+            <button
+              key={beat.name}
+              onClick={() => handleBeatClick(beat)}
+              style={{
+                padding: 18,
+                background: isPlaying ? 'red' : '#111',
+                border: '1px solid red',
+                color: 'white',
+                cursor: 'pointer',
+                display: 'block',
+                marginBottom: 10
+              }}
+            >
+              {isPlaying ? `Pause ${beat.name}` : `Play ${beat.name}`}
+            </button>
+          )
+        })}
       </div>
 
       <p style={{ marginTop: 30, color: 'red' }}>
