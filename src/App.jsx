@@ -6,8 +6,10 @@ export default function App() {
   const audioRef = useRef(null)
 
   const beats = [
-    { name: 'NFS', file: '/nfs.mp3' }
-  ]
+  { name: 'NFS', file: '/nfs.mp3' },
+  { name: 'SAYONARA', file: '/sayonara.mp3' }
+]
+
 
   const handleBeatClick = (beat) => {
     if (audioRef.current && currentFile === beat.file) {
