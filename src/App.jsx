@@ -13,28 +13,30 @@ export default function App() {
       name: 'NFS',
       file: '/nfs.mp3',
       bpm: '143',
-      mood: 'Ethnic'
+      moods: ['Ethnic']
     },
     {
       name: 'SAYONARA',
       file: '/sayonara.mp3',
       bpm: '142',
-      mood: 'Melodic'
+      moods: ['Melodic']
     },
     {
       name: 'TYPICAL',
       file: '/typical.mp3',
       bpm: '140',
-      mood: 'Melodic'
+      moods: ['Melodic', 'Dark']
     }
   ]
 
-  const moodOptions = [...new Set(beats.map((beat) => beat.mood))]
+  const moodOptions = [...new Set(beats.flatMap((beat) => beat.moods))]
 
   const filteredBeats = beats.filter((beat) => {
     const matchesSearch = beat.name.toLowerCase().includes(search.toLowerCase())
     const matchesBpm = selectedBpm === '' || beat.bpm === selectedBpm
-    const matchesMood = selectedMood === '' || beat.mood === selectedMood
+    const matchesMood =
+      selectedMood === '' || beat.moods.includes(selectedMood)
+
     return matchesSearch && matchesBpm && matchesMood
   })
 
