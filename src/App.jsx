@@ -3,7 +3,6 @@ import { useRef, useState } from 'react'
 export default function App() {
   const [nowPlaying, setNowPlaying] = useState('None')
   const [currentFile, setCurrentFile] = useState(null)
-  const [search, setSearch] = useState('')
   const [selectedBpm, setSelectedBpm] = useState('')
   const [selectedMood, setSelectedMood] = useState('')
   const audioRef = useRef(null)
@@ -26,18 +25,57 @@ export default function App() {
       file: '/typical.mp3',
       bpm: '140',
       moods: ['Melodic', 'Dark']
+    },
+    {
+      name: 'BUILTDIFFERENT',
+      file: '/builtdifferent.mp3',
+      bpm: '143',
+      moods: ['Dark', 'Aggressive']
+    },
+    {
+      name: 'CZARS AND EMIRS',
+      file: '/czarsandemirs.mp3',
+      bpm: '142',
+      moods: ['Ethnic']
+    },
+    {
+      name: 'HK',
+      file: '/hk.mp3',
+      bpm: '143',
+      moods: ['Dark']
+    },
+    {
+      name: 'KNOWN',
+      file: '/known.mp3',
+      bpm: '100',
+      moods: ['Hip Hop']
+    },
+    {
+      name: 'LUCID',
+      file: '/lucid.mp3',
+      bpm: '143',
+      moods: ['Melodic', 'Dubstep']
+    },
+    {
+      name: 'RUDE',
+      file: '/rude.mp3',
+      bpm: '143',
+      moods: ['Aggressive', 'Dark']
     }
   ]
 
-  const moodOptions = [...new Set(beats.flatMap((beat) => beat.moods))]
+  const bpmOptions = [...new Set(beats.map((beat) => beat.bpm))].sort(
+    (a, b) => Number(a) - Number(b)
+  )
+
+  const moodOptions = [...new Set(beats.flatMap((beat) => beat.moods))].sort()
 
   const filteredBeats = beats.filter((beat) => {
-    const matchesSearch = beat.name.toLowerCase().includes(search.toLowerCase())
     const matchesBpm = selectedBpm === '' || beat.bpm === selectedBpm
     const matchesMood =
       selectedMood === '' || beat.moods.includes(selectedMood)
 
-    return matchesSearch && matchesBpm && matchesMood
+    return matchesBpm && matchesMood
   })
 
   const handleBeatClick = (beat) => {
@@ -171,52 +209,13 @@ export default function App() {
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'minmax(0, 240px) minmax(0, 100px) minmax(0, 130px)',
+            gridTemplateColumns: 'minmax(0, 120px) minmax(0, 140px)',
             justifyContent: 'center',
             gap: 10,
-            maxWidth: 500,
+            maxWidth: 280,
             margin: '0 auto 20px'
           }}
         >
-          <div
-            style={{
-              position: 'relative'
-            }}
-          >
-            <span
-              style={{
-                position: 'absolute',
-                left: 16,
-                top: '50%',
-                transform: 'translateY(-50%)',
-                color: '#b8b8b8',
-                fontSize: 14,
-                pointerEvents: 'none'
-              }}
-            >
-              🔍
-            </span>
-
-            <input
-              type="text"
-              value={search}
-              onChange={(event) => setSearch(event.target.value)}
-              placeholder="Search beats..."
-              style={{
-                width: '100%',
-                padding: '11px 16px 11px 42px',
-                borderRadius: 999,
-                border: '1px solid #9a9a9a',
-                background: '#2f2f2f',
-                color: 'white',
-                fontSize: 13,
-                outline: 'none',
-                boxSizing: 'border-box',
-                boxShadow: '0 8px 24px rgba(0, 0, 0, 0.22)'
-              }}
-            />
-          </div>
-
           <select
             value={selectedBpm}
             onChange={(event) => setSelectedBpm(event.target.value)}
@@ -234,9 +233,11 @@ export default function App() {
             }}
           >
             <option value="">BPM</option>
-            <option value="140">140</option>
-            <option value="142">142</option>
-            <option value="143">143</option>
+            {bpmOptions.map((bpm) => (
+              <option key={bpm} value={bpm}>
+                {bpm}
+              </option>
+            ))}
           </select>
 
           <select
