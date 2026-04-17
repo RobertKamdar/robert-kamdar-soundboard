@@ -1,3 +1,6 @@
+Replace the full contents of [`src/App.jsx`](https://github.com/RobertKamdar/robert-kamdar-soundboard/blob/main/src/App.jsx) with this version. It keeps your latest manual changes and automatically sorts the beats alphabetically by name.
+
+```jsx
 import { useRef, useState } from 'react'
 
 export default function App() {
@@ -64,13 +67,15 @@ export default function App() {
     }
   ]
 
-  const bpmOptions = [...new Set(beats.map((beat) => beat.bpm))].sort(
+  const sortedBeats = [...beats].sort((a, b) => a.name.localeCompare(b.name))
+
+  const bpmOptions = [...new Set(sortedBeats.map((beat) => beat.bpm))].sort(
     (a, b) => Number(a) - Number(b)
   )
 
-  const moodOptions = [...new Set(beats.flatMap((beat) => beat.moods))].sort()
+  const moodOptions = [...new Set(sortedBeats.flatMap((beat) => beat.moods))].sort()
 
-  const filteredBeats = beats.filter((beat) => {
+  const filteredBeats = sortedBeats.filter((beat) => {
     const matchesBpm = selectedBpm === '' || beat.bpm === selectedBpm
     const matchesMood =
       selectedMood === '' || beat.moods.includes(selectedMood)
@@ -317,3 +322,4 @@ export default function App() {
     </div>
   )
 }
+```
