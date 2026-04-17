@@ -27,13 +27,13 @@ export default function App() {
       moods: ['Melodic', 'Dark']
     },
     {
-      name: 'BUILTDIFFERENT',
+      name: 'BUILT DIFFERENT',
       file: '/builtdifferent.mp3',
       bpm: '143',
       moods: ['Dark', 'Aggressive']
     },
     {
-      name: 'CZARS AND EMIRS',
+      name: 'CZARS & EMIRS',
       file: '/czarsandemirs.mp3',
       bpm: '142',
       moods: ['Ethnic']
