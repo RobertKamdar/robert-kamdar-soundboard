@@ -7,7 +7,8 @@ export default function App() {
 
   const beats = [
     { name: 'NFS', file: '/nfs.mp3' },
-    { name: 'SAYONARA', file: '/sayonara.mp3' }
+    { name: 'SAYONARA', file: '/sayonara.mp3' },
+    { name: 'TYPICAL', file: '/typical.mp3' }
   ]
 
   const handleBeatClick = (beat) => {
