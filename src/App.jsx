@@ -12,7 +12,7 @@ export default function App() {
 
   const beats = [
     {
-      name: 'NFS',
+      name: 'N.F.S',
       file: '/nfs.mp3',
       bpm: '143',
       moods: ['Ethnic']
