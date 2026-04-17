@@ -6,9 +6,9 @@ export default function App() {
   const audioRef = useRef(null)
 
   const beats = [
-    { name: 'NFS', file: '/nfs.mp3' },
-    { name: 'SAYONARA', file: '/sayonara.mp3' },
-    { name: 'TYPICAL', file: '/typical.mp3' }
+    { name: 'NFS - 143', file: '/nfs.mp3' },
+    { name: 'SAYONARA - 142', file: '/sayonara.mp3' },
+    { name: 'TYPICAL - 140', file: '/typical.mp3' }
   ]
 
   const handleBeatClick = (beat) => {
