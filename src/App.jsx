@@ -4,17 +4,20 @@ export default function App() {
   const [nowPlaying, setNowPlaying] = useState('None')
   const [currentFile, setCurrentFile] = useState(null)
   const [search, setSearch] = useState('')
+  const [selectedBpm, setSelectedBpm] = useState('')
   const audioRef = useRef(null)
 
   const beats = [
-    { name: 'NFS - 143', file: '/nfs.mp3' },
-    { name: 'SAYONARA - 142', file: '/sayonara.mp3' },
-    { name: 'TYPICAL - 140', file: '/typical.mp3' }
+    { name: 'NFS - 143', file: '/nfs.mp3', bpm: '143' },
+    { name: 'SAYONARA - 142', file: '/sayonara.mp3', bpm: '142' },
+    { name: 'TYPICAL - 140', file: '/typical.mp3', bpm: '140' }
   ]
 
-  const filteredBeats = beats.filter((beat) =>
-    beat.name.toLowerCase().includes(search.toLowerCase())
-  )
+  const filteredBeats = beats.filter((beat) => {
+    const matchesSearch = beat.name.toLowerCase().includes(search.toLowerCase())
+    const matchesBpm = selectedBpm === '' || beat.bpm === selectedBpm
+    return matchesSearch && matchesBpm
+  })
 
   const handleBeatClick = (beat) => {
     if (audioRef.current && currentFile === beat.file) {
@@ -146,50 +149,81 @@ export default function App() {
 
         <div
           style={{
-            maxWidth: 440,
-            margin: '0 auto 20px',
-            position: 'relative'
+            display: 'grid',
+            gridTemplateColumns: 'minmax(0, 280px) minmax(0, 120px)',
+            justifyContent: 'center',
+            gap: 10,
+            maxWidth: 420,
+            margin: '0 auto 20px'
           }}
         >
-          <span
+          <div
             style={{
-              position: 'absolute',
-              left: 16,
-              top: '50%',
-              transform: 'translateY(-50%)',
-              color: '#b8b8b8',
-              fontSize: 14,
-              pointerEvents: 'none'
+              position: 'relative'
             }}
           >
-            🔍
-          </span>
+            <span
+              style={{
+                position: 'absolute',
+                left: 16,
+                top: '50%',
+                transform: 'translateY(-50%)',
+                color: '#b8b8b8',
+                fontSize: 14,
+                pointerEvents: 'none'
+              }}
+            >
+              🔍
+            </span>
 
-          <input
-            type="text"
-            value={search}
-            onChange={(event) => setSearch(event.target.value)}
-            placeholder="Search beats..."
+            <input
+              type="text"
+              value={search}
+              onChange={(event) => setSearch(event.target.value)}
+              placeholder="Search beats..."
+              style={{
+                width: '100%',
+                padding: '11px 16px 11px 42px',
+                borderRadius: 999,
+                border: '1px solid #9a9a9a',
+                background: '#2f2f2f',
+                color: 'white',
+                fontSize: 13,
+                outline: 'none',
+                boxSizing: 'border-box',
+                boxShadow: '0 8px 24px rgba(0, 0, 0, 0.22)'
+              }}
+            />
+          </div>
+
+          <select
+            value={selectedBpm}
+            onChange={(event) => setSelectedBpm(event.target.value)}
             style={{
               width: '100%',
-              padding: '13px 16px 13px 42px',
+              padding: '11px 14px',
               borderRadius: 999,
               border: '1px solid #9a9a9a',
               background: '#2f2f2f',
               color: 'white',
-              fontSize: 14,
+              fontSize: 13,
               outline: 'none',
               boxSizing: 'border-box',
               boxShadow: '0 8px 24px rgba(0, 0, 0, 0.22)'
             }}
-          />
+          >
+            <option value="">BPM</option>
+            <option value="140">140</option>
+            <option value="142">142</option>
+            <option value="143">143</option>
+          </select>
         </div>
 
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(120px, 1fr))',
-            gap: 10,
+            gridTemplateColumns: 'repeat(auto-fit, minmax(90px, 1fr))',
+            gap: 8,
             maxWidth: 560,
             margin: '0 auto'
           }}
@@ -203,14 +237,14 @@ export default function App() {
                 onClick={() => handleBeatClick(beat)}
                 style={{
                   width: '100%',
-                  padding: '12px 10px',
+                  padding: '10px 8px',
                   background: isPlaying ? '#c40000' : 'rgba(15, 15, 15, 0.88)',
                   border: '1px solid rgba(255, 255, 255, 0.16)',
                   borderRadius: 14,
                   color: 'white',
                   cursor: 'pointer',
                   textAlign: 'center',
-                  fontSize: 13,
+                  fontSize: 12,
                   fontWeight: 600,
                   letterSpacing: 0.3,
                   boxShadow: isPlaying
