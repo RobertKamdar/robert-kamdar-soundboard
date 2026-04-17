@@ -148,7 +148,7 @@ export default function App() {
           <p
             style={{
               margin: 0,
-              color: '#4d8fff',
+              color: '#ff4d4d',
               fontSize: 14,
               letterSpacing: 3,
               textTransform: 'uppercase'
@@ -286,7 +286,7 @@ export default function App() {
                 style={{
                   width: '100%',
                   padding: '10px 8px',
-                  background: isPlaying ? '#0057ff' : 'rgba(15, 15, 15, 0.88)',
+                  background: isPlaying ? '#c40000' : 'rgba(15, 15, 15, 0.88)',
                   border: '1px solid rgba(255, 255, 255, 0.16)',
                   borderRadius: 14,
                   color: 'white',
@@ -296,7 +296,7 @@ export default function App() {
                   fontWeight: 600,
                   letterSpacing: 0.3,
                   boxShadow: isPlaying
-                    ? '0 10px 30px rgba(0, 87, 255, 0.35)'
+                    ? '0 10px 30px rgba(196, 0, 0, 0.35)'
                     : '0 8px 24px rgba(0, 0, 0, 0.22)'
                 }}
               >
@@ -315,8 +315,8 @@ export default function App() {
           bottom: 0,
           zIndex: 1000,
           background:
-            'linear-gradient(90deg, rgba(0,0,0,0.97) 0%, rgba(0,20,60,0.98) 50%, rgba(0,0,0,0.97) 100%)',
-          borderTop: '2px solid #0057ff',
+            'linear-gradient(90deg, rgba(0,0,0,0.97) 0%, rgba(45,0,0,0.98) 50%, rgba(0,0,0,0.97) 100%)',
+          borderTop: '2px solid #c40000',
           boxShadow: '0 -10px 30px rgba(0, 0, 0, 0.45)'
         }}
       >
@@ -333,7 +333,7 @@ export default function App() {
         >
           <span
             style={{
-              color: '#4d8fff',
+              color: '#ff4d4d',
               fontSize: 12,
               fontWeight: 700,
               letterSpacing: 2,
@@ -364,11 +364,11 @@ export default function App() {
               width: 10,
               height: 10,
               borderRadius: 999,
-              background: nowPlaying === 'None' ? '#666' : '#2a6fff',
+              background: nowPlaying === 'None' ? '#666' : '#ff2a2a',
               boxShadow:
                 nowPlaying === 'None'
                   ? 'none'
-                  : '0 0 12px rgba(42, 111, 255, 0.9)'
+                  : '0 0 12px rgba(255, 42, 42, 0.9)'
             }}
           />
         </div>
