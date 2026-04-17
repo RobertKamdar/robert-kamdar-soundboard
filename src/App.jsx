@@ -4,7 +4,7 @@ export default function App() {
   const [nowPlaying, setNowPlaying] = useState('None')
 
   const beats = [
-    { name: "NFS", file: "/nfs.mp3" }
+    { name: "NFS", file: "/NFS.mp3" }
   ]
 
   const playBeat = (beat) => {
