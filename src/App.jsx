@@ -4,8 +4,8 @@ export default function App() {
   const [nowPlaying, setNowPlaying] = useState('None')
 
   const beats = [
-    { name: "NFS", file: "/NFS.mp3" }
-  ]
+  { name: "NFS", file: "/nfs.mp3" }
+]
 
   const playBeat = (beat) => {
     const audio = new Audio(beat.file)
