@@ -64,21 +64,34 @@ export default function App() {
       file: '/rude.mp3',
       bpm: '143',
       moods: ['Aggressive', 'Dark']
-    }
+    },
+    { name: 'CAUSE', file: '/cause.mp3' },
+    { name: 'CONFLICT', file: '/conflict.mp3' },
+    { name: 'CRASHOUT', file: '/crashout.mp3' },
+    { name: 'DERRY', file: '/derry.mp3' },
+    { name: 'JOHTO', file: '/johto.mp3' },
+    { name: 'MONSOON', file: '/monsoon.mp3' },
+    { name: 'MORTIFY', file: '/mortify.mp3' },
+    { name: 'PERSIAN', file: '/persian.mp3' },
+    { name: 'PREMIUM', file: '/premium.mp3' },
+    { name: 'QOTD', file: '/qotd.mp3' },
+    { name: 'SHIFTING', file: '/shifting.mp3' },
+    { name: 'STEREOTYPICAL', file: '/stereotypical.mp3' },
+    { name: 'TPW', file: '/tpw.mp3' }
   ]
 
   const sortedBeats = [...beats].sort((a, b) => a.name.localeCompare(b.name))
 
-  const bpmOptions = [...new Set(sortedBeats.map((beat) => beat.bpm))].sort(
+  const bpmOptions = [...new Set(sortedBeats.filter(b => b.bpm).map((beat) => beat.bpm))].sort(
     (a, b) => Number(a) - Number(b)
   )
 
-  const moodOptions = [...new Set(sortedBeats.flatMap((beat) => beat.moods))].sort()
+  const moodOptions = [...new Set(sortedBeats.filter(b => b.moods).flatMap((beat) => beat.moods))].sort()
 
   const filteredBeats = sortedBeats.filter((beat) => {
     const matchesBpm = selectedBpm === '' || beat.bpm === selectedBpm
     const matchesMood =
-      selectedMood === '' || beat.moods.includes(selectedMood)
+      selectedMood === '' || (beat.moods && beat.moods.includes(selectedMood))
 
     return matchesBpm && matchesMood
   })
