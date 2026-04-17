@@ -117,7 +117,7 @@ export default function App() {
     <div
       style={{
         minHeight: '100vh',
-        padding: '32px 16px',
+        padding: '32px 16px 110px',
         backgroundImage:
           "linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.72)), url('/background.jpg')",
         backgroundSize: 'cover',
@@ -305,16 +305,73 @@ export default function App() {
             )
           })}
         </div>
+      </div>
 
-        <p
+      <div
+        style={{
+          position: 'fixed',
+          left: 0,
+          right: 0,
+          bottom: 0,
+          zIndex: 1000,
+          background:
+            'linear-gradient(90deg, rgba(0,0,0,0.97) 0%, rgba(45,0,0,0.98) 50%, rgba(0,0,0,0.97) 100%)',
+          borderTop: '2px solid #c40000',
+          boxShadow: '0 -10px 30px rgba(0, 0, 0, 0.45)'
+        }}
+      >
+        <div
           style={{
-            marginTop: 28,
-            color: '#ff4d4d',
-            fontSize: 'clamp(14px, 2.5vw, 16px)'
+            maxWidth: 1100,
+            margin: '0 auto',
+            padding: '14px 18px',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            gap: 16
           }}
         >
-          Now Playing: {nowPlaying}
-        </p>
+          <span
+            style={{
+              color: '#ff4d4d',
+              fontSize: 12,
+              fontWeight: 700,
+              letterSpacing: 2,
+              textTransform: 'uppercase',
+              whiteSpace: 'nowrap'
+            }}
+          >
+            Now Playing
+          </span>
+
+          <span
+            style={{
+              color: 'white',
+              fontSize: 'clamp(14px, 3vw, 16px)',
+              fontWeight: 600,
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+              whiteSpace: 'nowrap',
+              flex: 1,
+              textAlign: 'center'
+            }}
+          >
+            {nowPlaying}
+          </span>
+
+          <span
+            style={{
+              width: 10,
+              height: 10,
+              borderRadius: 999,
+              background: nowPlaying === 'None' ? '#666' : '#ff2a2a',
+              boxShadow:
+                nowPlaying === 'None'
+                  ? 'none'
+                  : '0 0 12px rgba(255, 42, 42, 0.9)'
+            }}
+          />
+        </div>
       </div>
     </div>
   )
