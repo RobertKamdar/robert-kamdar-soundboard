@@ -45,34 +45,38 @@ export default function App() {
   }
 
   return (
-    <div style={{ padding: 30 }}>
-      <h1 style={{ color: 'red', fontSize: 32 }}>
-        Robert Kamdar, The Producer
-      </h1>
+    <div
+  style={{
+    marginTop: 20,
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    gap: 12
+  }}
+>
+  {beats.map((beat) => {
+    const isPlaying = currentFile === beat.file
 
-      <div style={{ marginTop: 20 }}>
-        {beats.map((beat) => {
-          const isPlaying = currentFile === beat.file
-
-          return (
-            <button
-              key={beat.name}
-              onClick={() => handleBeatClick(beat)}
-              style={{
-                padding: 18,
-                background: isPlaying ? 'red' : '#111',
-                border: '1px solid red',
-                color: 'white',
-                cursor: 'pointer',
-                display: 'block',
-                marginBottom: 10
-              }}
-            >
-              {isPlaying ? `Pause ${beat.name}` : `Play ${beat.name}`}
-            </button>
-          )
-        })}
-      </div>
+    return (
+      <button
+        key={beat.name}
+        onClick={() => handleBeatClick(beat)}
+        style={{
+          width: 260,
+          padding: 18,
+          background: isPlaying ? 'red' : '#111',
+          border: '1px solid red',
+          color: 'white',
+          cursor: 'pointer',
+          display: 'block',
+          textAlign: 'center'
+        }}
+      >
+        {isPlaying ? `Pause ${beat.name}` : `Play ${beat.name}`}
+      </button>
+    )
+  })}
+</div>
 
       <p style={{ marginTop: 30, color: 'red' }}>
         Now Playing: {nowPlaying}
