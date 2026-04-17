@@ -47,9 +47,9 @@ export default function App() {
     <div
       style={{
         minHeight: '100vh',
-        padding: '48px 24px',
+        padding: '32px 16px',
         backgroundImage:
-          "linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.7)), url('/background.jpg')",
+          "linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.72)), url('/background.jpg')",
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
@@ -66,8 +66,8 @@ export default function App() {
         <div
           style={{
             maxWidth: 860,
-            margin: '0 auto 40px',
-            padding: '36px 32px',
+            margin: '0 auto 32px',
+            padding: 'clamp(20px, 4vw, 36px)',
             background: 'rgba(10, 10, 10, 0.55)',
             border: '1px solid rgba(255, 255, 255, 0.12)',
             borderRadius: 24,
@@ -91,7 +91,7 @@ export default function App() {
             style={{
               margin: '14px 0 20px',
               color: 'white',
-              fontSize: 42,
+              fontSize: 'clamp(28px, 6vw, 42px)',
               lineHeight: 1.1
             }}
           >
@@ -102,7 +102,7 @@ export default function App() {
             style={{
               margin: '0 0 18px',
               color: 'white',
-              fontSize: 18,
+              fontSize: 'clamp(16px, 2.8vw, 18px)',
               lineHeight: 1.8
             }}
           >
@@ -113,7 +113,7 @@ export default function App() {
             style={{
               margin: '0 0 18px',
               color: 'rgba(255, 255, 255, 0.96)',
-              fontSize: 17,
+              fontSize: 'clamp(15px, 2.6vw, 17px)',
               lineHeight: 1.85
             }}
           >
@@ -128,7 +128,7 @@ export default function App() {
             style={{
               margin: 0,
               color: 'rgba(255, 255, 255, 0.96)',
-              fontSize: 17,
+              fontSize: 'clamp(15px, 2.6vw, 17px)',
               lineHeight: 1.85
             }}
           >
@@ -141,9 +141,10 @@ export default function App() {
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(3, 220px)',
-            justifyContent: 'center',
-            gap: 14
+            gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+            gap: 14,
+            maxWidth: 720,
+            margin: '0 auto'
           }}
         >
           {beats.map((beat) => {
@@ -154,7 +155,7 @@ export default function App() {
                 key={beat.name}
                 onClick={() => handleBeatClick(beat)}
                 style={{
-                  width: 220,
+                  width: '100%',
                   padding: '18px 20px',
                   background: isPlaying ? '#c40000' : 'rgba(15, 15, 15, 0.88)',
                   border: '1px solid rgba(255, 255, 255, 0.16)',
@@ -180,7 +181,7 @@ export default function App() {
           style={{
             marginTop: 28,
             color: '#ff4d4d',
-            fontSize: 16
+            fontSize: 'clamp(14px, 2.5vw, 16px)'
           }}
         >
           Now Playing: {nowPlaying}
