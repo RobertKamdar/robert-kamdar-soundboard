@@ -44,7 +44,17 @@ export default function App() {
   }
 
   return (
-    <div style={{ padding: 30, textAlign: 'center' }}>
+    <div
+      style={{
+        minHeight: '100vh',
+        padding: 30,
+        textAlign: 'center',
+        backgroundImage: "url('/background.jpg')",
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}
+    >
       <h1 style={{ color: 'red', fontSize: 32 }}>
         Robert Kamdar, The Producer
       </h1>
