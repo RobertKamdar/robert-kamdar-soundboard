@@ -141,8 +141,8 @@ export default function App() {
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
-            gap: 14,
+            gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))',
+            gap: 12,
             maxWidth: 720,
             margin: '0 auto'
           }}
@@ -156,16 +156,16 @@ export default function App() {
                 onClick={() => handleBeatClick(beat)}
                 style={{
                   width: '100%',
-                  padding: '18px 20px',
+                  padding: '14px 12px',
                   background: isPlaying ? '#c40000' : 'rgba(15, 15, 15, 0.88)',
                   border: '1px solid rgba(255, 255, 255, 0.16)',
                   borderRadius: 14,
                   color: 'white',
                   cursor: 'pointer',
                   textAlign: 'center',
-                  fontSize: 15,
+                  fontSize: 14,
                   fontWeight: 600,
-                  letterSpacing: 0.5,
+                  letterSpacing: 0.4,
                   boxShadow: isPlaying
                     ? '0 10px 30px rgba(196, 0, 0, 0.35)'
                     : '0 8px 24px rgba(0, 0, 0, 0.22)'
