@@ -202,6 +202,36 @@ export default function App() {
       file: '/thegame.mp3',
       bpm: '150',
       moods: ['Hybrid', 'Aggressive', 'Hip Hop', 'Retro']
+    },
+    {
+      name: 'NOTORIETY',
+      file: '/notoreity.mp3',
+      bpm: '143',
+      moods: ['Eerie', 'Minimalistic']
+    },
+    {
+      name: 'SUBZERO',
+      file: '/subzero.mp3',
+      bpm: '144',
+      moods: ['Aggressive', 'Producer Favourite']
+    },
+    {
+      name: 'CUBE',
+      file: '/cube.mp3',
+      bpm: '146',
+      moods: ['Retro', 'Hybrid']
+    },
+    {
+      name: 'OMEN',
+      file: '/omen.mp3',
+      bpm: '145',
+      moods: ['Dramatic', 'Eerie']
+    },
+    {
+      name: 'SLASHER',
+      file: '/slasher.mp3',
+      bpm: '143',
+      moods: ['Dramatic', 'Aggressive']
     }
   ]
 
