@@ -65,19 +65,88 @@ export default function App() {
       bpm: '143',
       moods: ['Aggressive', 'Dark']
     },
-    { name: 'CAUSE', file: '/cause.mp3' },
-    { name: 'CONFLICT', file: '/conflict.mp3' },
-    { name: 'CRASHOUT', file: '/crashout.mp3' },
-    { name: 'DERRY', file: '/derry.mp3' },
-    { name: 'JOHTO', file: '/johto.mp3' },
-    { name: 'MONSOON', file: '/monsoon.mp3' },
-    { name: 'MORTIFY', file: '/mortify.mp3' },
-    { name: 'PERSIAN', file: '/persian.mp3' },
-    { name: 'PREMIUM', file: '/premium.mp3' },
-    { name: 'QOTD', file: '/qotd.mp3' },
-    { name: 'SHIFTING', file: '/shifting.mp3' },
-    { name: 'STEREOTYPICAL', file: '/stereotypical.mp3' },
-    { name: 'TPW', file: '/tpw.mp3' }
+    { 
+      name: 'ANKARA', 
+      file: '/ankara.mp3', 
+      bpm: '',
+      moods: ['', '']
+    },
+    { 
+      name: 'CAUSE', 
+      file: '/cause.mp3', 
+      bpm: '',
+      moods: ['Melodic', 'Upbeat']
+    },
+    { 
+      name: 'CONFLICT', 
+      file: '/conflict.mp3', 
+      bpm: '',
+      moods: ['Dark']
+    },
+    { 
+      name: 'CRASHOUT', 
+      file: '/crashout.mp3', 
+      bpm: '150',
+      moods: ['Hybrid', 'Aggressive', 'Hip Hop'] 
+    },
+    { 
+      name: 'DERRY', 
+      file: '/derry.mp3', 
+      bpm: '',
+      moods: ['Dark', 'Gritty'] 
+    },
+    { 
+      name: 'JOHTO', 
+      file: '/johto.mp3', 
+      bpm: '150',
+      moods: ['Upbeat', 'Hybrid', 'Retro']
+    },
+    { 
+      name: 'MONSOON', 
+      file: '/monsoon.mp3', 
+      bpm: '140',
+      moods: ['Dark', 'Eerie'] 
+    },
+    { 
+      name: 'MORTIFY', 
+      file: '/mortify.mp3', 
+      bpm: '141',
+      moods: ['Dark', 'Eerie'] 
+    },
+    { 
+      name: 'PERSIAN', 
+      file: '/persian.mp3', 
+      bpm: '141',
+      moods: ['Ethnic', 'Aggressive'] 
+    },
+    { 
+      name: 'PREMIUM', 
+      file: '/premium.mp3', 
+      bpm: '150',
+      moods: ['Hybrid', 'Hip Hop'] 
+    },
+    { name: 'QOTD', 
+      file: '/qotd.mp3', 
+      bpm: '',
+      moods: ['Eerie', 'Ethnic', 'Dark'] 
+    },
+    { 
+      name: 'SHIFTING', 
+      file: '/shifting.mp3', 
+      bpm: '142',
+      moods: ['Aggressive'] 
+    },
+    { 
+      name: 'STEREOTYPICAL', 
+      file: '/stereotypical.mp3', 
+      bpm: '142',
+      moods: ['Eerie', 'Dubstep', 'Dark', 'Melodic'] 
+    },
+    { name: 'TPW',
+      file: '/tpw.mp3', 
+      bpm: '',
+      moods: ['Ethnic', 'Dark'] 
+    }
   ]
 
   const sortedBeats = [...beats].sort((a, b) => a.name.localeCompare(b.name))
