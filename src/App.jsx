@@ -159,7 +159,7 @@ export default function App() {
       name: 'KITE',
       file: '/kite.mp3',
       bpm: '145',
-      moods: ['Ethnic', 'Eerie', 'Dark, ']
+      moods: ['Ethnic', 'Eerie', 'Dark']
     },
     {
       name: 'FRANKFURT',
