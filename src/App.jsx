@@ -153,7 +153,7 @@ export default function App() {
       name: 'BELKI',
       file: '/belki.mp3',
       bpm: '145',
-      moods: ['Ethnic', 'Grime', 'Aggressive']
+      moods: ['Ethnic', 'Grimy', 'Aggressive']
     },
     {
       name: 'KITE',
