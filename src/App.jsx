@@ -172,6 +172,36 @@ export default function App() {
       file: '/skitz.mp3',
       bpm: '145',
       moods: ['Aggressive', 'Chaotic', 'Wavy']
+    },
+    {
+      name: 'RAGEQUIT',
+      file: '/ragequit.mp3',
+      bpm: '145',
+      moods: ['Grimy', 'Retro']
+    },
+    {
+      name: 'DAI',
+      file: '/dai.mp3',
+      bpm: '143',
+      moods: ['Dubstep', 'Melodic']
+    },
+    {
+      name: 'FINISHED',
+      file: '/finished.mp3',
+      bpm: '144',
+      moods: ['Dark', 'Eerie', 'Ethnic']
+    },
+    {
+      name: 'TRIDENT',
+      file: '/trident.mp3',
+      bpm: '143',
+      moods: ['Dramatic', 'Dark', 'Melodic']
+    },
+    {
+      name: 'THE GAME',
+      file: '/thegame.mp3',
+      bpm: '150',
+      moods: ['Hybrid', 'Aggressive', 'Hip Hop', 'Retro']
     }
   ]
 
