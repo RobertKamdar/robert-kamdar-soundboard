@@ -148,6 +148,30 @@ export default function App() {
       file: '/tpw.mp3',
       bpm: '145',
       moods: ['Ethnic', 'Dark']
+    },
+    {
+      name: 'BELKI',
+      file: '/belki.mp3',
+      bpm: '145',
+      moods: ['Ethnic', 'Grime', 'Aggressive']
+    },
+    {
+      name: 'KITE',
+      file: '/kite.mp3',
+      bpm: '145',
+      moods: ['Ethnic', 'Eerie', 'Dark, ']
+    },
+    {
+      name: 'FRANKFURT',
+      file: '/frankfurt.mp3',
+      bpm: '144',
+      moods: ['Ethnic', 'Dark']
+    },
+    {
+      name: 'SKITZ',
+      file: '/skitz.mp3',
+      bpm: '145',
+      moods: ['Aggressive', 'Chaotic', 'Wavy']
     }
   ]
 
