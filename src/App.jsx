@@ -138,7 +138,7 @@ export default function App() {
       moods: ['Aggressive']
     },
     {
-      name: 'STEREOTYPICAL',
+      name: 'STEREO TYPICAL',
       file: '/stereotypical.mp3',
       bpm: '142',
       moods: ['Eerie', 'Dubstep', 'Dark', 'Melodic']
