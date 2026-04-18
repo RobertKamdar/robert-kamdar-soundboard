@@ -21,19 +21,19 @@ export default function App() {
       name: 'SAYONARA',
       file: '/sayonara.mp3',
       bpm: '142',
-      moods: ['Melodic']
+      moods: ['Melodic', 'Ethnic']
     },
     {
       name: 'TYPICAL',
       file: '/typical.mp3',
       bpm: '140',
-      moods: ['Melodic', 'Dark']
+      moods: ['Melodic', 'Dark', 'Producer Favourite']
     },
     {
       name: 'BUILT DIFFERENT',
       file: '/builtdifferent.mp3',
       bpm: '143',
-      moods: ['Dark', 'Aggressive']
+      moods: ['Dark', 'Aggressive', 'Producer Favourite']
     },
     {
       name: 'CZARS & EMIRS',
@@ -153,7 +153,7 @@ export default function App() {
       name: 'BELKI',
       file: '/belki.mp3',
       bpm: '145',
-      moods: ['Ethnic', 'Grimy', 'Aggressive']
+      moods: ['Ethnic', 'Grimy', 'Producer Favourite', 'Aggressive']
     },
     {
       name: 'KITE',
