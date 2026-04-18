@@ -68,19 +68,19 @@ export default function App() {
     { 
       name: 'ANKARA', 
       file: '/ankara.mp3', 
-      bpm: '',
+      bpm: '142',
       moods: ['Ethnic', 'Dark']
     },
     { 
       name: 'CAUSE', 
       file: '/cause.mp3', 
-      bpm: '',
+      bpm: '144',
       moods: ['Melodic', 'Upbeat']
     },
     { 
       name: 'CONFLICT', 
       file: '/conflict.mp3', 
-      bpm: '',
+      bpm: '144',
       moods: ['Dark']
     },
     { 
@@ -92,7 +92,7 @@ export default function App() {
     { 
       name: 'DERRY', 
       file: '/derry.mp3', 
-      bpm: '',
+      bpm: '143',
       moods: ['Dark', 'Gritty'] 
     },
     { 
@@ -127,7 +127,7 @@ export default function App() {
     },
     { name: 'QOTD', 
       file: '/qotd.mp3', 
-      bpm: '',
+      bpm: '143',
       moods: ['Eerie', 'Ethnic', 'Dark'] 
     },
     { 
@@ -144,7 +144,7 @@ export default function App() {
     },
     { name: 'TPW',
       file: '/tpw.mp3', 
-      bpm: '',
+      bpm: '145',
       moods: ['Ethnic', 'Dark'] 
     }
   ]
