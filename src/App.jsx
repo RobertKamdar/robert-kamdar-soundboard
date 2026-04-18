@@ -473,12 +473,13 @@ export default function App() {
                   color: 'white',
                   cursor: 'pointer',
                   textAlign: 'center',
-                  fontSize: 11,
+                  fontSize: 'clamp(9px, 2.6vw, 11px)',
                   fontWeight: 600,
-                  letterSpacing: 0.2,
-                  lineHeight: 1.2,
-                  wordBreak: 'break-word',
-                  overflowWrap: 'anywhere',
+                  letterSpacing: 0.1,
+                  lineHeight: 1.15,
+                  wordBreak: 'normal',
+                  overflowWrap: 'normal',
+                  whiteSpace: 'normal',
                   boxShadow: isPlaying
                     ? '0 10px 30px rgba(196, 0, 0, 0.35)'
                     : '0 8px 24px rgba(0, 0, 0, 0.22)'
