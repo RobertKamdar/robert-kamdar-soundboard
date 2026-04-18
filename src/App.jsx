@@ -69,7 +69,7 @@ export default function App() {
       name: 'ANKARA', 
       file: '/ankara.mp3', 
       bpm: '',
-      moods: ['', '']
+      moods: ['Ethnic', 'Dark']
     },
     { 
       name: 'CAUSE', 
