@@ -502,51 +502,51 @@ export default function App() {
           </aside>
 
           {!isMobile && (
-            <aside
-              style={{
-                background: 'rgba(38, 38, 38, 0.94)',
-                border: '1px solid rgba(255, 255, 255, 0.09)',
-                borderRadius: 22,
-                padding: '18px 16px',
-                boxShadow: '0 18px 40px rgba(0, 0, 0, 0.3)',
-                backdropFilter: 'blur(8px)',
-                textAlign: 'center'
-              }}
-            >
-              <p
-                style={{
-                  margin: '0 0 14px',
-                  color: '#d7d7d7',
-                  fontSize: 12,
-                  letterSpacing: 2,
-                  textTransform: 'uppercase'
-                }}
-              >
-                Previous Credit(s)
-              </p>
+  <aside
+    style={{
+      background: 'rgba(38, 38, 38, 0.94)',
+      border: '1px solid rgba(255, 255, 255, 0.09)',
+      borderRadius: 22,
+      padding: '16px 14px',
+      boxShadow: '0 18px 40px rgba(0, 0, 0, 0.3)',
+      backdropFilter: 'blur(8px)',
+      textAlign: 'center'
+    }}
+  >
+    <p
+      style={{
+        margin: '0 0 12px',
+        color: '#d7d7d7',
+        fontSize: 12,
+        letterSpacing: 2,
+        textTransform: 'uppercase'
+      }}
+    >
+      Previous Credit(s)
+    </p>
 
-              <div
-                style={{
-                  display: 'flex',
-                  justifyContent: 'center'
-                }}
-              >
-                <iframe
-                  style={{
-                    borderRadius: 16,
-                    border: 'none',
-                    width: '100%',
-                    maxWidth: 182,
-                    height: 352
-                  }}
-                  src="https://open.spotify.com/embed/track/25Kv09CJz0LkRyxrkn89Ts?utm_source=generator"
-                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                  loading="lazy"
-                  title="Spotify track embed"
-                />
-              </div>
-            </aside>
-          )}
+    <div
+      style={{
+        display: 'flex',
+        justifyContent: 'center'
+      }}
+    >
+      <iframe
+        style={{
+          borderRadius: 14,
+          border: 'none',
+          width: '100%',
+          maxWidth: 186,
+          height: 152
+        }}
+        src="https://open.spotify.com/embed/track/25Kv09CJz0LkRyxrkn89Ts?utm_source=generator&theme=0"
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        loading="lazy"
+        title="Spotify track embed"
+      />
+    </div>
+  </aside>
+)}
         </div>
 
         <div
