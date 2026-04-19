@@ -569,16 +569,18 @@ export default function App() {
               ))}
             </select>
           </div>
-
-          <div
+                    <div
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(4, minmax(0, 1fr))',
+              gridTemplateColumns: isMobile
+                ? 'repeat(4, minmax(0, 1fr))'
+                : 'repeat(6, minmax(0, 1fr))',
               gap: 8,
-              maxWidth: 560,
+              maxWidth: isMobile ? 560 : 900,
               margin: '0 auto'
             }}
           >
+
             {filteredBeats.map((beat) => {
               const isPlaying = currentFile === beat.file
 
