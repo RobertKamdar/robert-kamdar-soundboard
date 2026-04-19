@@ -7,6 +7,10 @@ export default function App() {
   const [selectedMood, setSelectedMood] = useState('')
   const [elapsed, setElapsed] = useState(0)
   const [duration, setDuration] = useState(0)
+  const [isMobile, setIsMobile] = useState(() =>
+    typeof window !== 'undefined' ? window.innerWidth <= 768 : false
+  )
+  const [hoveredContact, setHoveredContact] = useState('')
   const audioRef = useRef(null)
   const intervalRef = useRef(null)
 
@@ -321,7 +325,17 @@ export default function App() {
   }
 
   useEffect(() => {
-    return () => clearTimer()
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768)
+    }
+
+    handleResize()
+    window.addEventListener('resize', handleResize)
+
+    return () => {
+      clearTimer()
+      window.removeEventListener('resize', handleResize)
+    }
   }, [])
 
   return (
@@ -348,107 +362,192 @@ export default function App() {
           gap: 24
         }}
       >
-        <aside
+        <div
           style={{
-            flex: '0 0 230px',
-            width: 230,
+            flex: '0 0 214px',
+            width: 214,
             maxWidth: '100%',
-            background: 'rgba(38, 38, 38, 0.94)',
-            border: '1px solid rgba(255, 255, 255, 0.1)',
-            borderRadius: 22,
-            padding: '20px 18px',
-            boxShadow: '0 18px 40px rgba(0, 0, 0, 0.3)',
-            backdropFilter: 'blur(8px)',
-            textAlign: 'center'
+            display: 'grid',
+            gap: 14,
+            position: isMobile ? 'static' : 'sticky',
+            top: isMobile ? 'auto' : 24,
+            alignSelf: isMobile ? 'auto' : 'flex-start'
           }}
         >
-          <p
+          <aside
             style={{
-              margin: '0 0 16px',
-              color: '#d7d7d7',
-              fontSize: 12,
-              letterSpacing: 2,
-              textTransform: 'uppercase'
+              background: 'rgba(38, 38, 38, 0.94)',
+              border: '1px solid rgba(255, 255, 255, 0.09)',
+              borderRadius: 22,
+              padding: '18px 16px',
+              boxShadow: '0 18px 40px rgba(0, 0, 0, 0.3)',
+              backdropFilter: 'blur(8px)',
+              textAlign: 'center'
             }}
           >
-            Contact Me
-          </p>
-
-          <a
-            href="mailto:robertkamdar.rkrk@gmail.com"
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: 10,
-              padding: '12px 10px',
-              marginBottom: 10,
-              borderRadius: 14,
-              background: 'rgba(255, 255, 255, 0.04)',
-              color: 'white',
-              textDecoration: 'none',
-              border: '1px solid rgba(255, 255, 255, 0.08)'
-            }}
-          >
-            <img
-              src="/email.png"
-              alt="Email"
+            <p
               style={{
-                width: 18,
-                height: 18,
-                objectFit: 'contain',
-                flexShrink: 0
-              }}
-            />
-            <span
-              style={{
-                fontSize: 13,
-                fontWeight: 600,
-                lineHeight: 1.2
+                margin: '0 0 14px',
+                color: '#d7d7d7',
+                fontSize: 12,
+                letterSpacing: 2,
+                textTransform: 'uppercase'
               }}
             >
-              E-mail me
-            </span>
-          </a>
+              Contact Me
+            </p>
 
-          <a
-            href="https://instagram.com/robertkamdarmusic"
-            target="_blank"
-            rel="noreferrer"
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: 10,
-              padding: '12px 10px',
-              borderRadius: 14,
-              background: 'rgba(255, 255, 255, 0.04)',
-              color: 'white',
-              textDecoration: 'none',
-              border: '1px solid rgba(255, 255, 255, 0.08)'
-            }}
-          >
-            <img
-              src="/insta.png"
-              alt="Instagram"
+            <a
+              href="mailto:robertkamdar.rkrk@gmail.com"
+              onMouseEnter={() => setHoveredContact('email')}
+              onMouseLeave={() => setHoveredContact('')}
               style={{
-                width: 18,
-                height: 18,
-                objectFit: 'contain',
-                flexShrink: 0
-              }}
-            />
-            <span
-              style={{
-                fontSize: 13,
-                fontWeight: 600,
-                lineHeight: 1.2
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: 10,
+                padding: '12px 10px',
+                marginBottom: 10,
+                borderRadius: 14,
+                background:
+                  hoveredContact === 'email'
+                    ? 'rgba(255, 255, 255, 0.08)'
+                    : 'rgba(255, 255, 255, 0.04)',
+                color: 'white',
+                textDecoration: 'none',
+                border:
+                  hoveredContact === 'email'
+                    ? '1px solid rgba(255, 77, 77, 0.35)'
+                    : '1px solid rgba(255, 255, 255, 0.08)',
+                transform: hoveredContact === 'email' ? 'translateY(-1px)' : 'translateY(0)',
+                boxShadow:
+                  hoveredContact === 'email'
+                    ? '0 10px 20px rgba(0, 0, 0, 0.22)'
+                    : 'none',
+                transition: 'all 160ms ease'
               }}
             >
-              Reach me on Instagram
-            </span>
-          </a>
-        </aside>
+              <img
+                src="/email.png"
+                alt="Email"
+                style={{
+                  width: 16,
+                  height: 16,
+                  objectFit: 'contain',
+                  flexShrink: 0
+                }}
+              />
+              <span
+                style={{
+                  fontSize: 13,
+                  fontWeight: 600,
+                  lineHeight: 1.2
+                }}
+              >
+                E-mail me
+              </span>
+            </a>
+
+            <a
+              href="https://instagram.com/robertkamdarmusic"
+              target="_blank"
+              rel="noreferrer"
+              onMouseEnter={() => setHoveredContact('insta')}
+              onMouseLeave={() => setHoveredContact('')}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: 10,
+                padding: '12px 10px',
+                borderRadius: 14,
+                background:
+                  hoveredContact === 'insta'
+                    ? 'rgba(255, 255, 255, 0.08)'
+                    : 'rgba(255, 255, 255, 0.04)',
+                color: 'white',
+                textDecoration: 'none',
+                border:
+                  hoveredContact === 'insta'
+                    ? '1px solid rgba(255, 77, 77, 0.35)'
+                    : '1px solid rgba(255, 255, 255, 0.08)',
+                transform: hoveredContact === 'insta' ? 'translateY(-1px)' : 'translateY(0)',
+                boxShadow:
+                  hoveredContact === 'insta'
+                    ? '0 10px 20px rgba(0, 0, 0, 0.22)'
+                    : 'none',
+                transition: 'all 160ms ease'
+              }}
+            >
+              <img
+                src="/insta.png"
+                alt="Instagram"
+                style={{
+                  width: 16,
+                  height: 16,
+                  objectFit: 'contain',
+                  flexShrink: 0
+                }}
+              />
+              <span
+                style={{
+                  fontSize: 13,
+                  fontWeight: 600,
+                  lineHeight: 1.2
+                }}
+              >
+                Reach me on Instagram
+              </span>
+            </a>
+          </aside>
+
+          {!isMobile && (
+            <aside
+              style={{
+                background: 'rgba(38, 38, 38, 0.94)',
+                border: '1px solid rgba(255, 255, 255, 0.09)',
+                borderRadius: 22,
+                padding: '18px 16px',
+                boxShadow: '0 18px 40px rgba(0, 0, 0, 0.3)',
+                backdropFilter: 'blur(8px)',
+                textAlign: 'center'
+              }}
+            >
+              <p
+                style={{
+                  margin: '0 0 14px',
+                  color: '#d7d7d7',
+                  fontSize: 12,
+                  letterSpacing: 2,
+                  textTransform: 'uppercase'
+                }}
+              >
+                Previous Credit(s)
+              </p>
+
+              <div
+                style={{
+                  display: 'flex',
+                  justifyContent: 'center'
+                }}
+              >
+                <iframe
+                  style={{
+                    borderRadius: 16,
+                    border: 'none',
+                    width: '100%',
+                    maxWidth: 182,
+                    height: 352
+                  }}
+                  src="https://open.spotify.com/embed/track/25Kv09CJz0LkRyxrkn89Ts?utm_source=generator"
+                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                  loading="lazy"
+                  title="Spotify track embed"
+                />
+              </div>
+            </aside>
+          )}
+        </div>
 
         <div
           style={{
@@ -500,7 +599,7 @@ export default function App() {
                 lineHeight: 1.8
               }}
             >
-              Welcome - I'm Robert Kamdar, The Producer.
+              Welcome - I&apos;m Robert Kamdar, The Producer.
             </p>
 
             <p
