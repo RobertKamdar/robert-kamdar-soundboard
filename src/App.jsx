@@ -51,9 +51,9 @@ export default function App() {
     { name: 'SUBZERO', file: '/subzero.mp3', bpm: '144', moods: ['Aggressive', 'Producer Favourite'] },
     { name: 'CUBE', file: '/cube.mp3', bpm: '146', moods: ['Retro', 'Hybrid'] },
     { name: 'OMEN', file: '/omen.mp3', bpm: '145', moods: ['Dramatic', 'Eerie'] },
-    { name: 'WINTERS', file: '/winters.mp3', bpm: '143', moods: ['Eerie', 'Atmospheric', 'Dramatic'] ,
-    { name: 'FAMILY TREE', file: '/familytree.mp3', bpm: '143', moods: ['Dramatic', 'Hip Hop'] ,
-    { name: 'CHURCH', file: '/church.mp3', bpm: '143', moods: ['Dramatic', 'Grimy', 'Aggressive'], 
+    { name: 'WINTERS', file: '/winters.mp3', bpm: '145', moods: ['Eerie', 'Atmospheric', 'Dramatic'] ,
+    { name: 'FAMILY TREE', file: '/familytree.mp3', bpm: '147', moods: ['Dramatic', 'Hip Hop'] ,
+    { name: 'CHURCH', file: '/church.mp3', bpm: '144', moods: ['Dramatic', 'Grimy', 'Aggressive'], 
     { name: 'L1TNESS', file: '/l1tness.mp3', bpm: '143', moods: ['Grimy', 'Wavy', 'Minimalistic'],
     { name: 'F4TALITY', file: '/f4tality.mp3', bpm: '143', moods: ['Dramatic', 'Dark'],}
   ]
