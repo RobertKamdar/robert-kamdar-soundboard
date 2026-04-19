@@ -295,31 +295,13 @@ export default function App() {
             >
               <span
                 style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: 10
+                  fontSize: 13,
+                  fontWeight: 600,
+                  lineHeight: 1.2,
+                  textAlign: 'center'
                 }}
               >
-                <img
-                  src="/email.png"
-                  alt="Email"
-                  style={{
-                    width: 16,
-                    height: 16,
-                    objectFit: 'contain',
-                    flexShrink: 0
-                  }}
-                />
-                <span
-                  style={{
-                    fontSize: 13,
-                    fontWeight: 600,
-                    lineHeight: 1.2
-                  }}
-                >
-                  E-mail me
-                </span>
+                E-mail me
               </span>
             </a>
 
@@ -333,31 +315,13 @@ export default function App() {
             >
               <span
                 style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: 10
+                  fontSize: 13,
+                  fontWeight: 600,
+                  lineHeight: 1.2,
+                  textAlign: 'center'
                 }}
               >
-                <img
-                  src="/insta.png"
-                  alt="Instagram"
-                  style={{
-                    width: 16,
-                    height: 16,
-                    objectFit: 'contain',
-                    flexShrink: 0
-                  }}
-                />
-                <span
-                  style={{
-                    fontSize: 13,
-                    fontWeight: 600,
-                    lineHeight: 1.2
-                  }}
-                >
-                  Reach me on Instagram
-                </span>
+                Reach me on Instagram
               </span>
             </a>
           </aside>
