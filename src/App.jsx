@@ -379,6 +379,7 @@ export default function App() {
             style={{
               display: 'flex',
               alignItems: 'center',
+              justifyContent: 'center',
               gap: 10,
               padding: '12px 10px',
               marginBottom: 10,
@@ -417,6 +418,7 @@ export default function App() {
             style={{
               display: 'flex',
               alignItems: 'center',
+              justifyContent: 'center',
               gap: 10,
               padding: '12px 10px',
               borderRadius: 14,
