@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 export default function App() {
   const [nowPlaying, setNowPlaying] = useState('None')
@@ -10,256 +10,69 @@ export default function App() {
   const [isMobile, setIsMobile] = useState(() =>
     typeof window !== 'undefined' ? window.innerWidth <= 768 : false
   )
-  const [hoveredContact, setHoveredContact] = useState('')
+  const [hoveredCard, setHoveredCard] = useState('')
   const audioRef = useRef(null)
   const intervalRef = useRef(null)
 
   const beats = [
-    {
-      name: 'N.F.S',
-      file: '/nfs.mp3',
-      bpm: '143',
-      moods: ['Ethnic']
-    },
-    {
-      name: 'SAYONARA',
-      file: '/sayonara.mp3',
-      bpm: '142',
-      moods: ['Melodic', 'Ethnic']
-    },
-    {
-      name: 'TYPICAL',
-      file: '/typical.mp3',
-      bpm: '140',
-      moods: ['Melodic', 'Dark', 'Producer Favourite']
-    },
-    {
-      name: 'BUILT DIFFERENT',
-      file: '/builtdifferent.mp3',
-      bpm: '143',
-      moods: ['Dark', 'Aggressive', 'Producer Favourite']
-    },
-    {
-      name: 'CZARS & EMIRS',
-      file: '/czarsandemirs.mp3',
-      bpm: '142',
-      moods: ['Ethnic']
-    },
-    {
-      name: 'HK',
-      file: '/hk.mp3',
-      bpm: '143',
-      moods: ['Dark']
-    },
-    {
-      name: 'KNOWN',
-      file: '/known.mp3',
-      bpm: '100',
-      moods: ['Hip Hop']
-    },
-    {
-      name: 'LUCID',
-      file: '/lucid.mp3',
-      bpm: '143',
-      moods: ['Melodic', 'Dubstep']
-    },
-    {
-      name: 'RUDE',
-      file: '/rude.mp3',
-      bpm: '143',
-      moods: ['Aggressive', 'Dark']
-    },
-    {
-      name: 'ANKARA',
-      file: '/ankara.mp3',
-      bpm: '142',
-      moods: ['Ethnic', 'Dark']
-    },
-    {
-      name: 'CAUSE',
-      file: '/cause.mp3',
-      bpm: '144',
-      moods: ['Melodic', 'Upbeat']
-    },
-    {
-      name: 'CONFLICT',
-      file: '/conflict.mp3',
-      bpm: '144',
-      moods: ['Dark']
-    },
-    {
-      name: 'CRASHOUT',
-      file: '/crashout.mp3',
-      bpm: '150',
-      moods: ['Hybrid', 'Aggressive', 'Hip Hop']
-    },
-    {
-      name: 'DERRY',
-      file: '/derry.mp3',
-      bpm: '143',
-      moods: ['Dark', 'Gritty']
-    },
-    {
-      name: 'JOHTO',
-      file: '/johto.mp3',
-      bpm: '150',
-      moods: ['Upbeat', 'Hybrid', 'Retro']
-    },
-    {
-      name: 'MONSOON',
-      file: '/monsoon.mp3',
-      bpm: '140',
-      moods: ['Dark', 'Eerie']
-    },
-    {
-      name: 'MORTIFY',
-      file: '/mortify.mp3',
-      bpm: '141',
-      moods: ['Dark', 'Eerie']
-    },
-    {
-      name: 'PERSIAN',
-      file: '/persian.mp3',
-      bpm: '141',
-      moods: ['Ethnic', 'Aggressive']
-    },
-    {
-      name: 'PREMIUM',
-      file: '/premium.mp3',
-      bpm: '150',
-      moods: ['Hybrid', 'Hip Hop']
-    },
-    {
-      name: 'QOTD',
-      file: '/qotd.mp3',
-      bpm: '143',
-      moods: ['Eerie', 'Ethnic', 'Dark']
-    },
-    {
-      name: 'SHIFTING',
-      file: '/shifting.mp3',
-      bpm: '142',
-      moods: ['Aggressive']
-    },
-    {
-      name: 'STEREO TYPICAL',
-      file: '/stereotypical.mp3',
-      bpm: '142',
-      moods: ['Eerie', 'Dubstep', 'Dark', 'Melodic']
-    },
-    {
-      name: 'TPW',
-      file: '/tpw.mp3',
-      bpm: '145',
-      moods: ['Ethnic', 'Dark']
-    },
-    {
-      name: 'BELKI',
-      file: '/belki.mp3',
-      bpm: '145',
-      moods: ['Ethnic', 'Grimy', 'Producer Favourite', 'Aggressive']
-    },
-    {
-      name: 'KITE',
-      file: '/kite.mp3',
-      bpm: '145',
-      moods: ['Ethnic', 'Eerie', 'Dark']
-    },
-    {
-      name: 'FRANKFURT',
-      file: '/frankfurt.mp3',
-      bpm: '144',
-      moods: ['Ethnic', 'Dark']
-    },
-    {
-      name: 'SKITZ',
-      file: '/skitz.mp3',
-      bpm: '145',
-      moods: ['Aggressive', 'Chaotic', 'Wavy']
-    },
-    {
-      name: 'RAGEQUIT',
-      file: '/ragequit.mp3',
-      bpm: '145',
-      moods: ['Grimy', 'Retro']
-    },
-    {
-      name: 'DAI',
-      file: '/dai.mp3',
-      bpm: '143',
-      moods: ['Dubstep', 'Melodic']
-    },
-    {
-      name: 'FINISHED',
-      file: '/finished.mp3',
-      bpm: '144',
-      moods: ['Dark', 'Eerie', 'Ethnic']
-    },
-    {
-      name: 'TRIDENT',
-      file: '/trident.mp3',
-      bpm: '143',
-      moods: ['Dramatic', 'Dark', 'Melodic']
-    },
-    {
-      name: 'THE GAME',
-      file: '/thegame.mp3',
-      bpm: '150',
-      moods: ['Hybrid', 'Aggressive', 'Hip Hop', 'Retro']
-    },
-    {
-      name: 'NOTORIETY',
-      file: '/notoreity.mp3',
-      bpm: '143',
-      moods: ['Eerie', 'Minimalistic']
-    },
-    {
-      name: 'SUBZERO',
-      file: '/subzero.mp3',
-      bpm: '144',
-      moods: ['Aggressive', 'Producer Favourite']
-    },
-    {
-      name: 'CUBE',
-      file: '/cube.mp3',
-      bpm: '146',
-      moods: ['Retro', 'Hybrid']
-    },
-    {
-      name: 'OMEN',
-      file: '/omen.mp3',
-      bpm: '145',
-      moods: ['Dramatic', 'Eerie']
-    },
-    {
-      name: 'SLASHER',
-      file: '/slasher.mp3',
-      bpm: '143',
-      moods: ['Dramatic', 'Aggressive']
-    }
+    { name: 'N.F.S', file: '/nfs.mp3', bpm: '143', moods: ['Ethnic'] },
+    { name: 'SAYONARA', file: '/sayonara.mp3', bpm: '142', moods: ['Melodic', 'Ethnic'] },
+    { name: 'TYPICAL', file: '/typical.mp3', bpm: '140', moods: ['Melodic', 'Dark', 'Producer Favourite'] },
+    { name: 'BUILT DIFFERENT', file: '/builtdifferent.mp3', bpm: '143', moods: ['Dark', 'Aggressive', 'Producer Favourite'] },
+    { name: 'CZARS & EMIRS', file: '/czarsandemirs.mp3', bpm: '142', moods: ['Ethnic'] },
+    { name: 'HK', file: '/hk.mp3', bpm: '143', moods: ['Dark'] },
+    { name: 'KNOWN', file: '/known.mp3', bpm: '100', moods: ['Hip Hop'] },
+    { name: 'LUCID', file: '/lucid.mp3', bpm: '143', moods: ['Melodic', 'Dubstep'] },
+    { name: 'RUDE', file: '/rude.mp3', bpm: '143', moods: ['Aggressive', 'Dark'] },
+    { name: 'ANKARA', file: '/ankara.mp3', bpm: '142', moods: ['Ethnic', 'Dark'] },
+    { name: 'CAUSE', file: '/cause.mp3', bpm: '144', moods: ['Melodic', 'Upbeat'] },
+    { name: 'CONFLICT', file: '/conflict.mp3', bpm: '144', moods: ['Dark'] },
+    { name: 'CRASHOUT', file: '/crashout.mp3', bpm: '150', moods: ['Hybrid', 'Aggressive', 'Hip Hop'] },
+    { name: 'DERRY', file: '/derry.mp3', bpm: '143', moods: ['Dark', 'Gritty'] },
+    { name: 'JOHTO', file: '/johto.mp3', bpm: '150', moods: ['Upbeat', 'Hybrid', 'Retro'] },
+    { name: 'MONSOON', file: '/monsoon.mp3', bpm: '140', moods: ['Dark', 'Eerie'] },
+    { name: 'MORTIFY', file: '/mortify.mp3', bpm: '141', moods: ['Dark', 'Eerie'] },
+    { name: 'PERSIAN', file: '/persian.mp3', bpm: '141', moods: ['Ethnic', 'Aggressive'] },
+    { name: 'PREMIUM', file: '/premium.mp3', bpm: '150', moods: ['Hybrid', 'Hip Hop'] },
+    { name: 'QOTD', file: '/qotd.mp3', bpm: '143', moods: ['Eerie', 'Ethnic', 'Dark'] },
+    { name: 'SHIFTING', file: '/shifting.mp3', bpm: '142', moods: ['Aggressive'] },
+    { name: 'STEREO TYPICAL', file: '/stereotypical.mp3', bpm: '142', moods: ['Eerie', 'Dubstep', 'Dark', 'Melodic'] },
+    { name: 'TPW', file: '/tpw.mp3', bpm: '145', moods: ['Ethnic', 'Dark'] },
+    { name: 'BELKI', file: '/belki.mp3', bpm: '145', moods: ['Ethnic', 'Grimy', 'Producer Favourite', 'Aggressive'] },
+    { name: 'KITE', file: '/kite.mp3', bpm: '145', moods: ['Ethnic', 'Eerie', 'Dark'] },
+    { name: 'FRANKFURT', file: '/frankfurt.mp3', bpm: '144', moods: ['Ethnic', 'Dark'] },
+    { name: 'SKITZ', file: '/skitz.mp3', bpm: '145', moods: ['Aggressive', 'Chaotic', 'Wavy'] },
+    { name: 'RAGEQUIT', file: '/ragequit.mp3', bpm: '145', moods: ['Grimy', 'Retro'] },
+    { name: 'DAI', file: '/dai.mp3', bpm: '143', moods: ['Dubstep', 'Melodic'] },
+    { name: 'FINISHED', file: '/finished.mp3', bpm: '144', moods: ['Dark', 'Eerie', 'Ethnic'] },
+    { name: 'TRIDENT', file: '/trident.mp3', bpm: '143', moods: ['Dramatic', 'Dark', 'Melodic'] },
+    { name: 'THE GAME', file: '/thegame.mp3', bpm: '150', moods: ['Hybrid', 'Aggressive', 'Hip Hop', 'Retro'] },
+    { name: 'NOTORIETY', file: '/notoreity.mp3', bpm: '143', moods: ['Eerie', 'Minimalistic'] },
+    { name: 'SUBZERO', file: '/subzero.mp3', bpm: '144', moods: ['Aggressive', 'Producer Favourite'] },
+    { name: 'CUBE', file: '/cube.mp3', bpm: '146', moods: ['Retro', 'Hybrid'] },
+    { name: 'OMEN', file: '/omen.mp3', bpm: '145', moods: ['Dramatic', 'Eerie'] },
+    { name: 'SLASHER', file: '/slasher.mp3', bpm: '143', moods: ['Dramatic', 'Aggressive'] }
   ]
 
   const sortedBeats = [...beats].sort((a, b) => a.name.localeCompare(b.name))
 
-  const bpmOptions = [...new Set(sortedBeats.filter((b) => b.bpm).map((beat) => beat.bpm))].sort(
+  const bpmOptions = [...new Set(sortedBeats.map((beat) => beat.bpm).filter(Boolean))].sort(
     (a, b) => Number(a) - Number(b)
   )
 
-  const moodOptions = [...new Set(sortedBeats.filter((b) => b.moods).flatMap((beat) => beat.moods))].sort()
+  const moodOptions = [...new Set(sortedBeats.flatMap((beat) => beat.moods || []))].sort()
 
   const filteredBeats = sortedBeats.filter((beat) => {
     const matchesBpm = selectedBpm === '' || beat.bpm === selectedBpm
-    const matchesMood =
-      selectedMood === '' || (beat.moods && beat.moods.includes(selectedMood))
-
+    const matchesMood = selectedMood === '' || beat.moods.includes(selectedMood)
     return matchesBpm && matchesMood
   })
 
   const formatTime = (seconds) => {
-    if (!seconds || isNaN(seconds)) return '0:00'
-    const m = Math.floor(seconds / 60)
-    const s = Math.floor(seconds % 60)
-    return `${m}:${s.toString().padStart(2, '0')}`
+    if (!seconds || Number.isNaN(seconds)) return '0:00'
+    const mins = Math.floor(seconds / 60)
+    const secs = Math.floor(seconds % 60)
+    return `${mins}:${secs.toString().padStart(2, '0')}`
   }
 
   const clearTimer = () => {
@@ -269,16 +82,20 @@ export default function App() {
     }
   }
 
+  const resetPlayer = () => {
+    clearTimer()
+    audioRef.current = null
+    setCurrentFile(null)
+    setNowPlaying('None')
+    setElapsed(0)
+    setDuration(0)
+  }
+
   const handleBeatClick = (beat) => {
     if (audioRef.current && currentFile === beat.file) {
       audioRef.current.pause()
       audioRef.current.currentTime = 0
-      audioRef.current = null
-      clearTimer()
-      setCurrentFile(null)
-      setNowPlaying('None')
-      setElapsed(0)
-      setDuration(0)
+      resetPlayer()
       return
     }
 
@@ -300,21 +117,11 @@ export default function App() {
     })
 
     audio.onended = () => {
-      audioRef.current = null
-      clearTimer()
-      setCurrentFile(null)
-      setNowPlaying('None')
-      setElapsed(0)
-      setDuration(0)
+      resetPlayer()
     }
 
     audio.play().catch(() => {
-      audioRef.current = null
-      clearTimer()
-      setCurrentFile(null)
-      setNowPlaying('None')
-      setElapsed(0)
-      setDuration(0)
+      resetPlayer()
     })
 
     intervalRef.current = setInterval(() => {
@@ -337,6 +144,41 @@ export default function App() {
       window.removeEventListener('resize', handleResize)
     }
   }, [])
+
+  const sideCardStyle = {
+    background: 'rgba(38, 38, 38, 0.94)',
+    border: '1px solid rgba(255, 255, 255, 0.09)',
+    borderRadius: 22,
+    padding: '16px 14px',
+    boxShadow: '0 18px 40px rgba(0, 0, 0, 0.3)',
+    backdropFilter: 'blur(8px)',
+    textAlign: 'center'
+  }
+
+  const contactLinkStyle = (id) => ({
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 10,
+    padding: '12px 10px',
+    borderRadius: 14,
+    background:
+      hoveredCard === id
+        ? 'rgba(255, 255, 255, 0.08)'
+        : 'rgba(255, 255, 255, 0.04)',
+    color: 'white',
+    textDecoration: 'none',
+    border:
+      hoveredCard === id
+        ? '1px solid rgba(255, 77, 77, 0.35)'
+        : '1px solid rgba(255, 255, 255, 0.08)',
+    transform: hoveredCard === id ? 'translateY(-1px)' : 'translateY(0)',
+    boxShadow:
+      hoveredCard === id
+        ? '0 10px 20px rgba(0, 0, 0, 0.22)'
+        : 'none',
+    transition: 'all 160ms ease'
+  })
 
   return (
     <div
@@ -374,17 +216,7 @@ export default function App() {
             alignSelf: isMobile ? 'auto' : 'flex-start'
           }}
         >
-          <aside
-            style={{
-              background: 'rgba(38, 38, 38, 0.94)',
-              border: '1px solid rgba(255, 255, 255, 0.09)',
-              borderRadius: 22,
-              padding: '18px 16px',
-              boxShadow: '0 18px 40px rgba(0, 0, 0, 0.3)',
-              backdropFilter: 'blur(8px)',
-              textAlign: 'center'
-            }}
-          >
+          <aside style={sideCardStyle}>
             <p
               style={{
                 margin: '0 0 14px',
@@ -399,33 +231,9 @@ export default function App() {
 
             <a
               href="mailto:robertkamdar.rkrk@gmail.com"
-              onMouseEnter={() => setHoveredContact('email')}
-              onMouseLeave={() => setHoveredContact('')}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: 10,
-                padding: '12px 10px',
-                marginBottom: 10,
-                borderRadius: 14,
-                background:
-                  hoveredContact === 'email'
-                    ? 'rgba(255, 255, 255, 0.08)'
-                    : 'rgba(255, 255, 255, 0.04)',
-                color: 'white',
-                textDecoration: 'none',
-                border:
-                  hoveredContact === 'email'
-                    ? '1px solid rgba(255, 77, 77, 0.35)'
-                    : '1px solid rgba(255, 255, 255, 0.08)',
-                transform: hoveredContact === 'email' ? 'translateY(-1px)' : 'translateY(0)',
-                boxShadow:
-                  hoveredContact === 'email'
-                    ? '0 10px 20px rgba(0, 0, 0, 0.22)'
-                    : 'none',
-                transition: 'all 160ms ease'
-              }}
+              onMouseEnter={() => setHoveredCard('email')}
+              onMouseLeave={() => setHoveredCard('')}
+              style={{ ...contactLinkStyle('email'), marginBottom: 10 }}
             >
               <img
                 src="/email.png"
@@ -452,32 +260,9 @@ export default function App() {
               href="https://instagram.com/robertkamdarmusic"
               target="_blank"
               rel="noreferrer"
-              onMouseEnter={() => setHoveredContact('insta')}
-              onMouseLeave={() => setHoveredContact('')}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: 10,
-                padding: '12px 10px',
-                borderRadius: 14,
-                background:
-                  hoveredContact === 'insta'
-                    ? 'rgba(255, 255, 255, 0.08)'
-                    : 'rgba(255, 255, 255, 0.04)',
-                color: 'white',
-                textDecoration: 'none',
-                border:
-                  hoveredContact === 'insta'
-                    ? '1px solid rgba(255, 77, 77, 0.35)'
-                    : '1px solid rgba(255, 255, 255, 0.08)',
-                transform: hoveredContact === 'insta' ? 'translateY(-1px)' : 'translateY(0)',
-                boxShadow:
-                  hoveredContact === 'insta'
-                    ? '0 10px 20px rgba(0, 0, 0, 0.22)'
-                    : 'none',
-                transition: 'all 160ms ease'
-              }}
+              onMouseEnter={() => setHoveredCard('insta')}
+              onMouseLeave={() => setHoveredCard('')}
+              style={contactLinkStyle('insta')}
             >
               <img
                 src="/insta.png"
@@ -502,118 +287,107 @@ export default function App() {
           </aside>
 
           {!isMobile && (
-  <aside
-    style={{
-      background: 'rgba(38, 38, 38, 0.94)',
-      border: '1px solid rgba(255, 255, 255, 0.09)',
-      borderRadius: 22,
-      padding: '16px 14px',
-      boxShadow: '0 18px 40px rgba(0, 0, 0, 0.3)',
-      backdropFilter: 'blur(8px)',
-      textAlign: 'center'
-    }}
-  >
-    <p
-      style={{
-        margin: '0 0 12px',
-        color: '#d7d7d7',
-        fontSize: 12,
-        letterSpacing: 2,
-        textTransform: 'uppercase'
-      }}
-    >
-      Previous Credit(s)
-    </p>
+            <aside style={sideCardStyle}>
+              <p
+                style={{
+                  margin: '0 0 12px',
+                  color: '#d7d7d7',
+                  fontSize: 12,
+                  letterSpacing: 2,
+                  textTransform: 'uppercase'
+                }}
+              >
+                Previous Credit(s)
+              </p>
 
-    <p
-      style={{
-        margin: '0 0 12px',
-        color: 'white',
-        fontSize: 12,
-        fontWeight: 700,
-        lineHeight: 1.35
-      }}
-    >
-      Drizz GB Round 2 vs Anbu Senseii
-    </p>
+              <p
+                style={{
+                  margin: '0 0 12px',
+                  color: 'white',
+                  fontSize: 12,
+                  fontWeight: 700,
+                  lineHeight: 1.35
+                }}
+              >
+                Drizz GB Round 2 vs Anbu Senseii
+              </p>
 
-    <a
-      href="https://open.spotify.com/track/25Kv09CJz0LkRyxrkn89Ts"
-      target="_blank"
-      rel="noreferrer"
-      onMouseEnter={() => setHoveredContact('credit')}
-      onMouseLeave={() => setHoveredContact('')}
-      style={{
-        position: 'relative',
-        display: 'inline-flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: 170,
-        height: 170,
-        borderRadius: 18,
-        overflow: 'hidden',
-        textDecoration: 'none',
-        boxShadow:
-          hoveredContact === 'credit'
-            ? '0 18px 34px rgba(0, 0, 0, 0.38)'
-            : '0 14px 28px rgba(0, 0, 0, 0.3)',
-        transform: hoveredContact === 'credit' ? 'translateY(-2px)' : 'translateY(0)',
-        transition: 'all 180ms ease'
-      }}
-    >
-      <img
-        src="/anbu.jpg"
-        alt="Drizz GB Round 2 vs Anbu Senseii artwork"
-        style={{
-          width: '100%',
-          height: '100%',
-          objectFit: 'cover',
-          display: 'block',
-          filter: 'brightness(0.82)',
-          transform: hoveredContact === 'credit' ? 'scale(1.04)' : 'scale(1)',
-          transition: 'transform 180ms ease'
-        }}
-      />
+              <a
+                href="https://open.spotify.com/track/25Kv09CJz0LkRyxrkn89Ts"
+                target="_blank"
+                rel="noreferrer"
+                onMouseEnter={() => setHoveredCard('credit')}
+                onMouseLeave={() => setHoveredCard('')}
+                style={{
+                  position: 'relative',
+                  display: 'inline-flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  width: 170,
+                  height: 170,
+                  borderRadius: 18,
+                  overflow: 'hidden',
+                  textDecoration: 'none',
+                  boxShadow:
+                    hoveredCard === 'credit'
+                      ? '0 18px 34px rgba(0, 0, 0, 0.38)'
+                      : '0 14px 28px rgba(0, 0, 0, 0.3)',
+                  transform: hoveredCard === 'credit' ? 'translateY(-2px)' : 'translateY(0)',
+                  transition: 'all 180ms ease'
+                }}
+              >
+                <img
+                  src="/anbu.jpg"
+                  alt="Drizz GB Round 2 vs Anbu Senseii artwork"
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    display: 'block',
+                    filter: 'brightness(0.82)',
+                    transform: hoveredCard === 'credit' ? 'scale(1.04)' : 'scale(1)',
+                    transition: 'transform 180ms ease'
+                  }}
+                />
+                <span
+                  style={{
+                    position: 'absolute',
+                    width: 54,
+                    height: 54,
+                    borderRadius: 999,
+                    background: 'rgba(196, 0, 0, 0.9)',
+                    border: '1px solid rgba(255, 255, 255, 0.22)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    boxShadow: '0 8px 18px rgba(0, 0, 0, 0.35)'
+                  }}
+                >
+                  <span
+                    style={{
+                      color: 'white',
+                      fontSize: 18,
+                      marginLeft: 3,
+                      lineHeight: 1
+                    }}
+                  >
+                    ▶
+                  </span>
+                </span>
+              </a>
 
-      <span
-        style={{
-          position: 'absolute',
-          width: 54,
-          height: 54,
-          borderRadius: 999,
-          background: 'rgba(196, 0, 0, 0.9)',
-          border: '1px solid rgba(255, 255, 255, 0.22)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          boxShadow: '0 8px 18px rgba(0, 0, 0, 0.35)'
-        }}
-      >
-        <span
-          style={{
-            color: 'white',
-            fontSize: 18,
-            marginLeft: 3,
-            lineHeight: 1
-          }}
-        >
-          ▶
-        </span>
-      </span>
-    </a>
-
-    <p
-      style={{
-        margin: '12px 0 0',
-        color: 'rgba(255, 255, 255, 0.72)',
-        fontSize: 12,
-        fontVariantNumeric: 'tabular-nums'
-      }}
-    >
-      0:00 / 1:26
-    </p>
-  </aside>
-)}
+              <p
+                style={{
+                  margin: '12px 0 0',
+                  color: 'rgba(255, 255, 255, 0.72)',
+                  fontSize: 12,
+                  fontVariantNumeric: 'tabular-nums'
+                }}
+              >
+                0:00 / 1:26
+              </p>
+            </aside>
+          )}
         </div>
 
         <div
