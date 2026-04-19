@@ -17,8 +17,18 @@ export default function App() {
   const beats = [
     { name: 'N.F.S', file: '/nfs.mp3', bpm: '143', moods: ['Ethnic'] },
     { name: 'SAYONARA', file: '/sayonara.mp3', bpm: '142', moods: ['Melodic', 'Ethnic'] },
-    { name: 'TYPICAL', file: '/typical.mp3', bpm: '140', moods: ['Melodic', 'Dark', 'Producer Favourite'] },
-    { name: 'BUILT DIFFERENT', file: '/builtdifferent.mp3', bpm: '143', moods: ['Dark', 'Aggressive', 'Producer Favourite'] },
+    {
+      name: 'TYPICAL',
+      file: '/typical.mp3',
+      bpm: '140',
+      moods: ['Melodic', 'Dark', 'Producer Favourite']
+    },
+    {
+      name: 'BUILT DIFFERENT',
+      file: '/builtdifferent.mp3',
+      bpm: '143',
+      moods: ['Dark', 'Aggressive', 'Producer Favourite']
+    },
     { name: 'CZARS & EMIRS', file: '/czarsandemirs.mp3', bpm: '142', moods: ['Ethnic'] },
     { name: 'HK', file: '/hk.mp3', bpm: '143', moods: ['Dark'] },
     { name: 'KNOWN', file: '/known.mp3', bpm: '100', moods: ['Hip Hop'] },
@@ -27,7 +37,12 @@ export default function App() {
     { name: 'ANKARA', file: '/ankara.mp3', bpm: '142', moods: ['Ethnic', 'Dark'] },
     { name: 'CAUSE', file: '/cause.mp3', bpm: '144', moods: ['Melodic', 'Upbeat'] },
     { name: 'CONFLICT', file: '/conflict.mp3', bpm: '144', moods: ['Dark'] },
-    { name: 'CRASHOUT', file: '/crashout.mp3', bpm: '150', moods: ['Hybrid', 'Aggressive', 'Hip Hop'] },
+    {
+      name: 'CRASHOUT',
+      file: '/crashout.mp3',
+      bpm: '150',
+      moods: ['Hybrid', 'Aggressive', 'Hip Hop']
+    },
     { name: 'DERRY', file: '/derry.mp3', bpm: '143', moods: ['Dark', 'Gritty'] },
     { name: 'JOHTO', file: '/johto.mp3', bpm: '150', moods: ['Upbeat', 'Hybrid', 'Retro'] },
     { name: 'MONSOON', file: '/monsoon.mp3', bpm: '140', moods: ['Dark', 'Eerie'] },
@@ -36,9 +51,19 @@ export default function App() {
     { name: 'PREMIUM', file: '/premium.mp3', bpm: '150', moods: ['Hybrid', 'Hip Hop'] },
     { name: 'QOTD', file: '/qotd.mp3', bpm: '143', moods: ['Eerie', 'Ethnic', 'Dark'] },
     { name: 'SHIFTING', file: '/shifting.mp3', bpm: '142', moods: ['Aggressive'] },
-    { name: 'STEREO TYPICAL', file: '/stereotypical.mp3', bpm: '142', moods: ['Eerie', 'Dubstep', 'Dark', 'Melodic'] },
+    {
+      name: 'STEREO TYPICAL',
+      file: '/stereotypical.mp3',
+      bpm: '142',
+      moods: ['Eerie', 'Dubstep', 'Dark', 'Melodic']
+    },
     { name: 'TPW', file: '/tpw.mp3', bpm: '145', moods: ['Ethnic', 'Dark'] },
-    { name: 'BELKI', file: '/belki.mp3', bpm: '145', moods: ['Ethnic', 'Grimy', 'Producer Favourite', 'Aggressive'] },
+    {
+      name: 'BELKI',
+      file: '/belki.mp3',
+      bpm: '145',
+      moods: ['Ethnic', 'Grimy', 'Producer Favourite', 'Aggressive']
+    },
     { name: 'KITE', file: '/kite.mp3', bpm: '145', moods: ['Ethnic', 'Eerie', 'Dark'] },
     { name: 'FRANKFURT', file: '/frankfurt.mp3', bpm: '144', moods: ['Ethnic', 'Dark'] },
     { name: 'SKITZ', file: '/skitz.mp3', bpm: '145', moods: ['Aggressive', 'Chaotic', 'Wavy'] },
@@ -46,16 +71,26 @@ export default function App() {
     { name: 'DAI', file: '/dai.mp3', bpm: '143', moods: ['Dubstep', 'Melodic'] },
     { name: 'FINISHED', file: '/finished.mp3', bpm: '144', moods: ['Dark', 'Eerie', 'Ethnic'] },
     { name: 'TRIDENT', file: '/trident.mp3', bpm: '143', moods: ['Dramatic', 'Dark', 'Melodic'] },
-    { name: 'THE GAME', file: '/thegame.mp3', bpm: '150', moods: ['Hybrid', 'Aggressive', 'Hip Hop', 'Retro'] },
+    {
+      name: 'THE GAME',
+      file: '/thegame.mp3',
+      bpm: '150',
+      moods: ['Hybrid', 'Aggressive', 'Hip Hop', 'Retro']
+    },
     { name: 'NOTORIETY', file: '/notoreity.mp3', bpm: '143', moods: ['Eerie', 'Minimalistic'] },
-    { name: 'SUBZERO', file: '/subzero.mp3', bpm: '144', moods: ['Aggressive', 'Producer Favourite'] },
+    {
+      name: 'SUBZERO',
+      file: '/subzero.mp3',
+      bpm: '144',
+      moods: ['Aggressive', 'Producer Favourite']
+    },
     { name: 'CUBE', file: '/cube.mp3', bpm: '146', moods: ['Retro', 'Hybrid'] },
     { name: 'OMEN', file: '/omen.mp3', bpm: '145', moods: ['Dramatic', 'Eerie'] },
-    { name: 'WINTERS', file: '/winters.mp3', bpm: '145', moods: ['Eerie', 'Atmospheric', 'Dramatic'] ,
-    { name: 'FAMILY TREE', file: '/familytree.mp3', bpm: '147', moods: ['Dramatic', 'Hip Hop'] ,
-    { name: 'CHURCH', file: '/church.mp3', bpm: '144', moods: ['Dramatic', 'Grimy', 'Aggressive'], 
-    { name: 'L1TNESS', file: '/l1tness.mp3', bpm: '143', moods: ['Grimy', 'Wavy', 'Minimalistic'],
-    { name: 'F4TALITY', file: '/f4tality.mp3', bpm: '143', moods: ['Dramatic', 'Dark'],}
+    { name: 'WINTERS', file: '/winters.mp3', bpm: '145', moods: ['Eerie', 'Atmospheric', 'Dramatic'] },
+    { name: 'FAMILY TREE', file: '/familytree.mp3', bpm: '147', moods: ['Dramatic', 'Hip Hop'] },
+    { name: 'CHURCH', file: '/church.mp3', bpm: '144', moods: ['Dramatic', 'Grimy', 'Aggressive'] },
+    { name: 'L1TNESS', file: '/l1tness.mp3', bpm: '143', moods: ['Grimy', 'Wavy', 'Minimalistic'] },
+    { name: 'F4TALITY', file: '/f4tality.mp3', bpm: '143', moods: ['Dramatic', 'Dark'] }
   ]
 
   const sortedBeats = [...beats].sort((a, b) => a.name.localeCompare(b.name))
