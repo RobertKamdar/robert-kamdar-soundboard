@@ -359,7 +359,7 @@ export default function App() {
             padding: '20px 18px',
             boxShadow: '0 18px 40px rgba(0, 0, 0, 0.3)',
             backdropFilter: 'blur(8px)',
-            textAlign: 'left'
+            textAlign: 'center'
           }}
         >
           <p
