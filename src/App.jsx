@@ -86,10 +86,30 @@ export default function App() {
     },
     { name: 'CUBE', file: '/cube.mp3', bpm: '146', moods: ['Retro', 'Hybrid'] },
     { name: 'OMEN', file: '/omen.mp3', bpm: '145', moods: ['Dramatic', 'Eerie'] },
-    { name: 'WINTERS', file: '/winters.mp3', bpm: '145', moods: ['Eerie', 'Atmospheric', 'Dramatic'] },
-    { name: 'FAMILY TREE', file: '/familytree.mp3', bpm: '147', moods: ['Dramatic', 'Hip Hop'] },
-    { name: 'CHURCH', file: '/church.mp3', bpm: '144', moods: ['Dramatic', 'Grimy', 'Aggressive'] },
-    { name: 'L1TNESS', file: '/l1tness.mp3', bpm: '143', moods: ['Grimy', 'Wavy', 'Minimalistic'] },
+    {
+      name: 'WINTERS',
+      file: '/winters.mp3',
+      bpm: '145',
+      moods: ['Eerie', 'Atmospheric', 'Dramatic']
+    },
+    {
+      name: 'FAMILY TREE',
+      file: '/familytree.mp3',
+      bpm: '147',
+      moods: ['Dramatic', 'Hip Hop']
+    },
+    {
+      name: 'CHURCH',
+      file: '/church.mp3',
+      bpm: '144',
+      moods: ['Dramatic', 'Grimy', 'Aggressive']
+    },
+    {
+      name: 'L1TNESS',
+      file: '/l1tness.mp3',
+      bpm: '143',
+      moods: ['Grimy', 'Wavy', 'Minimalistic']
+    },
     { name: 'F4TALITY', file: '/f4tality.mp3', bpm: '143', moods: ['Dramatic', 'Dark'] }
   ]
 
@@ -198,7 +218,6 @@ export default function App() {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    gap: 10,
     padding: '12px 10px',
     borderRadius: 14,
     background:
@@ -274,24 +293,33 @@ export default function App() {
               onMouseLeave={() => setHoveredCard('')}
               style={{ ...contactLinkStyle('email'), marginBottom: 10 }}
             >
-              <img
-                src="/email.png"
-                alt="Email"
-                style={{
-                  width: 16,
-                  height: 16,
-                  objectFit: 'contain',
-                  flexShrink: 0
-                }}
-              />
               <span
                 style={{
-                  fontSize: 13,
-                  fontWeight: 600,
-                  lineHeight: 1.2
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: 10
                 }}
               >
-                E-mail me
+                <img
+                  src="/email.png"
+                  alt="Email"
+                  style={{
+                    width: 16,
+                    height: 16,
+                    objectFit: 'contain',
+                    flexShrink: 0
+                  }}
+                />
+                <span
+                  style={{
+                    fontSize: 13,
+                    fontWeight: 600,
+                    lineHeight: 1.2
+                  }}
+                >
+                  E-mail me
+                </span>
               </span>
             </a>
 
@@ -303,24 +331,33 @@ export default function App() {
               onMouseLeave={() => setHoveredCard('')}
               style={contactLinkStyle('insta')}
             >
-              <img
-                src="/insta.png"
-                alt="Instagram"
-                style={{
-                  width: 16,
-                  height: 16,
-                  objectFit: 'contain',
-                  flexShrink: 0
-                }}
-              />
               <span
                 style={{
-                  fontSize: 13,
-                  fontWeight: 600,
-                  lineHeight: 1.2
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: 10
                 }}
               >
-                Reach me on Instagram
+                <img
+                  src="/insta.png"
+                  alt="Instagram"
+                  style={{
+                    width: 16,
+                    height: 16,
+                    objectFit: 'contain',
+                    flexShrink: 0
+                  }}
+                />
+                <span
+                  style={{
+                    fontSize: 13,
+                    fontWeight: 600,
+                    lineHeight: 1.2
+                  }}
+                >
+                  Reach me on Instagram
+                </span>
               </span>
             </a>
           </aside>
@@ -569,7 +606,8 @@ export default function App() {
               ))}
             </select>
           </div>
-                    <div
+
+          <div
             style={{
               display: 'grid',
               gridTemplateColumns: isMobile
@@ -580,7 +618,6 @@ export default function App() {
               margin: '0 auto'
             }}
           >
-
             {filteredBeats.map((beat) => {
               const isPlaying = currentFile === beat.file
 
