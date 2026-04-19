@@ -339,186 +339,298 @@ export default function App() {
     >
       <div
         style={{
-          maxWidth: 1100,
+          maxWidth: 1320,
           margin: '0 auto',
-          textAlign: 'center'
+          display: 'flex',
+          flexWrap: 'wrap',
+          alignItems: 'flex-start',
+          justifyContent: 'center',
+          gap: 24
         }}
       >
-        <div
+        <aside
           style={{
-            maxWidth: 860,
-            margin: '0 auto 32px',
-            padding: 'clamp(20px, 4vw, 36px)',
-            background: 'rgba(10, 10, 10, 0.55)',
-            border: '1px solid rgba(255, 255, 255, 0.12)',
-            borderRadius: 24,
-            backdropFilter: 'blur(10px)',
-            boxShadow: '0 20px 60px rgba(0, 0, 0, 0.35)'
+            flex: '0 0 230px',
+            width: 230,
+            maxWidth: '100%',
+            background: 'rgba(38, 38, 38, 0.94)',
+            border: '1px solid rgba(255, 255, 255, 0.1)',
+            borderRadius: 22,
+            padding: '20px 18px',
+            boxShadow: '0 18px 40px rgba(0, 0, 0, 0.3)',
+            backdropFilter: 'blur(8px)',
+            textAlign: 'left'
           }}
         >
           <p
             style={{
-              margin: 0,
-              color: '#ff4d4d',
-              fontSize: 14,
-              letterSpacing: 3,
+              margin: '0 0 16px',
+              color: '#d7d7d7',
+              fontSize: 12,
+              letterSpacing: 2,
               textTransform: 'uppercase'
             }}
           >
-            Robert Kamdar
+            Contact Me
           </p>
 
-          <h1
+          <a
+            href="mailto:robertkamdar.rkrk@gmail.com"
             style={{
-              margin: '14px 0 20px',
+              display: 'flex',
+              alignItems: 'center',
+              gap: 10,
+              padding: '12px 10px',
+              marginBottom: 10,
+              borderRadius: 14,
+              background: 'rgba(255, 255, 255, 0.04)',
               color: 'white',
-              fontSize: 'clamp(28px, 6vw, 42px)',
-              lineHeight: 1.1
+              textDecoration: 'none',
+              border: '1px solid rgba(255, 255, 255, 0.08)'
             }}
           >
-            The Producer
-          </h1>
+            <img
+              src="/email.png"
+              alt="Email"
+              style={{
+                width: 18,
+                height: 18,
+                objectFit: 'contain',
+                flexShrink: 0
+              }}
+            />
+            <span
+              style={{
+                fontSize: 13,
+                fontWeight: 600,
+                lineHeight: 1.2
+              }}
+            >
+              E-mail me
+            </span>
+          </a>
 
-          <p
+          <a
+            href="https://instagram.com/robertkamdarmusic"
+            target="_blank"
+            rel="noreferrer"
             style={{
-              margin: '0 0 18px',
+              display: 'flex',
+              alignItems: 'center',
+              gap: 10,
+              padding: '12px 10px',
+              borderRadius: 14,
+              background: 'rgba(255, 255, 255, 0.04)',
               color: 'white',
-              fontSize: 'clamp(16px, 2.8vw, 18px)',
-              lineHeight: 1.8
+              textDecoration: 'none',
+              border: '1px solid rgba(255, 255, 255, 0.08)'
             }}
           >
-            Welcome - I'm Robert Kamdar, The Producer.
-          </p>
-
-          <p
-            style={{
-              margin: '0 0 18px',
-              color: 'rgba(255, 255, 255, 0.96)',
-              fontSize: 'clamp(15px, 2.6vw, 17px)',
-              lineHeight: 1.85
-            }}
-          >
-            I specialise in drill, creating hard-hitting, distinctive beats rooted in
-            the energy of the UK scene while pushing the sound in new directions. My
-            inspiration comes from rap music across the globe, drawing from different
-            cultures, rhythms, and styles to shape instrumentals that feel fresh,
-            original, and internationally influenced.
-          </p>
-
-          <p
-            style={{
-              margin: 0,
-              color: 'rgba(255, 255, 255, 0.96)',
-              fontSize: 'clamp(15px, 2.6vw, 17px)',
-              lineHeight: 1.85
-            }}
-          >
-            While drill is my foundation, I also explore a wide range of sounds and
-            genres, bringing versatility, creativity, and a unique perspective to
-            every track I produce.
-          </p>
-        </div>
+            <img
+              src="/insta.png"
+              alt="Instagram"
+              style={{
+                width: 18,
+                height: 18,
+                objectFit: 'contain',
+                flexShrink: 0
+              }}
+            />
+            <span
+              style={{
+                fontSize: 13,
+                fontWeight: 600,
+                lineHeight: 1.2
+              }}
+            >
+              Reach me on Instagram
+            </span>
+          </a>
+        </aside>
 
         <div
           style={{
-            display: 'grid',
-            gridTemplateColumns: 'minmax(0, 120px) minmax(0, 140px)',
-            justifyContent: 'center',
-            gap: 10,
-            maxWidth: 280,
-            margin: '0 auto 20px'
+            flex: '1 1 900px',
+            minWidth: 0,
+            textAlign: 'center'
           }}
         >
-          <select
-            value={selectedBpm}
-            onChange={(event) => setSelectedBpm(event.target.value)}
+          <div
             style={{
-              width: '100%',
-              padding: '11px 14px',
-              borderRadius: 999,
-              border: '1px solid #9a9a9a',
-              background: '#2f2f2f',
-              color: 'white',
-              fontSize: 13,
-              outline: 'none',
-              boxSizing: 'border-box',
-              boxShadow: '0 8px 24px rgba(0, 0, 0, 0.22)'
+              maxWidth: 860,
+              margin: '0 auto 32px',
+              padding: 'clamp(20px, 4vw, 36px)',
+              background: 'rgba(10, 10, 10, 0.55)',
+              border: '1px solid rgba(255, 255, 255, 0.12)',
+              borderRadius: 24,
+              backdropFilter: 'blur(10px)',
+              boxShadow: '0 20px 60px rgba(0, 0, 0, 0.35)'
             }}
           >
-            <option value="">BPM</option>
-            {bpmOptions.map((bpm) => (
-              <option key={bpm} value={bpm}>
-                {bpm}
-              </option>
-            ))}
-          </select>
+            <p
+              style={{
+                margin: 0,
+                color: '#ff4d4d',
+                fontSize: 14,
+                letterSpacing: 3,
+                textTransform: 'uppercase'
+              }}
+            >
+              Robert Kamdar
+            </p>
 
-          <select
-            value={selectedMood}
-            onChange={(event) => setSelectedMood(event.target.value)}
+            <h1
+              style={{
+                margin: '14px 0 20px',
+                color: 'white',
+                fontSize: 'clamp(28px, 6vw, 42px)',
+                lineHeight: 1.1
+              }}
+            >
+              The Producer
+            </h1>
+
+            <p
+              style={{
+                margin: '0 0 18px',
+                color: 'white',
+                fontSize: 'clamp(16px, 2.8vw, 18px)',
+                lineHeight: 1.8
+              }}
+            >
+              Welcome - I'm Robert Kamdar, The Producer.
+            </p>
+
+            <p
+              style={{
+                margin: '0 0 18px',
+                color: 'rgba(255, 255, 255, 0.96)',
+                fontSize: 'clamp(15px, 2.6vw, 17px)',
+                lineHeight: 1.85
+              }}
+            >
+              I specialise in drill, creating hard-hitting, distinctive beats rooted in
+              the energy of the UK scene while pushing the sound in new directions. My
+              inspiration comes from rap music across the globe, drawing from different
+              cultures, rhythms, and styles to shape instrumentals that feel fresh,
+              original, and internationally influenced.
+            </p>
+
+            <p
+              style={{
+                margin: 0,
+                color: 'rgba(255, 255, 255, 0.96)',
+                fontSize: 'clamp(15px, 2.6vw, 17px)',
+                lineHeight: 1.85
+              }}
+            >
+              While drill is my foundation, I also explore a wide range of sounds and
+              genres, bringing versatility, creativity, and a unique perspective to
+              every track I produce.
+            </p>
+          </div>
+
+          <div
             style={{
-              width: '100%',
-              padding: '11px 14px',
-              borderRadius: 999,
-              border: '1px solid #9a9a9a',
-              background: '#2f2f2f',
-              color: 'white',
-              fontSize: 13,
-              outline: 'none',
-              boxSizing: 'border-box',
-              boxShadow: '0 8px 24px rgba(0, 0, 0, 0.22)'
+              display: 'grid',
+              gridTemplateColumns: 'minmax(0, 120px) minmax(0, 140px)',
+              justifyContent: 'center',
+              gap: 10,
+              maxWidth: 280,
+              margin: '0 auto 20px'
             }}
           >
-            <option value="">Mood</option>
-            {moodOptions.map((mood) => (
-              <option key={mood} value={mood}>
-                {mood}
-              </option>
-            ))}
-          </select>
-        </div>
+            <select
+              value={selectedBpm}
+              onChange={(event) => setSelectedBpm(event.target.value)}
+              style={{
+                width: '100%',
+                padding: '11px 14px',
+                borderRadius: 999,
+                border: '1px solid #9a9a9a',
+                background: '#2f2f2f',
+                color: 'white',
+                fontSize: 13,
+                outline: 'none',
+                boxSizing: 'border-box',
+                boxShadow: '0 8px 24px rgba(0, 0, 0, 0.22)'
+              }}
+            >
+              <option value="">BPM</option>
+              {bpmOptions.map((bpm) => (
+                <option key={bpm} value={bpm}>
+                  {bpm}
+                </option>
+              ))}
+            </select>
 
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(4, minmax(0, 1fr))',
-            gap: 8,
-            maxWidth: 560,
-            margin: '0 auto'
-          }}
-        >
-          {filteredBeats.map((beat) => {
-            const isPlaying = currentFile === beat.file
+            <select
+              value={selectedMood}
+              onChange={(event) => setSelectedMood(event.target.value)}
+              style={{
+                width: '100%',
+                padding: '11px 14px',
+                borderRadius: 999,
+                border: '1px solid #9a9a9a',
+                background: '#2f2f2f',
+                color: 'white',
+                fontSize: 13,
+                outline: 'none',
+                boxSizing: 'border-box',
+                boxShadow: '0 8px 24px rgba(0, 0, 0, 0.22)'
+              }}
+            >
+              <option value="">Mood</option>
+              {moodOptions.map((mood) => (
+                <option key={mood} value={mood}>
+                  {mood}
+                </option>
+              ))}
+            </select>
+          </div>
 
-            return (
-              <button
-                key={beat.name}
-                onClick={() => handleBeatClick(beat)}
-                style={{
-                  width: '100%',
-                  padding: '10px 8px',
-                  background: isPlaying ? '#c40000' : 'rgba(15, 15, 15, 0.88)',
-                  border: '1px solid rgba(255, 255, 255, 0.16)',
-                  borderRadius: 14,
-                  color: 'white',
-                  cursor: 'pointer',
-                  textAlign: 'center',
-                  fontSize: 'clamp(9px, 2.6vw, 11px)',
-                  fontWeight: 600,
-                  letterSpacing: 0.1,
-                  lineHeight: 1.15,
-                  wordBreak: 'normal',
-                  overflowWrap: 'normal',
-                  whiteSpace: 'normal',
-                  boxShadow: isPlaying
-                    ? '0 10px 30px rgba(196, 0, 0, 0.35)'
-                    : '0 8px 24px rgba(0, 0, 0, 0.22)'
-                }}
-              >
-                {beat.name}
-              </button>
-            )
-          })}
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(4, minmax(0, 1fr))',
+              gap: 8,
+              maxWidth: 560,
+              margin: '0 auto'
+            }}
+          >
+            {filteredBeats.map((beat) => {
+              const isPlaying = currentFile === beat.file
+
+              return (
+                <button
+                  key={beat.name}
+                  onClick={() => handleBeatClick(beat)}
+                  style={{
+                    width: '100%',
+                    padding: '10px 8px',
+                    background: isPlaying ? '#c40000' : 'rgba(15, 15, 15, 0.88)',
+                    border: '1px solid rgba(255, 255, 255, 0.16)',
+                    borderRadius: 14,
+                    color: 'white',
+                    cursor: 'pointer',
+                    textAlign: 'center',
+                    fontSize: 'clamp(9px, 2.6vw, 11px)',
+                    fontWeight: 600,
+                    letterSpacing: 0.1,
+                    lineHeight: 1.15,
+                    wordBreak: 'normal',
+                    overflowWrap: 'normal',
+                    whiteSpace: 'normal',
+                    boxShadow: isPlaying
+                      ? '0 10px 30px rgba(196, 0, 0, 0.35)'
+                      : '0 8px 24px rgba(0, 0, 0, 0.22)'
+                  }}
+                >
+                  {beat.name}
+                </button>
+              )
+            })}
+          </div>
         </div>
       </div>
 
