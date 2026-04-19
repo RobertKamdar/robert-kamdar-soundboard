@@ -525,26 +525,93 @@ export default function App() {
       Previous Credit(s)
     </p>
 
-    <div
+    <p
       style={{
-        display: 'flex',
-        justifyContent: 'center'
+        margin: '0 0 12px',
+        color: 'white',
+        fontSize: 12,
+        fontWeight: 700,
+        lineHeight: 1.35
       }}
     >
-      <iframe
+      Drizz GB Round 2 vs Anbu Senseii
+    </p>
+
+    <a
+      href="https://open.spotify.com/track/25Kv09CJz0LkRyxrkn89Ts"
+      target="_blank"
+      rel="noreferrer"
+      onMouseEnter={() => setHoveredContact('credit')}
+      onMouseLeave={() => setHoveredContact('')}
+      style={{
+        position: 'relative',
+        display: 'inline-flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: 170,
+        height: 170,
+        borderRadius: 18,
+        overflow: 'hidden',
+        textDecoration: 'none',
+        boxShadow:
+          hoveredContact === 'credit'
+            ? '0 18px 34px rgba(0, 0, 0, 0.38)'
+            : '0 14px 28px rgba(0, 0, 0, 0.3)',
+        transform: hoveredContact === 'credit' ? 'translateY(-2px)' : 'translateY(0)',
+        transition: 'all 180ms ease'
+      }}
+    >
+      <img
+        src="/anbu.jpg"
+        alt="Drizz GB Round 2 vs Anbu Senseii artwork"
         style={{
-          borderRadius: 14,
-          border: 'none',
           width: '100%',
-          maxWidth: 186,
-          height: 152
+          height: '100%',
+          objectFit: 'cover',
+          display: 'block',
+          filter: 'brightness(0.82)',
+          transform: hoveredContact === 'credit' ? 'scale(1.04)' : 'scale(1)',
+          transition: 'transform 180ms ease'
         }}
-        src="https://open.spotify.com/embed/track/25Kv09CJz0LkRyxrkn89Ts?utm_source=generator&theme=0"
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-        loading="lazy"
-        title="Spotify track embed"
       />
-    </div>
+
+      <span
+        style={{
+          position: 'absolute',
+          width: 54,
+          height: 54,
+          borderRadius: 999,
+          background: 'rgba(196, 0, 0, 0.9)',
+          border: '1px solid rgba(255, 255, 255, 0.22)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          boxShadow: '0 8px 18px rgba(0, 0, 0, 0.35)'
+        }}
+      >
+        <span
+          style={{
+            color: 'white',
+            fontSize: 18,
+            marginLeft: 3,
+            lineHeight: 1
+          }}
+        >
+          ▶
+        </span>
+      </span>
+    </a>
+
+    <p
+      style={{
+        margin: '12px 0 0',
+        color: 'rgba(255, 255, 255, 0.72)',
+        fontSize: 12,
+        fontVariantNumeric: 'tabular-nums'
+      }}
+    >
+      0:00 / 1:26
+    </p>
   </aside>
 )}
         </div>
