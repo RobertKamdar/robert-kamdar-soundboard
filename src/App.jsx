@@ -1,3 +1,6 @@
+Replace the full contents of `src/App.jsx` with this updated version:
+
+```jsx
 import { useEffect, useRef, useState } from 'react'
 
 export default function App() {
@@ -512,6 +515,19 @@ export default function App() {
             </p>
           </div>
 
+          <p
+            style={{
+              margin: '0 auto 14px',
+              maxWidth: 420,
+              color: 'rgba(255, 255, 255, 0.88)',
+              fontSize: 'clamp(13px, 2.2vw, 15px)',
+              lineHeight: 1.6,
+              textAlign: 'center'
+            }}
+          >
+            Preview my beats here, you can filter through instrumentals by BPM and moods.
+          </p>
+
           <div
             style={{
               display: 'grid',
@@ -702,3 +718,6 @@ export default function App() {
     </div>
   )
 }
+```
+
+That adds the new line directly above the BPM and Mood filters and keeps your latest layout intact.
