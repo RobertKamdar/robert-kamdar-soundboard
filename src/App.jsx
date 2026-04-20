@@ -1,6 +1,3 @@
-Replace the full contents of `src/App.jsx` with this updated version:
-
-```jsx
 import { useEffect, useRef, useState } from 'react'
 
 export default function App() {
@@ -718,6 +715,3 @@ export default function App() {
     </div>
   )
 }
-```
-
-That adds the new line directly above the BPM and Mood filters and keeps your latest layout intact.
