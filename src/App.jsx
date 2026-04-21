@@ -77,7 +77,7 @@ export default function App() {
       bpm: '150',
       moods: ['Hybrid', 'Aggressive', 'Hip Hop', 'Retro']
     },
-    { name: 'NOTORIETY', file: '/notoreity.mp3', bpm: '143', moods: ['Eerie', 'Minimalistic'] },
+    { name: 'NOTORIETY', file: '/notoriety.mp3', bpm: '143', moods: ['Eerie', 'Minimalistic'] },
     {
       name: 'SUBZERO',
       file: '/subzero.mp3',
