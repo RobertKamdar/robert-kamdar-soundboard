@@ -13,6 +13,7 @@ export default function App() {
   const [hoveredCard, setHoveredCard] = useState('')
   const audioRef = useRef(null)
   const intervalRef = useRef(null)
+  const playbackIdRef = useRef(0)
 
   const beats = [
     { name: 'N.F.S', file: '/nfs.mp3', bpm: '143', moods: ['Ethnic'] },
@@ -142,7 +143,14 @@ export default function App() {
   }
 
   const resetPlayer = () => {
+    playbackIdRef.current += 1
     clearTimer()
+
+    if (audioRef.current) {
+      audioRef.current.pause()
+      audioRef.current.currentTime = 0
+    }
+
     audioRef.current = null
     setCurrentFile(null)
     setNowPlaying('None')
@@ -152,39 +160,49 @@ export default function App() {
 
   const handleBeatClick = (beat) => {
     if (audioRef.current && currentFile === beat.file) {
-      audioRef.current.pause()
-      audioRef.current.currentTime = 0
       resetPlayer()
       return
     }
 
-    if (audioRef.current) {
-      audioRef.current.pause()
-      audioRef.current.currentTime = 0
-      clearTimer()
-    }
+    playbackIdRef.current += 1
+    const playbackId = playbackIdRef.current
 
-    const audio = new Audio(beat.file)
+    clearTimer()
+
+    const audio = audioRef.current || new Audio()
+    audio.pause()
+    audio.src = beat.file
+    audio.currentTime = 0
+    audio.preload = 'auto'
+
     audioRef.current = audio
     setCurrentFile(beat.file)
     setNowPlaying(beat.name)
     setElapsed(0)
     setDuration(0)
 
-    audio.addEventListener('loadedmetadata', () => {
-      setDuration(audio.duration)
-    })
-
-    audio.onended = () => {
-      resetPlayer()
+    audio.onloadedmetadata = () => {
+      if (playbackId === playbackIdRef.current) {
+        setDuration(audio.duration)
+      }
     }
 
+    audio.onended = () => {
+      if (playbackId === playbackIdRef.current) {
+        resetPlayer()
+      }
+    }
+
+    audio.load()
+
     audio.play().catch(() => {
-      resetPlayer()
+      if (playbackId === playbackIdRef.current) {
+        resetPlayer()
+      }
     })
 
     intervalRef.current = setInterval(() => {
-      if (audioRef.current) {
+      if (audioRef.current && playbackId === playbackIdRef.current) {
         setElapsed(audioRef.current.currentTime)
       }
     }, 500)
@@ -210,6 +228,10 @@ export default function App() {
     return () => {
       clearTimer()
       window.removeEventListener('resize', handleResize)
+
+      if (audioRef.current) {
+        audioRef.current.pause()
+      }
     }
   }, [])
 
