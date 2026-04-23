@@ -190,6 +190,15 @@ export default function App() {
     }, 500)
   }
 
+  const handleSeek = (event) => {
+    const nextTime = Number(event.target.value)
+
+    if (!audioRef.current || !duration) return
+
+    audioRef.current.currentTime = nextTime
+    setElapsed(nextTime)
+  }
+
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768)
@@ -242,7 +251,7 @@ export default function App() {
     <div
       style={{
         minHeight: '100vh',
-        padding: '32px 16px 110px',
+        padding: '32px 16px 135px',
         backgroundImage:
           "linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.72)), url('/background.jpg')",
         backgroundSize: 'cover',
@@ -648,11 +657,11 @@ export default function App() {
           style={{
             maxWidth: 1100,
             margin: '0 auto',
-            padding: '14px 18px',
-            display: 'flex',
-            justifyContent: 'space-between',
+            padding: '12px 18px 14px',
+            display: 'grid',
+            gridTemplateColumns: isMobile ? '1fr' : '140px minmax(160px, 1fr) 125px',
             alignItems: 'center',
-            gap: 16
+            gap: isMobile ? 8 : 16
           }}
         >
           <span
@@ -662,54 +671,84 @@ export default function App() {
               fontWeight: 700,
               letterSpacing: 2,
               textTransform: 'uppercase',
-              whiteSpace: 'nowrap'
+              whiteSpace: 'nowrap',
+              textAlign: isMobile ? 'center' : 'left'
             }}
           >
             Now Playing
           </span>
 
-          <span
-            style={{
-              color: 'white',
-              fontSize: 'clamp(14px, 3vw, 16px)',
-              fontWeight: 600,
-              overflow: 'hidden',
-              textOverflow: 'ellipsis',
-              whiteSpace: 'nowrap',
-              flex: 1,
-              textAlign: 'center'
-            }}
-          >
-            {nowPlaying}
-          </span>
-
-          {nowPlaying !== 'None' && (
+          <div style={{ minWidth: 0 }}>
             <span
               style={{
-                color: 'rgba(255, 255, 255, 0.75)',
-                fontSize: 12,
-                fontWeight: 500,
+                display: 'block',
+                color: 'white',
+                fontSize: 'clamp(14px, 3vw, 16px)',
+                fontWeight: 600,
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
                 whiteSpace: 'nowrap',
-                fontVariantNumeric: 'tabular-nums'
+                textAlign: 'center',
+                marginBottom: nowPlaying === 'None' ? 0 : 8
               }}
             >
-              {formatTime(elapsed)} / {formatTime(duration)}
+              {nowPlaying}
             </span>
-          )}
 
-          <span
+            {nowPlaying !== 'None' && (
+              <input
+                type="range"
+                min="0"
+                max={duration || 0}
+                step="0.1"
+                value={Math.min(elapsed, duration || 0)}
+                onChange={handleSeek}
+                aria-label="Skip through current beat"
+                style={{
+                  width: '100%',
+                  accentColor: '#ff2a2a',
+                  cursor: 'pointer'
+                }}
+              />
+            )}
+          </div>
+
+          <div
             style={{
-              width: 10,
-              height: 10,
-              borderRadius: 999,
-              flexShrink: 0,
-              background: nowPlaying === 'None' ? '#666' : '#ff2a2a',
-              boxShadow:
-                nowPlaying === 'None'
-                  ? 'none'
-                  : '0 0 12px rgba(255, 42, 42, 0.9)'
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: isMobile ? 'center' : 'flex-end',
+              gap: 12
             }}
-          />
+          >
+            {nowPlaying !== 'None' && (
+              <span
+                style={{
+                  color: 'rgba(255, 255, 255, 0.75)',
+                  fontSize: 12,
+                  fontWeight: 500,
+                  whiteSpace: 'nowrap',
+                  fontVariantNumeric: 'tabular-nums'
+                }}
+              >
+                {formatTime(elapsed)} / {formatTime(duration)}
+              </span>
+            )}
+
+            <span
+              style={{
+                width: 10,
+                height: 10,
+                borderRadius: 999,
+                flexShrink: 0,
+                background: nowPlaying === 'None' ? '#666' : '#ff2a2a',
+                boxShadow:
+                  nowPlaying === 'None'
+                    ? 'none'
+                    : '0 0 12px rgba(255, 42, 42, 0.9)'
+              }}
+            />
+          </div>
         </div>
       </div>
     </div>
