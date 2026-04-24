@@ -221,8 +221,8 @@ export default function App() {
   }, [])
 
   const sideCardStyle = {
-    background: 'rgba(38, 38, 38, 0.94)',
-    border: '1px solid rgba(255, 255, 255, 0.09)',
+    background: 'linear-gradient(180deg, rgba(58, 8, 8, 0.96), rgba(28, 4, 4, 0.96))',
+    border: '1px solid rgba(255, 77, 77, 0.22)',
     borderRadius: 22,
     padding: '16px 14px',
     boxShadow: '0 18px 40px rgba(0, 0, 0, 0.3)',
@@ -238,8 +238,8 @@ export default function App() {
     borderRadius: 14,
     background:
       hoveredCard === id
-        ? 'rgba(255, 255, 255, 0.08)'
-        : 'rgba(255, 255, 255, 0.04)',
+        ? 'rgba(255, 255, 255, 0.12)'
+        : 'rgba(255, 77, 77, 0.08)',
     color: 'white',
     textDecoration: 'none',
     border:
