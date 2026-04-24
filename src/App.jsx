@@ -11,6 +11,7 @@ export default function App() {
     typeof window !== 'undefined' ? window.innerWidth <= 768 : false
   )
   const [hoveredCard, setHoveredCard] = useState('')
+  const [hoveredFilter, setHoveredFilter] = useState('')
   const [isBioExpanded, setIsBioExpanded] = useState(false)
   const audioRef = useRef(null)
   const intervalRef = useRef(null)
@@ -202,6 +203,11 @@ export default function App() {
     setElapsed(nextTime)
   }
 
+  const handleResetFilters = () => {
+    setSelectedBpm('')
+    setSelectedMood('')
+  }
+
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768)
@@ -253,6 +259,40 @@ export default function App() {
         : 'none',
     transition: 'all 160ms ease'
   })
+
+  const filterWrapperStyle = (id) => ({
+    position: 'relative',
+    width: '100%'
+  })
+
+  const filterSelectStyle = (id) => ({
+    width: '100%',
+    padding: '11px 42px 11px 14px',
+    borderRadius: 999,
+    border: hoveredFilter === id ? '1px solid #c40000' : '1px solid #9a9a9a',
+    background: hoveredFilter === id ? '#c40000' : '#2f2f2f',
+    color: 'white',
+    fontSize: 13,
+    outline: 'none',
+    boxSizing: 'border-box',
+    boxShadow: '0 8px 24px rgba(0, 0, 0, 0.22)',
+    appearance: 'none',
+    WebkitAppearance: 'none',
+    MozAppearance: 'none',
+    cursor: 'pointer',
+    transition: 'background 160ms ease, border-color 160ms ease'
+  })
+
+  const filterArrowStyle = {
+    position: 'absolute',
+    right: 16,
+    top: '50%',
+    transform: 'translateY(-50%)',
+    color: 'white',
+    fontSize: 12,
+    pointerEvents: 'none',
+    lineHeight: 1
+  }
 
   return (
     <div
@@ -590,60 +630,76 @@ export default function App() {
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: 'minmax(0, 120px) minmax(0, 140px)',
+              gridTemplateColumns: isMobile
+                ? '1fr'
+                : 'minmax(0, 120px) minmax(0, 140px) auto',
               justifyContent: 'center',
               gap: 10,
-              maxWidth: 280,
+              maxWidth: isMobile ? 320 : 420,
               margin: '0 auto 20px'
             }}
           >
-            <select
-              value={selectedBpm}
-              onChange={(event) => setSelectedBpm(event.target.value)}
-              style={{
-                width: '100%',
-                padding: '11px 14px',
-                borderRadius: 999,
-                border: '1px solid #9a9a9a',
-                background: '#2f2f2f',
-                color: 'white',
-                fontSize: 13,
-                outline: 'none',
-                boxSizing: 'border-box',
-                boxShadow: '0 8px 24px rgba(0, 0, 0, 0.22)'
-              }}
+            <div
+              style={filterWrapperStyle('bpm')}
+              onMouseEnter={() => setHoveredFilter('bpm')}
+              onMouseLeave={() => setHoveredFilter('')}
             >
-              <option value="">BPM</option>
-              {bpmOptions.map((bpm) => (
-                <option key={bpm} value={bpm}>
-                  {bpm}
-                </option>
-              ))}
-            </select>
+              <select
+                value={selectedBpm}
+                onChange={(event) => setSelectedBpm(event.target.value)}
+                style={filterSelectStyle('bpm')}
+              >
+                <option value="">BPM</option>
+                {bpmOptions.map((bpm) => (
+                  <option key={bpm} value={bpm}>
+                    {bpm}
+                  </option>
+                ))}
+              </select>
+              <span style={filterArrowStyle}>▼</span>
+            </div>
 
-            <select
-              value={selectedMood}
-              onChange={(event) => setSelectedMood(event.target.value)}
+            <div
+              style={filterWrapperStyle('mood')}
+              onMouseEnter={() => setHoveredFilter('mood')}
+              onMouseLeave={() => setHoveredFilter('')}
+            >
+              <select
+                value={selectedMood}
+                onChange={(event) => setSelectedMood(event.target.value)}
+                style={filterSelectStyle('mood')}
+              >
+                <option value="">Mood</option>
+                {moodOptions.map((mood) => (
+                  <option key={mood} value={mood}>
+                    {mood}
+                  </option>
+                ))}
+              </select>
+              <span style={filterArrowStyle}>▼</span>
+            </div>
+
+            <button
+              type="button"
+              onClick={handleResetFilters}
+              disabled={selectedBpm === '' && selectedMood === ''}
               style={{
-                width: '100%',
-                padding: '11px 14px',
+                minHeight: 41,
+                padding: '0 18px',
                 borderRadius: 999,
-                border: '1px solid #9a9a9a',
-                background: '#2f2f2f',
-                color: 'white',
+                border: '1px solid rgba(255, 255, 255, 0.18)',
+                background: 'white',
+                color: '#111',
                 fontSize: 13,
-                outline: 'none',
-                boxSizing: 'border-box',
+                fontWeight: 700,
+                cursor:
+                  selectedBpm === '' && selectedMood === '' ? 'not-allowed' : 'pointer',
+                opacity: selectedBpm === '' && selectedMood === '' ? 0.55 : 1,
                 boxShadow: '0 8px 24px rgba(0, 0, 0, 0.22)'
               }}
             >
-              <option value="">Mood</option>
-              {moodOptions.map((mood) => (
-                <option key={mood} value={mood}>
-                  {mood}
-                </option>
-              ))}
-            </select>
+              Reset
+            </button>
           </div>
 
           <div
