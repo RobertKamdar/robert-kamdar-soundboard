@@ -11,6 +11,7 @@ export default function App() {
     typeof window !== 'undefined' ? window.innerWidth <= 768 : false
   )
   const [hoveredCard, setHoveredCard] = useState('')
+  const [isBioExpanded, setIsBioExpanded] = useState(false)
   const audioRef = useRef(null)
   const intervalRef = useRef(null)
   const playbackIdRef = useRef(0)
@@ -29,7 +30,7 @@ export default function App() {
     { name: 'COLLISION COURSE', file: '/collisioncourse.mp3', bpm: '144', moods: ['Aggressive', 'Chaotic', 'Jumpy', 'Ethnic'] },
     { name: 'DOWNLOAD', file: '/download.mp3', bpm: '143', moods: ['Melodic', 'Upbeat', 'Hybrid'] },
     { name: 'WRATH', file: '/wrath.mp3', bpm: '144', moods: ['Minimalistic', 'Angry', 'Gritty', 'Eerie'] },
-    { name: 'HIGHEST', file: '/highest.mp3', bpm: '144', moods: ['Eerie', 'Dark', 'Atmospheric', 'Minimalistic', 'Gritty' ] },
+    { name: 'HIGHEST', file: '/highest.mp3', bpm: '144', moods: ['Eerie', 'Dark', 'Atmospheric', 'Minimalistic', 'Gritty'] },
     { name: 'INSANE', file: '/insane.mp3', bpm: '143', moods: ['Eerie', 'Gritty', 'Dramatic'] },
     { name: 'HOODED UP', file: '/hoodedup.mp3', bpm: '144', moods: ['Aggressive', 'Gritty', 'Hybrid', 'Dramatic'] },
     { name: 'PUNCHLINE', file: '/punchline.mp3', bpm: '146', moods: ['Hybrid', 'Jumpy', 'Wavy'] },
@@ -53,7 +54,11 @@ export default function App() {
       moods: ['Eerie', 'Dubstep', 'Dark', 'Atmospheric', 'Melodic']
     },
     { name: 'TPW', file: '/tpw.mp3', bpm: '145', moods: ['Ethnic', 'Jumpy', 'Dark'] },
-    { name: 'BELKI', file: '/belki.mp3', bpm: '145', moods: ['Ethnic', 'Grimy', 'Minimalistic', 'Producer Favourite', 'Aggressive']
+    {
+      name: 'BELKI',
+      file: '/belki.mp3',
+      bpm: '145',
+      moods: ['Ethnic', 'Grimy', 'Minimalistic', 'Producer Favourite', 'Aggressive']
     },
     { name: 'KITE', file: '/kite.mp3', bpm: '145', moods: ['Ethnic', 'Eerie', 'Mellow', 'Dark'] },
     { name: 'FRANKFURT', file: '/frankfurt.mp3', bpm: '144', moods: ['Ethnic', 'Eerie', 'Minimalistic', 'Dark'] },
@@ -85,7 +90,10 @@ export default function App() {
       moods: ['Dramatic', 'Mellow', 'Insightful', 'Hip Hop']
     },
     {
-      name: 'CHURCH', file: '/church.mp3', bpm: '144', moods: ['Dramatic', 'Grimy', 'Gritty', 'Aggressive']
+      name: 'CHURCH',
+      file: '/church.mp3',
+      bpm: '144',
+      moods: ['Dramatic', 'Grimy', 'Gritty', 'Aggressive']
     },
     { name: 'L1TNESS', file: '/l1tness.mp3', bpm: '143', moods: ['Grimy', 'Used for Battle', 'Wavy', 'Jumpy', 'Minimalistic'] },
     { name: 'F4TALITY', file: '/f4tality.mp3', bpm: '143', moods: ['Dramatic', 'Used for Battle', 'Dark', 'Gritty'] }
@@ -457,67 +465,124 @@ export default function App() {
               boxShadow: '0 20px 60px rgba(0, 0, 0, 0.35)'
             }}
           >
-            <p
+            <div
               style={{
-                margin: 0,
-                color: '#ff4d4d',
-                fontSize: 14,
-                letterSpacing: 3,
-                textTransform: 'uppercase'
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                gap: 16,
+                textAlign: 'left'
               }}
             >
-              Robert Kamdar
-            </p>
+              <div>
+                <p
+                  style={{
+                    margin: 0,
+                    color: '#ff4d4d',
+                    fontSize: 14,
+                    letterSpacing: 3,
+                    textTransform: 'uppercase'
+                  }}
+                >
+                  Robert Kamdar
+                </p>
 
-            <h1
-              style={{
-                margin: '14px 0 20px',
-                color: 'white',
-                fontSize: 'clamp(28px, 6vw, 42px)',
-                lineHeight: 1.1
-              }}
-            >
-              The Producer
-            </h1>
+                <h1
+                  style={{
+                    margin: '14px 0 0',
+                    color: 'white',
+                    fontSize: 'clamp(28px, 6vw, 42px)',
+                    lineHeight: 1.1
+                  }}
+                >
+                  The Producer
+                </h1>
+              </div>
 
-            <p
-              style={{
-                margin: '0 0 18px',
-                color: 'white',
-                fontSize: 'clamp(16px, 2.8vw, 18px)',
-                lineHeight: 1.8
-              }}
-            >
-              Welcome - I&apos;m Robert Kamdar, The Producer.
-            </p>
+              <button
+                type="button"
+                onClick={() => setIsBioExpanded((value) => !value)}
+                aria-expanded={isBioExpanded}
+                aria-label={isBioExpanded ? 'Collapse producer bio' : 'Expand producer bio'}
+                style={{
+                  width: 52,
+                  height: 52,
+                  borderRadius: 999,
+                  border: '1px solid rgba(255, 77, 77, 0.45)',
+                  background: 'rgba(196, 0, 0, 0.9)',
+                  color: 'white',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  cursor: 'pointer',
+                  flexShrink: 0,
+                  boxShadow: '0 10px 26px rgba(196, 0, 0, 0.35)',
+                  transition: 'transform 160ms ease'
+                }}
+              >
+                <span
+                  style={{
+                    display: 'inline-block',
+                    fontSize: 24,
+                    lineHeight: 1,
+                    transform: isBioExpanded ? 'rotate(180deg)' : 'rotate(0deg)',
+                    transition: 'transform 160ms ease'
+                  }}
+                >
+                  ▼
+                </span>
+              </button>
+            </div>
 
-            <p
-              style={{
-                margin: '0 0 18px',
-                color: 'rgba(255, 255, 255, 0.96)',
-                fontSize: 'clamp(15px, 2.6vw, 17px)',
-                lineHeight: 1.85
-              }}
-            >
-              I specialise in drill, creating hard-hitting, distinctive beats rooted in
-              the energy of the UK scene while pushing the sound in new directions. My
-              inspiration comes from rap music across the globe, drawing from different
-              cultures, rhythms, and styles to shape instrumentals that feel fresh,
-              original, and internationally influenced.
-            </p>
+            {isBioExpanded && (
+              <div
+                style={{
+                  marginTop: 22,
+                  paddingTop: 22,
+                  borderTop: '1px solid rgba(255, 255, 255, 0.12)',
+                  textAlign: 'left'
+                }}
+              >
+                <p
+                  style={{
+                    margin: '0 0 18px',
+                    color: 'white',
+                    fontSize: 'clamp(16px, 2.8vw, 18px)',
+                    lineHeight: 1.8
+                  }}
+                >
+                  Welcome - I&apos;m Robert Kamdar, The Producer.
+                </p>
 
-            <p
-              style={{
-                margin: 0,
-                color: 'rgba(255, 255, 255, 0.96)',
-                fontSize: 'clamp(15px, 2.6vw, 17px)',
-                lineHeight: 1.85
-              }}
-            >
-              While drill is my foundation, I also explore a wide range of sounds and
-              genres, bringing versatility, creativity, and a unique perspective to
-              every track I produce.
-            </p>
+                <p
+                  style={{
+                    margin: '0 0 18px',
+                    color: 'rgba(255, 255, 255, 0.96)',
+                    fontSize: 'clamp(15px, 2.6vw, 17px)',
+                    lineHeight: 1.85
+                  }}
+                >
+                  I specialise in drill, creating hard-hitting, distinctive beats rooted in
+                  the energy of the UK scene while pushing the sound in new directions. My
+                  inspiration comes from rap music across the globe, drawing from different
+                  cultures, rhythms, and styles to shape instrumentals that feel fresh,
+                  original, and internationally influenced.
+                </p>
+
+                <p
+                  style={{
+                    margin: 0,
+                    color: 'rgba(255, 255, 255, 0.96)',
+                    fontSize: 'clamp(15px, 2.6vw, 17px)',
+                    lineHeight: 1.85
+                  }}
+                >
+                  While drill is my foundation, I also explore a wide range of sounds and
+                  genres, bringing versatility, creativity, and a unique perspective to
+                  every track I produce.
+                </p>
+              </div>
+            )}
           </div>
 
           <p
