@@ -431,17 +431,6 @@ export default function App() {
                   </span>
                 </span>
               </a>
-
-              <p
-                style={{
-                  margin: '12px 0 0',
-                  color: 'rgba(255, 255, 255, 0.72)',
-                  fontSize: 12,
-                  fontVariantNumeric: 'tabular-nums'
-                }}
-              >
-                0:00 / 1:26
-              </p>
             </aside>
           )}
         </div>
