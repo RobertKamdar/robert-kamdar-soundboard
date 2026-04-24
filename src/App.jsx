@@ -19,8 +19,7 @@ export default function App() {
     { name: 'N.F.S', file: '/nfs.mp3', bpm: '143', moods: ['Ethnic', 'Chaotic', 'Gritty'] },
     { name: 'SAYONARA', file: '/sayonara.mp3', bpm: '142', moods: ['Melodic', 'Producer Favourite', 'Atmospheric', 'Ethnic'] },
     { name: 'TYPICAL', file: '/typical.mp3', bpm: '140', moods: ['Melodic', 'Dark', 'Used for Battle', 'Producer Favourite'] },
-    { name: 'BUILT DIFFERENT', file: '/builtdifferent.mp3', bpm: '143', moods: ['Dark', 'Used for Battle', 'Aggressive', 'Jumpy', 'Producer Favourite', 'Gritty']
-    },
+    { name: 'BUILT DIFFERENT', file: '/builtdifferent.mp3', bpm: '143', moods: ['Dark', 'Used for Battle', 'Aggressive', 'Jumpy', 'Producer Favourite', 'Gritty'] },
     { name: 'CZARS & EMIRS', file: '/czarsandemirs.mp3', bpm: '142', moods: ['Ethnic', 'Gritty'] },
     { name: 'HK', file: '/hk.mp3', bpm: '143', moods: ['Dark', 'Mellow', 'Dramatic'] },
     { name: 'KNOWN', file: '/known.mp3', bpm: '100', moods: ['Hip Hop', 'Gritty', 'Minimalistic'] },
@@ -46,7 +45,7 @@ export default function App() {
     { name: 'PERSIAN', file: '/persian.mp3', bpm: '141', moods: ['Ethnic', 'Aggressive', 'Minimalistic'] },
     { name: 'PREMIUM', file: '/premium.mp3', bpm: '150', moods: ['Hybrid', 'Producer Favourite', 'Hip Hop'] },
     { name: 'QOTD', file: '/qotd.mp3', bpm: '143', moods: ['Eerie', 'Mellow', 'Ethnic', 'Dark'] },
-    { name: 'SHIFTING', file: '/shifting.mp3', bpm: '142', moods: ['Aggressive' 'Gritty', 'Minimalistic'] },
+    { name: 'SHIFTING', file: '/shifting.mp3', bpm: '142', moods: ['Aggressive', 'Gritty', 'Minimalistic'] },
     {
       name: 'STEREO TYPICAL',
       file: '/stereotypical.mp3',
@@ -57,7 +56,7 @@ export default function App() {
     { name: 'BELKI', file: '/belki.mp3', bpm: '145', moods: ['Ethnic', 'Grimy', 'Minimalistic', 'Producer Favourite', 'Aggressive']
     },
     { name: 'KITE', file: '/kite.mp3', bpm: '145', moods: ['Ethnic', 'Eerie', 'Mellow', 'Dark'] },
-    { name: 'FRANKFURT', file: '/frankfurt.mp3', bpm: '144', moods: ['Ethnic', 'Eerie'. 'Minimalistic', 'Dark'] },
+    { name: 'FRANKFURT', file: '/frankfurt.mp3', bpm: '144', moods: ['Ethnic', 'Eerie', 'Minimalistic', 'Dark'] },
     { name: 'SKITZ', file: '/skitz.mp3', bpm: '145', moods: ['Aggressive', 'Chaotic', 'Jumpy', 'Wavy'] },
     { name: 'RAGEQUIT', file: '/ragequit.mp3', bpm: '145', moods: ['Grimy', 'Angry', 'Gritty', 'Retro'] },
     { name: 'DAI', file: '/dai.mp3', bpm: '143', moods: ['Dubstep', 'Hybrid', 'Mellow', 'Melodic'] },
