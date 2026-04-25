@@ -6,6 +6,7 @@ function CustomSelect({ value, onChange, options, placeholder }) {
   const [hoveredOption, setHoveredOption] = useState(null)
   const [focusedOption, setFocusedOption] = useState(null)
   const wrapperRef = useRef(null)
+  const optionRefs = useRef({})
   const menuClassName = 'custom-select-menu'
 
   useEffect(() => {
@@ -26,6 +27,19 @@ function CustomSelect({ value, onChange, options, placeholder }) {
 
   const isSmallScreen = typeof window !== 'undefined' && window.innerWidth <= 768
   const keyboardOptions = [{ value: '', label: placeholder }, ...options]
+
+  useEffect(() => {
+    if (!isOpen || isSmallScreen || focusedOption === null) return
+
+    const optionKey = focusedOption === '' ? '__placeholder__' : focusedOption
+    const activeOption = optionRefs.current[optionKey]
+
+    if (activeOption) {
+      activeOption.scrollIntoView({
+        block: 'nearest'
+      })
+    }
+  }, [focusedOption, isOpen, isSmallScreen])
 
   const getCurrentIndex = () => {
     if (focusedOption !== null) {
@@ -182,6 +196,9 @@ function CustomSelect({ value, onChange, options, placeholder }) {
           }}
         >
           <button
+            ref={(element) => {
+              optionRefs.current.__placeholder__ = element
+            }}
             type="button"
             onMouseEnter={() => {
               setHoveredOption('')
@@ -217,6 +234,9 @@ function CustomSelect({ value, onChange, options, placeholder }) {
           {options.map((option) => (
             <button
               key={option.value}
+              ref={(element) => {
+                optionRefs.current[option.value] = element
+              }}
               type="button"
               onMouseEnter={() => {
                 setHoveredOption(option.value)
