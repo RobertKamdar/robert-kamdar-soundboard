@@ -182,6 +182,7 @@ export default function App() {
   const [currentFile, setCurrentFile] = useState(null)
   const [selectedBpm, setSelectedBpm] = useState('')
   const [selectedMood, setSelectedMood] = useState('')
+  const [showNewOnly, setShowNewOnly] = useState(false)
   const [elapsed, setElapsed] = useState(0)
   const [duration, setDuration] = useState(0)
   const [isMobile, setIsMobile] = useState(() =>
@@ -313,7 +314,9 @@ export default function App() {
   const filteredBeats = sortedBeats.filter((beat) => {
     const matchesBpm = selectedBpm === '' || beat.bpm === selectedBpm
     const matchesMood = selectedMood === '' || beat.moods.includes(selectedMood)
-    return matchesBpm && matchesMood
+    const matchesNewOnly = !showNewOnly || isRecentlyAdded(beat.addedAt)
+
+    return matchesBpm && matchesMood && matchesNewOnly
   })
 
   const formatTime = (seconds) => {
@@ -408,6 +411,7 @@ export default function App() {
   const handleResetFilters = () => {
     setSelectedBpm('')
     setSelectedMood('')
+    setShowNewOnly(false)
   }
 
   useEffect(() => {
@@ -800,10 +804,10 @@ export default function App() {
               display: 'grid',
               gridTemplateColumns: isMobile
                 ? '1fr'
-                : 'minmax(0, 120px) minmax(0, 210px) auto',
+                : 'minmax(0, 120px) minmax(0, 210px) auto auto',
               justifyContent: 'center',
               gap: 10,
-              maxWidth: isMobile ? 320 : 490,
+              maxWidth: isMobile ? 320 : 620,
               margin: '0 auto 20px'
             }}
           >
@@ -829,8 +833,27 @@ export default function App() {
 
             <button
               type="button"
+              onClick={() => setShowNewOnly((value) => !value)}
+              style={{
+                minHeight: 41,
+                padding: '0 18px',
+                borderRadius: 999,
+                border: '1px solid rgba(255, 255, 255, 0.18)',
+                background: showNewOnly ? '#3f235c' : 'white',
+                color: showNewOnly ? 'white' : '#111',
+                fontSize: 13,
+                fontWeight: 700,
+                cursor: 'pointer',
+                boxShadow: '0 8px 24px rgba(0, 0, 0, 0.22)'
+              }}
+            >
+              New Beats
+            </button>
+
+            <button
+              type="button"
               onClick={handleResetFilters}
-              disabled={selectedBpm === '' && selectedMood === ''}
+              disabled={selectedBpm === '' && selectedMood === '' && !showNewOnly}
               style={{
                 minHeight: 41,
                 padding: '0 18px',
@@ -841,8 +864,11 @@ export default function App() {
                 fontSize: 13,
                 fontWeight: 700,
                 cursor:
-                  selectedBpm === '' && selectedMood === '' ? 'not-allowed' : 'pointer',
-                opacity: selectedBpm === '' && selectedMood === '' ? 0.55 : 1,
+                  selectedBpm === '' && selectedMood === '' && !showNewOnly
+                    ? 'not-allowed'
+                    : 'pointer',
+                opacity:
+                  selectedBpm === '' && selectedMood === '' && !showNewOnly ? 0.55 : 1,
                 boxShadow: '0 8px 24px rgba(0, 0, 0, 0.22)'
               }}
             >
@@ -875,10 +901,10 @@ export default function App() {
                     background: isPlaying
                       ? '#c40000'
                       : isNew
-                        ? '#b68b2f'
+                        ? '#3f235c'
                         : 'rgba(15, 15, 15, 0.88)',
                     border: isNew
-                      ? '1px solid rgba(214, 175, 54, 0.7)'
+                      ? '1px solid rgba(151, 110, 201, 0.7)'
                       : '1px solid rgba(255, 255, 255, 0.16)',
                     borderRadius: 14,
                     color: 'white',
@@ -894,7 +920,7 @@ export default function App() {
                     boxShadow: isPlaying
                       ? '0 10px 30px rgba(196, 0, 0, 0.35)'
                       : isNew
-                        ? '0 10px 30px rgba(182, 139, 47, 0.28)'
+                        ? '0 10px 30px rgba(63, 35, 92, 0.32)'
                         : '0 8px 24px rgba(0, 0, 0, 0.22)'
                   }}
                 >
