@@ -4,6 +4,7 @@ function CustomSelect({ value, onChange, options, placeholder }) {
   const [isOpen, setIsOpen] = useState(false)
   const [isHovered, setIsHovered] = useState(false)
   const [hoveredOption, setHoveredOption] = useState(null)
+  const [focusedOption, setFocusedOption] = useState(null)
   const wrapperRef = useRef(null)
   const menuClassName = 'custom-select-menu'
 
@@ -12,6 +13,7 @@ function CustomSelect({ value, onChange, options, placeholder }) {
       if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
         setIsOpen(false)
         setHoveredOption(null)
+        setFocusedOption(null)
       }
     }
 
@@ -23,6 +25,72 @@ function CustomSelect({ value, onChange, options, placeholder }) {
     options.find((option) => option.value === value)?.label || placeholder
 
   const isSmallScreen = typeof window !== 'undefined' && window.innerWidth <= 768
+  const keyboardOptions = [{ value: '', label: placeholder }, ...options]
+
+  const getCurrentIndex = () => {
+    if (focusedOption !== null) {
+      return keyboardOptions.findIndex((option) => option.value === focusedOption)
+    }
+
+    return keyboardOptions.findIndex((option) => option.value === value)
+  }
+
+  const handleKeyDown = (event) => {
+    if (isSmallScreen) return
+
+    if (event.key === 'ArrowDown') {
+      event.preventDefault()
+
+      if (!isOpen) {
+        setIsOpen(true)
+        setFocusedOption(value)
+        return
+      }
+
+      const currentIndex = getCurrentIndex()
+      const nextIndex =
+        currentIndex < keyboardOptions.length - 1 ? currentIndex + 1 : currentIndex
+
+      setFocusedOption(keyboardOptions[nextIndex].value)
+      setHoveredOption(null)
+    }
+
+    if (event.key === 'ArrowUp') {
+      event.preventDefault()
+
+      if (!isOpen) {
+        setIsOpen(true)
+        setFocusedOption(value)
+        return
+      }
+
+      const currentIndex = getCurrentIndex()
+      const nextIndex = currentIndex > 0 ? currentIndex - 1 : 0
+
+      setFocusedOption(keyboardOptions[nextIndex].value)
+      setHoveredOption(null)
+    }
+
+    if (event.key === 'Enter') {
+      if (!isOpen) return
+
+      event.preventDefault()
+      const selectedValue = focusedOption !== null ? focusedOption : value
+      onChange(selectedValue)
+      setIsOpen(false)
+      setHoveredOption(null)
+      setFocusedOption(null)
+    }
+
+    if (event.key === 'Escape') {
+      if (!isOpen) return
+
+      event.preventDefault()
+      setIsOpen(false)
+      setHoveredOption(null)
+      setFocusedOption(null)
+    }
+  }
 
   return (
     <div
@@ -58,7 +126,9 @@ function CustomSelect({ value, onChange, options, placeholder }) {
         onClick={() => {
           setIsOpen((open) => !open)
           setHoveredOption(null)
+          setFocusedOption(value)
         }}
+        onKeyDown={handleKeyDown}
         style={{
           width: '100%',
           minHeight: 41,
@@ -113,12 +183,16 @@ function CustomSelect({ value, onChange, options, placeholder }) {
         >
           <button
             type="button"
-            onMouseEnter={() => setHoveredOption('')}
+            onMouseEnter={() => {
+              setHoveredOption('')
+              setFocusedOption('')
+            }}
             onMouseLeave={() => setHoveredOption(null)}
             onClick={() => {
               onChange('')
               setIsOpen(false)
               setHoveredOption(null)
+              setFocusedOption(null)
             }}
             style={{
               width: '100%',
@@ -126,7 +200,7 @@ function CustomSelect({ value, onChange, options, placeholder }) {
               padding: isSmallScreen ? '9px 14px' : '12px 14px',
               border: 'none',
               background:
-                hoveredOption === ''
+                hoveredOption === '' || focusedOption === ''
                   ? '#c40000'
                   : value === ''
                     ? 'rgba(196, 0, 0, 0.18)'
@@ -144,12 +218,16 @@ function CustomSelect({ value, onChange, options, placeholder }) {
             <button
               key={option.value}
               type="button"
-              onMouseEnter={() => setHoveredOption(option.value)}
+              onMouseEnter={() => {
+                setHoveredOption(option.value)
+                setFocusedOption(option.value)
+              }}
               onMouseLeave={() => setHoveredOption(null)}
               onClick={() => {
                 onChange(option.value)
                 setIsOpen(false)
                 setHoveredOption(null)
+                setFocusedOption(null)
               }}
               style={{
                 width: '100%',
@@ -157,7 +235,7 @@ function CustomSelect({ value, onChange, options, placeholder }) {
                 padding: isSmallScreen ? '9px 14px' : '12px 14px',
                 border: 'none',
                 background:
-                  hoveredOption === option.value
+                  hoveredOption === option.value || focusedOption === option.value
                     ? '#c40000'
                     : value === option.value
                       ? 'rgba(196, 0, 0, 0.18)'
