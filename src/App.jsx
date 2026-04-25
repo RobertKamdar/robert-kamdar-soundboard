@@ -18,6 +18,16 @@ export default function App() {
   const playbackIdRef = useRef(0)
 
   const beats = [
+    { name: 'SUSPECT', file: '/suspect.mp3', bpm: '141', moods: ['Ethnic', 'Chaotic', 'Gritty'] },
+    { name: 'EAGLE', file: '/eagle.mp3', bpm: '143', moods: ['Ethnic', 'Chaotic', 'Gritty'] },
+    { name: 'AAJA', file: '/aaja.mp3', bpm: '144', moods: ['Ethnic', 'Chaotic', 'Gritty'] },
+    { name: 'PERIL', file: '/peril.mp3', bpm: '145', moods: ['Ethnic', 'Chaotic', 'Gritty'] },
+    { name: 'RECKONING', file: '/reckoning.mp3', bpm: '144', moods: ['Ethnic', 'Chaotic', 'Gritty'] },
+    { name: 'NEEKY', file: '/neeky.mp3', bpm: '143', moods: ['Ethnic', 'Chaotic', 'Gritty'] },
+    { name: 'POMPEII', file: '/pompeii.mp3', bpm: '144', moods: ['Ethnic', 'Chaotic', 'Gritty'] },
+    { name: 'HOW GREEDY', file: '/howgreedy.mp3', bpm: '145', moods: ['Ethnic', 'Chaotic', 'Gritty'] },
+    { name: 'TSUNAMI', file: '/tsunami.mp3', bpm: '143', moods: ['Ethnic', 'Chaotic', 'Gritty'] },
+    { name: 'BLUE LIGHTS', file: '/bluelights.mp3', bpm: '145', moods: ['Ethnic', 'Chaotic', 'Gritty'] },
     { name: 'N.F.S', file: '/nfs.mp3', bpm: '143', moods: ['Ethnic', 'Chaotic', 'Gritty'] },
     { name: 'SAYONARA', file: '/sayonara.mp3', bpm: '142', moods: ['Melodic', 'Producer Favourite', 'Atmospheric', 'Ethnic'] },
     { name: 'TYPICAL', file: '/typical.mp3', bpm: '140', moods: ['Melodic', 'Dark', 'Used for Battle', 'Producer Favourite'] },
