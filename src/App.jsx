@@ -5,6 +5,7 @@ function CustomSelect({ value, onChange, options, placeholder }) {
   const [isHovered, setIsHovered] = useState(false)
   const [hoveredOption, setHoveredOption] = useState(null)
   const wrapperRef = useRef(null)
+  const menuClassName = 'custom-select-menu'
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -28,6 +29,28 @@ function CustomSelect({ value, onChange, options, placeholder }) {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
+      <style>
+        {`
+          .${menuClassName} {
+            scrollbar-width: thin;
+            scrollbar-color: #bdbdbd transparent;
+          }
+
+          .${menuClassName}::-webkit-scrollbar {
+            width: 6px;
+          }
+
+          .${menuClassName}::-webkit-scrollbar-track {
+            background: transparent;
+          }
+
+          .${menuClassName}::-webkit-scrollbar-thumb {
+            background: #bdbdbd;
+            border-radius: 999px;
+          }
+        `}
+      </style>
+
       <button
         type="button"
         onClick={() => {
@@ -71,15 +94,17 @@ function CustomSelect({ value, onChange, options, placeholder }) {
 
       {isOpen && (
         <div
+          className={menuClassName}
           style={{
             position: 'absolute',
             top: 'calc(100% + 8px)',
             left: 0,
             right: 0,
+            maxHeight: 410,
+            overflowY: 'auto',
             background: '#2f2f2f',
             border: '1px solid rgba(255, 255, 255, 0.12)',
             borderRadius: 18,
-            overflow: 'hidden',
             boxShadow: '0 18px 40px rgba(0, 0, 0, 0.35)',
             zIndex: 20
           }}
@@ -95,6 +120,7 @@ function CustomSelect({ value, onChange, options, placeholder }) {
             }}
             style={{
               width: '100%',
+              minHeight: 41,
               padding: '12px 14px',
               border: 'none',
               background:
@@ -125,6 +151,7 @@ function CustomSelect({ value, onChange, options, placeholder }) {
               }}
               style={{
                 width: '100%',
+                minHeight: 41,
                 padding: '12px 14px',
                 border: 'none',
                 background:
