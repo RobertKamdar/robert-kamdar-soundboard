@@ -943,15 +943,15 @@ export default function App() {
 
           <div
             style={{
-              display: 'grid',
-              gridTemplateColumns: isMobile
-                ? '1fr'
-                : 'minmax(0, 120px) minmax(0, 210px) auto auto',
-              justifyContent: 'center',
-              gap: 10,
-              maxWidth: isMobile ? 320 : 620,
-              margin: '0 auto 20px'
-            }}
+            display: 'grid',
+            gridTemplateColumns: isMobile
+              ? 'repeat(2, minmax(0, 1fr))'
+              : 'minmax(0, 120px) minmax(0, 210px) auto auto',
+            justifyContent: 'center',
+            gap: 10,
+            maxWidth: isMobile ? 320 : 620,
+            margin: '0 auto 20px'
+          }}
           >
             <CustomSelect
               value={selectedBpm}
@@ -979,7 +979,8 @@ export default function App() {
               onClick={() => setShowNewOnly((value) => !value)}
               style={{
                 minHeight: 41,
-                padding: '0 18px',
+                padding: isMobile ? '0 10px' : '0 18px',
+                width: isMobile ? '100%' : 'auto',
                 borderRadius: 999,
                 border: '1px solid rgba(255, 255, 255, 0.18)',
                 background: showNewOnly ? '#3f235c' : 'white',
@@ -999,7 +1000,8 @@ export default function App() {
               disabled={selectedBpm === '' && selectedMoods.length === 0 && !showNewOnly}
               style={{
                 minHeight: 41,
-                padding: '0 18px',
+                padding: isMobile ? '0 10px' : '0 18px',
+                width: isMobile ? '100%' : 'auto',
                 borderRadius: 999,
                 border: '1px solid rgba(255, 255, 255, 0.18)',
                 background: 'white',
