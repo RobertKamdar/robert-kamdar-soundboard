@@ -188,6 +188,7 @@ export default function App() {
   const [isMobile, setIsMobile] = useState(() =>
     typeof window !== 'undefined' ? window.innerWidth <= 768 : false
   )
+  const hideSideColumn = typeof window !== 'undefined' && window.innerWidth <= 1180
   const [hoveredCard, setHoveredCard] = useState('')
   const [isBioExpanded, setIsBioExpanded] = useState(false)
   const audioRef = useRef(null)
@@ -490,162 +491,164 @@ export default function App() {
           gap: 24
         }}
       >
-        <div
-          style={{
-            flex: '0 0 214px',
-            width: 214,
-            maxWidth: '100%',
-            display: 'grid',
-            gap: 14,
-            position: isMobile ? 'static' : 'sticky',
-            top: isMobile ? 'auto' : 24,
-            alignSelf: isMobile ? 'auto' : 'flex-start'
-          }}
-        >
-          <aside style={sideCardStyle}>
-            <p
-              style={{
-                margin: '0 0 14px',
-                color: '#d7d7d7',
-                fontSize: 12,
-                letterSpacing: 2,
-                textTransform: 'uppercase'
-              }}
-            >
-              Contact Me
-            </p>
-
-            <a
-              href="mailto:robertkamdar.rkrk@gmail.com"
-              onMouseEnter={() => setHoveredCard('email')}
-              onMouseLeave={() => setHoveredCard('')}
-              style={{ ...contactLinkStyle('email'), marginBottom: 10 }}
-            >
-              <span
-                style={{
-                  fontSize: 13,
-                  fontWeight: 600,
-                  lineHeight: 1.2,
-                  textAlign: 'center'
-                }}
-              >
-                E-mail me
-              </span>
-            </a>
-
-            <a
-              href="https://instagram.com/robertkamdarmusic"
-              target="_blank"
-              rel="noreferrer"
-              onMouseEnter={() => setHoveredCard('insta')}
-              onMouseLeave={() => setHoveredCard('')}
-              style={contactLinkStyle('insta')}
-            >
-              <span
-                style={{
-                  fontSize: 13,
-                  fontWeight: 600,
-                  lineHeight: 1.2,
-                  textAlign: 'center'
-                }}
-              >
-                Reach me on Instagram
-              </span>
-            </a>
-          </aside>
-
-          {!isMobile && (
+        {!hideSideColumn && (
+          <div
+            style={{
+              flex: '0 0 214px',
+              width: 214,
+              maxWidth: '100%',
+              display: 'grid',
+              gap: 14,
+              position: 'sticky',
+              top: 24,
+              alignSelf: 'flex-start'
+            }}
+          >
             <aside style={sideCardStyle}>
               <p
                 style={{
-                  margin: '0 0 12px',
+                  margin: '0 0 14px',
                   color: '#d7d7d7',
                   fontSize: 12,
                   letterSpacing: 2,
                   textTransform: 'uppercase'
                 }}
               >
-                Previous Credit(s)
-              </p>
-
-              <p
-                style={{
-                  margin: '0 0 12px',
-                  color: 'white',
-                  fontSize: 12,
-                  fontWeight: 700,
-                  lineHeight: 1.35
-                }}
-              >
-                Drizz GB Round 2 vs Anbu Senseii
+                Contact Me
               </p>
 
               <a
-                href="https://open.spotify.com/track/25Kv09CJz0LkRyxrkn89Ts"
-                target="_blank"
-                rel="noreferrer"
-                onMouseEnter={() => setHoveredCard('credit')}
+                href="mailto:robertkamdar.rkrk@gmail.com"
+                onMouseEnter={() => setHoveredCard('email')}
                 onMouseLeave={() => setHoveredCard('')}
-                style={{
-                  position: 'relative',
-                  display: 'inline-flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  width: 170,
-                  height: 170,
-                  borderRadius: 18,
-                  overflow: 'hidden',
-                  textDecoration: 'none',
-                  boxShadow:
-                    hoveredCard === 'credit'
-                      ? '0 18px 34px rgba(0, 0, 0, 0.38)'
-                      : '0 14px 28px rgba(0, 0, 0, 0.3)',
-                  transform: hoveredCard === 'credit' ? 'translateY(-2px)' : 'translateY(0)',
-                  transition: 'all 180ms ease'
-                }}
+                style={{ ...contactLinkStyle('email'), marginBottom: 10 }}
               >
-                <img
-                  src="/anbu.jpg"
-                  alt="Drizz GB Round 2 vs Anbu Senseii artwork"
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'cover',
-                    display: 'block',
-                    filter: 'brightness(0.82)',
-                    transform: hoveredCard === 'credit' ? 'scale(1.04)' : 'scale(1)',
-                    transition: 'transform 180ms ease'
-                  }}
-                />
                 <span
                   style={{
-                    position: 'absolute',
-                    width: 54,
-                    height: 54,
-                    borderRadius: 999,
-                    background: 'rgba(196, 0, 0, 0.9)',
-                    border: '1px solid rgba(255, 255, 255, 0.22)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    boxShadow: '0 8px 18px rgba(0, 0, 0, 0.35)'
+                    fontSize: 13,
+                    fontWeight: 600,
+                    lineHeight: 1.2,
+                    textAlign: 'center'
                   }}
                 >
-                  <span
-                    style={{
-                      color: 'white',
-                      fontSize: 18,
-                      marginLeft: 3,
-                      lineHeight: 1
-                    }}
-                  >
-                    ▶
-                  </span>
+                  E-mail me
+                </span>
+              </a>
+
+              <a
+                href="https://instagram.com/robertkamdarmusic"
+                target="_blank"
+                rel="noreferrer"
+                onMouseEnter={() => setHoveredCard('insta')}
+                onMouseLeave={() => setHoveredCard('')}
+                style={contactLinkStyle('insta')}
+              >
+                <span
+                  style={{
+                    fontSize: 13,
+                    fontWeight: 600,
+                    lineHeight: 1.2,
+                    textAlign: 'center'
+                  }}
+                >
+                  Reach me on Instagram
                 </span>
               </a>
             </aside>
-          )}
-        </div>
+
+            {!isMobile && (
+              <aside style={sideCardStyle}>
+                <p
+                  style={{
+                    margin: '0 0 12px',
+                    color: '#d7d7d7',
+                    fontSize: 12,
+                    letterSpacing: 2,
+                    textTransform: 'uppercase'
+                  }}
+                >
+                  Previous Credit(s)
+                </p>
+
+                <p
+                  style={{
+                    margin: '0 0 12px',
+                    color: 'white',
+                    fontSize: 12,
+                    fontWeight: 700,
+                    lineHeight: 1.35
+                  }}
+                >
+                  Drizz GB Round 2 vs Anbu Senseii
+                </p>
+
+                <a
+                  href="https://open.spotify.com/track/25Kv09CJz0LkRyxrkn89Ts"
+                  target="_blank"
+                  rel="noreferrer"
+                  onMouseEnter={() => setHoveredCard('credit')}
+                  onMouseLeave={() => setHoveredCard('')}
+                  style={{
+                    position: 'relative',
+                    display: 'inline-flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    width: 170,
+                    height: 170,
+                    borderRadius: 18,
+                    overflow: 'hidden',
+                    textDecoration: 'none',
+                    boxShadow:
+                      hoveredCard === 'credit'
+                        ? '0 18px 34px rgba(0, 0, 0, 0.38)'
+                        : '0 14px 28px rgba(0, 0, 0, 0.3)',
+                    transform: hoveredCard === 'credit' ? 'translateY(-2px)' : 'translateY(0)',
+                    transition: 'all 180ms ease'
+                  }}
+                >
+                  <img
+                    src="/anbu.jpg"
+                    alt="Drizz GB Round 2 vs Anbu Senseii artwork"
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                      display: 'block',
+                      filter: 'brightness(0.82)',
+                      transform: hoveredCard === 'credit' ? 'scale(1.04)' : 'scale(1)',
+                      transition: 'transform 180ms ease'
+                    }}
+                  />
+                  <span
+                    style={{
+                      position: 'absolute',
+                      width: 54,
+                      height: 54,
+                      borderRadius: 999,
+                      background: 'rgba(196, 0, 0, 0.9)',
+                      border: '1px solid rgba(255, 255, 255, 0.22)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      boxShadow: '0 8px 18px rgba(0, 0, 0, 0.35)'
+                    }}
+                  >
+                    <span
+                      style={{
+                        color: 'white',
+                        fontSize: 18,
+                        marginLeft: 3,
+                        lineHeight: 1
+                      }}
+                    >
+                      ▶
+                    </span>
+                  </span>
+                </a>
+              </aside>
+            )}
+          </div>
+        )}
 
         <div
           style={{
