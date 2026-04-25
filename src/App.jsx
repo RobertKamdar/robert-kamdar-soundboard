@@ -20,7 +20,9 @@ function CustomSelect({ value, onChange, options, placeholder }) {
   }, [])
 
   const selectedLabel =
-    options.find((option) => option.value === value)?.label || placeholder
+  options.find((option) => option.value === value)?.label || placeholder
+
+const isSmallScreen = typeof window !== 'undefined' && window.innerWidth <= 768
 
   return (
     <div
@@ -120,8 +122,8 @@ function CustomSelect({ value, onChange, options, placeholder }) {
             }}
             style={{
               width: '100%',
-              minHeight: 41,
-              padding: '12px 14px',
+             minHeight: typeof window !== 'undefined' && window.innerWidth <= 768 ? 34 : 41,
+             padding: typeof window !== 'undefined' && window.innerWidth <= 768 ? '9px 14px' : '12px 14px',
               border: 'none',
               background:
                 hoveredOption === ''
@@ -151,8 +153,8 @@ function CustomSelect({ value, onChange, options, placeholder }) {
               }}
               style={{
                 width: '100%',
-                minHeight: 41,
-                padding: '12px 14px',
+                minHeight: typeof window !== 'undefined' && window.innerWidth <= 768 ? 34 : 41,
+                padding: typeof window !== 'undefined' && window.innerWidth <= 768 ? '9px 14px' : '12px 14px',
                 border: 'none',
                 background:
                   hoveredOption === option.value
