@@ -3,12 +3,14 @@ import { useEffect, useRef, useState } from 'react'
 function CustomSelect({ value, onChange, options, placeholder }) {
   const [isOpen, setIsOpen] = useState(false)
   const [isHovered, setIsHovered] = useState(false)
+  const [hoveredOption, setHoveredOption] = useState(null)
   const wrapperRef = useRef(null)
 
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
         setIsOpen(false)
+        setHoveredOption(null)
       }
     }
 
@@ -28,23 +30,25 @@ function CustomSelect({ value, onChange, options, placeholder }) {
     >
       <button
         type="button"
-        onClick={() => setIsOpen((open) => !open)}
+        onClick={() => {
+          setIsOpen((open) => !open)
+          setHoveredOption(null)
+        }}
         style={{
           width: '100%',
           minHeight: 41,
           padding: '11px 42px 11px 14px',
           borderRadius: 999,
-          border: isHovered || isOpen ? '1px solid #c40000' : '1px solid #9a9a9a',
-          background: isHovered || isOpen ? '#c40000' : '#2f2f2f',
+          border: isHovered ? '1px solid #c40000' : '1px solid #9a9a9a',
+          background: isHovered ? '#c40000' : '#2f2f2f',
           color: 'white',
           fontSize: 13,
           textAlign: 'left',
           cursor: 'pointer',
           boxSizing: 'border-box',
-          boxShadow:
-            isHovered || isOpen
-              ? '0 0 0 2px rgba(196, 0, 0, 0.18), 0 8px 24px rgba(0, 0, 0, 0.22)'
-              : '0 8px 24px rgba(0, 0, 0, 0.22)',
+          boxShadow: isHovered
+            ? '0 0 0 2px rgba(196, 0, 0, 0.18), 0 8px 24px rgba(0, 0, 0, 0.22)'
+            : '0 8px 24px rgba(0, 0, 0, 0.22)',
           transition: 'background 160ms ease, border-color 160ms ease, box-shadow 160ms ease'
         }}
       >
@@ -82,15 +86,23 @@ function CustomSelect({ value, onChange, options, placeholder }) {
         >
           <button
             type="button"
+            onMouseEnter={() => setHoveredOption('')}
+            onMouseLeave={() => setHoveredOption(null)}
             onClick={() => {
               onChange('')
               setIsOpen(false)
+              setHoveredOption(null)
             }}
             style={{
               width: '100%',
               padding: '12px 14px',
               border: 'none',
-              background: value === '' ? '#c40000' : '#2f2f2f',
+              background:
+                hoveredOption === ''
+                  ? '#c40000'
+                  : value === ''
+                    ? 'rgba(196, 0, 0, 0.18)'
+                    : '#2f2f2f',
               color: 'white',
               textAlign: 'left',
               cursor: 'pointer',
@@ -104,15 +116,23 @@ function CustomSelect({ value, onChange, options, placeholder }) {
             <button
               key={option.value}
               type="button"
+              onMouseEnter={() => setHoveredOption(option.value)}
+              onMouseLeave={() => setHoveredOption(null)}
               onClick={() => {
                 onChange(option.value)
                 setIsOpen(false)
+                setHoveredOption(null)
               }}
               style={{
                 width: '100%',
                 padding: '12px 14px',
                 border: 'none',
-                background: value === option.value ? '#c40000' : '#2f2f2f',
+                background:
+                  hoveredOption === option.value
+                    ? '#c40000'
+                    : value === option.value
+                      ? 'rgba(196, 0, 0, 0.18)'
+                      : '#2f2f2f',
                 color: 'white',
                 textAlign: 'left',
                 cursor: 'pointer',
