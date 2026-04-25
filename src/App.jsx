@@ -450,14 +450,14 @@ export default function App() {
   const moodOptions = [...new Set(sortedBeats.flatMap((beat) => beat.moods || []))].sort()
 
   const filteredBeats = sortedBeats.filter((beat) => {
-    const matchesBpm = selectedBpm === '' || beat.bpm === selectedBpm
-    const matchesMood =
-      selectedMoods.length === 0 ||
-      selectedMoods.some((mood) => beat.moods.includes(mood))
-    const matchesNewOnly = !showNewOnly || isRecentlyAdded(beat.addedAt)
+  const matchesBpm = selectedBpm === '' || beat.bpm === selectedBpm
+  const matchesMood =
+    selectedMoods.length === 0 ||
+    selectedMoods.every((mood) => beat.moods.includes(mood))
+  const matchesNewOnly = !showNewOnly || isRecentlyAdded(beat.addedAt)
 
-    return matchesBpm && matchesMood && matchesNewOnly
-  })
+  return matchesBpm && matchesMood && matchesNewOnly
+})
 
   const formatTime = (seconds) => {
     if (!seconds || Number.isNaN(seconds)) return '0:00'
