@@ -1,5 +1,133 @@
 import { useEffect, useRef, useState } from 'react'
 
+function CustomSelect({ value, onChange, options, placeholder }) {
+  const [isOpen, setIsOpen] = useState(false)
+  const [isHovered, setIsHovered] = useState(false)
+  const wrapperRef = useRef(null)
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
+        setIsOpen(false)
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [])
+
+  const selectedLabel =
+    options.find((option) => option.value === value)?.label || placeholder
+
+  return (
+    <div
+      ref={wrapperRef}
+      style={{ position: 'relative', width: '100%' }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <button
+        type="button"
+        onClick={() => setIsOpen((open) => !open)}
+        style={{
+          width: '100%',
+          minHeight: 41,
+          padding: '11px 42px 11px 14px',
+          borderRadius: 999,
+          border: isHovered || isOpen ? '1px solid #c40000' : '1px solid #9a9a9a',
+          background: isHovered || isOpen ? '#c40000' : '#2f2f2f',
+          color: 'white',
+          fontSize: 13,
+          textAlign: 'left',
+          cursor: 'pointer',
+          boxSizing: 'border-box',
+          boxShadow:
+            isHovered || isOpen
+              ? '0 0 0 2px rgba(196, 0, 0, 0.18), 0 8px 24px rgba(0, 0, 0, 0.22)'
+              : '0 8px 24px rgba(0, 0, 0, 0.22)',
+          transition: 'background 160ms ease, border-color 160ms ease, box-shadow 160ms ease'
+        }}
+      >
+        {selectedLabel}
+        <span
+          style={{
+            position: 'absolute',
+            right: 16,
+            top: '50%',
+            transform: `translateY(-50%) rotate(${isOpen ? 180 : 0}deg)`,
+            fontSize: 12,
+            lineHeight: 1,
+            transition: 'transform 160ms ease',
+            pointerEvents: 'none'
+          }}
+        >
+          ▼
+        </span>
+      </button>
+
+      {isOpen && (
+        <div
+          style={{
+            position: 'absolute',
+            top: 'calc(100% + 8px)',
+            left: 0,
+            right: 0,
+            background: '#2f2f2f',
+            border: '1px solid rgba(255, 255, 255, 0.12)',
+            borderRadius: 18,
+            overflow: 'hidden',
+            boxShadow: '0 18px 40px rgba(0, 0, 0, 0.35)',
+            zIndex: 20
+          }}
+        >
+          <button
+            type="button"
+            onClick={() => {
+              onChange('')
+              setIsOpen(false)
+            }}
+            style={{
+              width: '100%',
+              padding: '12px 14px',
+              border: 'none',
+              background: value === '' ? '#c40000' : '#2f2f2f',
+              color: 'white',
+              textAlign: 'left',
+              cursor: 'pointer',
+              fontSize: 13
+            }}
+          >
+            {placeholder}
+          </button>
+
+          {options.map((option) => (
+            <button
+              key={option.value}
+              type="button"
+              onClick={() => {
+                onChange(option.value)
+                setIsOpen(false)
+              }}
+              style={{
+                width: '100%',
+                padding: '12px 14px',
+                border: 'none',
+                background: value === option.value ? '#c40000' : '#2f2f2f',
+                color: 'white',
+                textAlign: 'left',
+                cursor: 'pointer',
+                fontSize: 13
+              }}
+            >
+              {option.label}
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  )
+}
+
 export default function App() {
   const [nowPlaying, setNowPlaying] = useState('None')
   const [currentFile, setCurrentFile] = useState(null)
@@ -11,7 +139,6 @@ export default function App() {
     typeof window !== 'undefined' ? window.innerWidth <= 768 : false
   )
   const [hoveredCard, setHoveredCard] = useState('')
-  const [hoveredFilter, setHoveredFilter] = useState('')
   const [isBioExpanded, setIsBioExpanded] = useState(false)
   const audioRef = useRef(null)
   const intervalRef = useRef(null)
@@ -269,40 +396,6 @@ export default function App() {
         : 'none',
     transition: 'all 160ms ease'
   })
-
-  const filterWrapperStyle = (id) => ({
-    position: 'relative',
-    width: '100%'
-  })
-
-  const filterSelectStyle = (id) => ({
-    width: '100%',
-    padding: '11px 42px 11px 14px',
-    borderRadius: 999,
-    border: hoveredFilter === id ? '1px solid #c40000' : '1px solid #9a9a9a',
-    background: hoveredFilter === id ? '#c40000' : '#2f2f2f',
-    color: 'white',
-    fontSize: 13,
-    outline: 'none',
-    boxSizing: 'border-box',
-    boxShadow: '0 8px 24px rgba(0, 0, 0, 0.22)',
-    appearance: 'none',
-    WebkitAppearance: 'none',
-    MozAppearance: 'none',
-    cursor: 'pointer',
-    transition: 'background 160ms ease, border-color 160ms ease'
-  })
-
-  const filterArrowStyle = {
-    position: 'absolute',
-    right: 16,
-    top: '50%',
-    transform: 'translateY(-50%)',
-    color: 'white',
-    fontSize: 12,
-    pointerEvents: 'none',
-    lineHeight: 1
-  }
 
   return (
     <div
@@ -649,45 +742,25 @@ export default function App() {
               margin: '0 auto 20px'
             }}
           >
-            <div
-              style={filterWrapperStyle('bpm')}
-              onMouseEnter={() => setHoveredFilter('bpm')}
-              onMouseLeave={() => setHoveredFilter('')}
-            >
-              <select
-                value={selectedBpm}
-                onChange={(event) => setSelectedBpm(event.target.value)}
-                style={filterSelectStyle('bpm')}
-              >
-                <option value="">BPM</option>
-                {bpmOptions.map((bpm) => (
-                  <option key={bpm} value={bpm}>
-                    {bpm}
-                  </option>
-                ))}
-              </select>
-              <span style={filterArrowStyle}>▼</span>
-            </div>
+            <CustomSelect
+              value={selectedBpm}
+              onChange={setSelectedBpm}
+              placeholder="BPM"
+              options={bpmOptions.map((bpm) => ({
+                value: bpm,
+                label: bpm
+              }))}
+            />
 
-            <div
-              style={filterWrapperStyle('mood')}
-              onMouseEnter={() => setHoveredFilter('mood')}
-              onMouseLeave={() => setHoveredFilter('')}
-            >
-              <select
-                value={selectedMood}
-                onChange={(event) => setSelectedMood(event.target.value)}
-                style={filterSelectStyle('mood')}
-              >
-                <option value="">Mood</option>
-                {moodOptions.map((mood) => (
-                  <option key={mood} value={mood}>
-                    {mood}
-                  </option>
-                ))}
-              </select>
-              <span style={filterArrowStyle}>▼</span>
-            </div>
+            <CustomSelect
+              value={selectedMood}
+              onChange={setSelectedMood}
+              placeholder="Mood"
+              options={moodOptions.map((mood) => ({
+                value: mood,
+                label: mood
+              }))}
+            />
 
             <button
               type="button"
