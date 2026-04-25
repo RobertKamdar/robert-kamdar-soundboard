@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 
-function CustomSelect({ value, onChange, options, placeholder }) {
+function CustomSelect({ value, onChange, options, placeholder, multiple = false }) {
   const [isOpen, setIsOpen] = useState(false)
   const [isHovered, setIsHovered] = useState(false)
   const [hoveredOption, setHoveredOption] = useState(null)
@@ -8,6 +8,10 @@ function CustomSelect({ value, onChange, options, placeholder }) {
   const wrapperRef = useRef(null)
   const optionRefs = useRef({})
   const menuClassName = 'custom-select-menu'
+
+  const isSmallScreen = typeof window !== 'undefined' && window.innerWidth <= 768
+  const selectedValues = multiple ? value : value ? [value] : []
+  const keyboardOptions = multiple ? options : [{ value: '', label: placeholder }, ...options]
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -22,12 +26,6 @@ function CustomSelect({ value, onChange, options, placeholder }) {
     return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [])
 
-  const selectedLabel =
-    options.find((option) => option.value === value)?.label || placeholder
-
-  const isSmallScreen = typeof window !== 'undefined' && window.innerWidth <= 768
-  const keyboardOptions = [{ value: '', label: placeholder }, ...options]
-
   useEffect(() => {
     if (!isOpen || isSmallScreen || focusedOption === null) return
 
@@ -35,18 +33,46 @@ function CustomSelect({ value, onChange, options, placeholder }) {
     const activeOption = optionRefs.current[optionKey]
 
     if (activeOption) {
-      activeOption.scrollIntoView({
-        block: 'nearest'
-      })
+      activeOption.scrollIntoView({ block: 'nearest' })
     }
   }, [focusedOption, isOpen, isSmallScreen])
 
-  const getCurrentIndex = () => {
-    if (focusedOption !== null) {
-      return keyboardOptions.findIndex((option) => option.value === focusedOption)
+  const selectedLabel = multiple
+    ? selectedValues.length > 0
+      ? `${placeholder} (${selectedValues.length})`
+      : placeholder
+    : options.find((option) => option.value === value)?.label || placeholder
+
+  const getDefaultFocusValue = () => {
+    if (multiple) {
+      return selectedValues[0] ?? options[0]?.value ?? null
     }
 
-    return keyboardOptions.findIndex((option) => option.value === value)
+    return value
+  }
+
+  const getCurrentIndex = () => {
+    const currentValue = focusedOption !== null ? focusedOption : getDefaultFocusValue()
+    const currentIndex = keyboardOptions.findIndex((option) => option.value === currentValue)
+    return currentIndex >= 0 ? currentIndex : 0
+  }
+
+  const toggleOption = (optionValue) => {
+    if (!multiple) {
+      onChange(optionValue)
+      setIsOpen(false)
+      setHoveredOption(null)
+      setFocusedOption(null)
+      return
+    }
+
+    onChange(
+      selectedValues.includes(optionValue)
+        ? selectedValues.filter((value) => value !== optionValue)
+        : [...selectedValues, optionValue]
+    )
+    setHoveredOption(optionValue)
+    setFocusedOption(optionValue)
   }
 
   const handleKeyDown = (event) => {
@@ -57,7 +83,7 @@ function CustomSelect({ value, onChange, options, placeholder }) {
 
       if (!isOpen) {
         setIsOpen(true)
-        setFocusedOption(value)
+        setFocusedOption(getDefaultFocusValue())
         return
       }
 
@@ -74,7 +100,7 @@ function CustomSelect({ value, onChange, options, placeholder }) {
 
       if (!isOpen) {
         setIsOpen(true)
-        setFocusedOption(value)
+        setFocusedOption(getDefaultFocusValue())
         return
       }
 
@@ -86,14 +112,10 @@ function CustomSelect({ value, onChange, options, placeholder }) {
     }
 
     if (event.key === 'Enter') {
-      if (!isOpen) return
+      if (!isOpen || focusedOption === null) return
 
       event.preventDefault()
-      const selectedValue = focusedOption !== null ? focusedOption : value
-      onChange(selectedValue)
-      setIsOpen(false)
-      setHoveredOption(null)
-      setFocusedOption(null)
+      toggleOption(focusedOption)
     }
 
     if (event.key === 'Escape') {
@@ -105,6 +127,23 @@ function CustomSelect({ value, onChange, options, placeholder }) {
       setFocusedOption(null)
     }
   }
+
+  const optionButtonStyle = (optionValue, isSelected) => ({
+    width: '100%',
+    minHeight: isSmallScreen ? 34 : 41,
+    padding: isSmallScreen ? '9px 14px' : '12px 14px',
+    border: 'none',
+    background:
+      hoveredOption === optionValue || focusedOption === optionValue
+        ? '#c40000'
+        : isSelected
+          ? 'rgba(196, 0, 0, 0.18)'
+          : '#2f2f2f',
+    color: 'white',
+    textAlign: 'left',
+    cursor: 'pointer',
+    fontSize: 13
+  })
 
   return (
     <div
@@ -140,7 +179,7 @@ function CustomSelect({ value, onChange, options, placeholder }) {
         onClick={() => {
           setIsOpen((open) => !open)
           setHoveredOption(null)
-          setFocusedOption(value)
+          setFocusedOption(getDefaultFocusValue())
         }}
         onKeyDown={handleKeyDown}
         style={{
@@ -195,80 +234,70 @@ function CustomSelect({ value, onChange, options, placeholder }) {
             zIndex: 20
           }}
         >
-          <button
-            ref={(element) => {
-              optionRefs.current.__placeholder__ = element
-            }}
-            type="button"
-            onMouseEnter={() => {
-              setHoveredOption('')
-              setFocusedOption('')
-            }}
-            onMouseLeave={() => setHoveredOption(null)}
-            onClick={() => {
-              onChange('')
-              setIsOpen(false)
-              setHoveredOption(null)
-              setFocusedOption(null)
-            }}
-            style={{
-              width: '100%',
-              minHeight: isSmallScreen ? 34 : 41,
-              padding: isSmallScreen ? '9px 14px' : '12px 14px',
-              border: 'none',
-              background:
-                hoveredOption === '' || focusedOption === ''
-                  ? '#c40000'
-                  : value === ''
-                    ? 'rgba(196, 0, 0, 0.18)'
-                    : '#2f2f2f',
-              color: 'white',
-              textAlign: 'left',
-              cursor: 'pointer',
-              fontSize: 13
-            }}
-          >
-            {placeholder}
-          </button>
-
-          {options.map((option) => (
+          {!multiple && (
             <button
-              key={option.value}
               ref={(element) => {
-                optionRefs.current[option.value] = element
+                optionRefs.current.__placeholder__ = element
               }}
               type="button"
               onMouseEnter={() => {
-                setHoveredOption(option.value)
-                setFocusedOption(option.value)
+                setHoveredOption('')
+                setFocusedOption('')
               }}
               onMouseLeave={() => setHoveredOption(null)}
               onClick={() => {
-                onChange(option.value)
+                onChange('')
                 setIsOpen(false)
                 setHoveredOption(null)
                 setFocusedOption(null)
               }}
-              style={{
-                width: '100%',
-                minHeight: isSmallScreen ? 34 : 41,
-                padding: isSmallScreen ? '9px 14px' : '12px 14px',
-                border: 'none',
-                background:
-                  hoveredOption === option.value || focusedOption === option.value
-                    ? '#c40000'
-                    : value === option.value
-                      ? 'rgba(196, 0, 0, 0.18)'
-                      : '#2f2f2f',
-                color: 'white',
-                textAlign: 'left',
-                cursor: 'pointer',
-                fontSize: 13
-              }}
+              style={optionButtonStyle('', value === '')}
             >
-              {option.label}
+              {placeholder}
             </button>
-          ))}
+          )}
+
+          {options.map((option) => {
+            const isSelected = selectedValues.includes(option.value)
+
+            return (
+              <button
+                key={option.value}
+                ref={(element) => {
+                  optionRefs.current[option.value] = element
+                }}
+                type="button"
+                onMouseEnter={() => {
+                  setHoveredOption(option.value)
+                  setFocusedOption(option.value)
+                }}
+                onMouseLeave={() => setHoveredOption(null)}
+                onClick={() => toggleOption(option.value)}
+                style={optionButtonStyle(option.value, isSelected)}
+              >
+                <span
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    gap: 12
+                  }}
+                >
+                  <span>{option.label}</span>
+                  <span
+                    style={{
+                      color: isSelected ? 'white' : 'transparent',
+                      fontSize: 14,
+                      fontWeight: 700,
+                      lineHeight: 1
+                    }}
+                  >
+                    ✓
+                  </span>
+                </span>
+              </button>
+            )
+          })}
         </div>
       )}
     </div>
@@ -279,7 +308,7 @@ export default function App() {
   const [nowPlaying, setNowPlaying] = useState('None')
   const [currentFile, setCurrentFile] = useState(null)
   const [selectedBpm, setSelectedBpm] = useState('')
-  const [selectedMood, setSelectedMood] = useState('')
+  const [selectedMoods, setSelectedMoods] = useState([])
   const [showNewOnly, setShowNewOnly] = useState(false)
   const [elapsed, setElapsed] = useState(0)
   const [duration, setDuration] = useState(0)
@@ -422,7 +451,9 @@ export default function App() {
 
   const filteredBeats = sortedBeats.filter((beat) => {
     const matchesBpm = selectedBpm === '' || beat.bpm === selectedBpm
-    const matchesMood = selectedMood === '' || beat.moods.includes(selectedMood)
+    const matchesMood =
+      selectedMoods.length === 0 ||
+      selectedMoods.some((mood) => beat.moods.includes(mood))
     const matchesNewOnly = !showNewOnly || isRecentlyAdded(beat.addedAt)
 
     return matchesBpm && matchesMood && matchesNewOnly
@@ -519,7 +550,7 @@ export default function App() {
 
   const handleResetFilters = () => {
     setSelectedBpm('')
-    setSelectedMood('')
+    setSelectedMoods([])
     setShowNewOnly(false)
   }
 
@@ -933,9 +964,10 @@ export default function App() {
             />
 
             <CustomSelect
-              value={selectedMood}
-              onChange={setSelectedMood}
+              value={selectedMoods}
+              onChange={setSelectedMoods}
               placeholder="Mood"
+              multiple
               options={moodOptions.map((mood) => ({
                 value: mood,
                 label: mood
@@ -964,7 +996,7 @@ export default function App() {
             <button
               type="button"
               onClick={handleResetFilters}
-              disabled={selectedBpm === '' && selectedMood === '' && !showNewOnly}
+              disabled={selectedBpm === '' && selectedMoods.length === 0 && !showNewOnly}
               style={{
                 minHeight: 41,
                 padding: '0 18px',
@@ -975,17 +1007,55 @@ export default function App() {
                 fontSize: 13,
                 fontWeight: 700,
                 cursor:
-                  selectedBpm === '' && selectedMood === '' && !showNewOnly
+                  selectedBpm === '' && selectedMoods.length === 0 && !showNewOnly
                     ? 'not-allowed'
                     : 'pointer',
                 opacity:
-                  selectedBpm === '' && selectedMood === '' && !showNewOnly ? 0.55 : 1,
+                  selectedBpm === '' && selectedMoods.length === 0 && !showNewOnly
+                    ? 0.55
+                    : 1,
                 boxShadow: '0 8px 24px rgba(0, 0, 0, 0.22)'
               }}
             >
               Reset
             </button>
           </div>
+
+          {selectedMoods.length > 0 && (
+            <div
+              style={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                justifyContent: 'center',
+                gap: 8,
+                maxWidth: 900,
+                margin: '0 auto 16px'
+              }}
+            >
+              {selectedMoods.map((mood) => (
+                <button
+                  key={mood}
+                  type="button"
+                  onClick={() =>
+                    setSelectedMoods((current) => current.filter((item) => item !== mood))
+                  }
+                  style={{
+                    padding: '7px 12px',
+                    borderRadius: 8,
+                    border: '1px solid rgba(255, 255, 255, 0.12)',
+                    background: '#2f2f2f',
+                    color: 'white',
+                    fontSize: 12,
+                    fontWeight: 600,
+                    cursor: 'pointer',
+                    boxShadow: '0 8px 18px rgba(0, 0, 0, 0.2)'
+                  }}
+                >
+                  {mood} ×
+                </button>
+              ))}
+            </div>
+          )}
 
           <div
             style={{
