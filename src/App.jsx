@@ -20,9 +20,9 @@ function CustomSelect({ value, onChange, options, placeholder }) {
   }, [])
 
   const selectedLabel =
-  options.find((option) => option.value === value)?.label || placeholder
+    options.find((option) => option.value === value)?.label || placeholder
 
-const isSmallScreen = typeof window !== 'undefined' && window.innerWidth <= 768
+  const isSmallScreen = typeof window !== 'undefined' && window.innerWidth <= 768
 
   return (
     <div
@@ -122,8 +122,8 @@ const isSmallScreen = typeof window !== 'undefined' && window.innerWidth <= 768
             }}
             style={{
               width: '100%',
-             minHeight: typeof window !== 'undefined' && window.innerWidth <= 768 ? 34 : 41,
-             padding: typeof window !== 'undefined' && window.innerWidth <= 768 ? '9px 14px' : '12px 14px',
+              minHeight: isSmallScreen ? 34 : 41,
+              padding: isSmallScreen ? '9px 14px' : '12px 14px',
               border: 'none',
               background:
                 hoveredOption === ''
@@ -153,8 +153,8 @@ const isSmallScreen = typeof window !== 'undefined' && window.innerWidth <= 768
               }}
               style={{
                 width: '100%',
-                minHeight: typeof window !== 'undefined' && window.innerWidth <= 768 ? 34 : 41,
-                padding: typeof window !== 'undefined' && window.innerWidth <= 768 ? '9px 14px' : '12px 14px',
+                minHeight: isSmallScreen ? 34 : 41,
+                padding: isSmallScreen ? '9px 14px' : '12px 14px',
                 border: 'none',
                 background:
                   hoveredOption === option.value
@@ -194,97 +194,113 @@ export default function App() {
   const playbackIdRef = useRef(0)
 
   const beats = [
-    { name: 'SUSPECT', file: '/suspect.mp3', bpm: '141', moods: ['Mellow', 'Retro', 'Minimalistic'] },
-    { name: 'EAGLE', file: '/eagle.mp3', bpm: '143', moods: ['Ethnic', 'Aggressive', 'Gritty'] },
-    { name: 'AAJA', file: '/aaja.mp3', bpm: '144', moods: ['Ethnic', 'Jumpy', 'Gritty'] },
-    { name: 'PERIL', file: '/peril.mp3', bpm: '145', moods: ['Eerie', 'Dark', 'Gritty'] },
-    { name: 'RECKONING', file: '/reckoning.mp3', bpm: '144', moods: ['Ethnic', 'Chaotic', 'Gritty'] },
-    { name: 'NEEKY', file: '/neeky.mp3', bpm: '143', moods: ['Mellow', 'Jumpy', 'Eerie', 'Atmospheric'] },
-    { name: 'POMPEII', file: '/pompeii.mp3', bpm: '144', moods: ['Atmospheric', 'Dark', 'Hybrid'] },
-    { name: 'HOW GREEDY', file: '/howgreedy.mp3', bpm: '145', moods: ['Aggressive', 'Gritty'] },
-    { name: 'TSUNAMI', file: '/tsunami.mp3', bpm: '143', moods: ['Melodic', 'Dark', 'Atmospheric', 'Producer Favourite'] },
-    { name: 'BLUE LIGHTS', file: '/bluelights.mp3', bpm: '145', moods: ['Eerie', 'Mellow', 'Gritty'] },
-    { name: 'N.F.S', file: '/nfs.mp3', bpm: '143', moods: ['Ethnic', 'Chaotic', 'Gritty'] },
-    { name: 'SAYONARA', file: '/sayonara.mp3', bpm: '142', moods: ['Melodic', 'Producer Favourite', 'Atmospheric', 'Ethnic'] },
-    { name: 'TYPICAL', file: '/typical.mp3', bpm: '140', moods: ['Melodic', 'Dark', 'Used for Battle', 'Producer Favourite'] },
-    { name: 'BUILT DIFFERENT', file: '/builtdifferent.mp3', bpm: '143', moods: ['Dark', 'Used for Battle', 'Aggressive', 'Jumpy', 'Producer Favourite', 'Gritty'] },
-    { name: 'CZARS & EMIRS', file: '/czarsandemirs.mp3', bpm: '142', moods: ['Ethnic', 'Gritty'] },
-    { name: 'HK', file: '/hk.mp3', bpm: '143', moods: ['Dark', 'Mellow', 'Dramatic'] },
-    { name: 'KNOWN', file: '/known.mp3', bpm: '100', moods: ['Hip Hop', 'Gritty', 'Minimalistic'] },
-    { name: 'LUCID', file: '/lucid.mp3', bpm: '143', moods: ['Melodic', 'Hybrid', 'Mellow', 'Dubstep'] },
-    { name: 'RUDE', file: '/rude.mp3', bpm: '143', moods: ['Aggressive', 'Gritty', 'Hybrid'] },
-    { name: 'OLYMPUS', file: '/olympus.mp3', bpm: '146', moods: ['Aggressive', 'Dramatic', 'Hybrid'] },
-    { name: 'COLLISION COURSE', file: '/collisioncourse.mp3', bpm: '144', moods: ['Aggressive', 'Chaotic', 'Jumpy', 'Ethnic'] },
-    { name: 'DOWNLOAD', file: '/download.mp3', bpm: '143', moods: ['Melodic', 'Upbeat', 'Hybrid'] },
-    { name: 'WRATH', file: '/wrath.mp3', bpm: '144', moods: ['Minimalistic', 'Angry', 'Gritty', 'Eerie'] },
-    { name: 'HIGHEST', file: '/highest.mp3', bpm: '144', moods: ['Eerie', 'Dark', 'Atmospheric', 'Minimalistic', 'Gritty'] },
-    { name: 'INSANE', file: '/insane.mp3', bpm: '143', moods: ['Eerie', 'Gritty', 'Dramatic'] },
-    { name: 'HOODED UP', file: '/hoodedup.mp3', bpm: '144', moods: ['Aggressive', 'Gritty', 'Hybrid', 'Dramatic'] },
-    { name: 'PUNCHLINE', file: '/punchline.mp3', bpm: '146', moods: ['Hybrid', 'Jumpy', 'Wavy'] },
-    { name: 'ZYWIOL', file: '/zywiol.mp3', bpm: '143', moods: ['Wavy', 'Upbeat'] },
-    { name: 'ANKARA', file: '/ankara.mp3', bpm: '142', moods: ['Ethnic', 'Jumpy', 'Dark'] },
-    { name: 'CAUSE', file: '/cause.mp3', bpm: '144', moods: ['Melodic', 'Wavy', 'Producer Favourite', 'Upbeat'] },
-    { name: 'CONFLICT', file: '/conflict.mp3', bpm: '144', moods: ['Dark', 'Producer Favourite', 'Mellow', 'Jumpy'] },
-    { name: 'CRASHOUT', file: '/crashout.mp3', bpm: '150', moods: ['Hybrid', 'Aggressive', 'Gritty', 'Violent', 'Hip Hop'] },
-    { name: 'DERRY', file: '/derry.mp3', bpm: '143', moods: ['Dark', 'Violent', 'Gritty'] },
-    { name: 'JOHTO', file: '/johto.mp3', bpm: '150', moods: ['Upbeat', 'Hybrid', 'Retro'] },
-    { name: 'MONSOON', file: '/monsoon.mp3', bpm: '140', moods: ['Dark', 'Gritty', 'Eerie'] },
-    { name: 'MORTIFY', file: '/mortify.mp3', bpm: '141', moods: ['Dark', 'Dramatic', 'Eerie'] },
-    { name: 'PERSIAN', file: '/persian.mp3', bpm: '141', moods: ['Ethnic', 'Aggressive', 'Minimalistic'] },
-    { name: 'PREMIUM', file: '/premium.mp3', bpm: '150', moods: ['Hybrid', 'Producer Favourite', 'Hip Hop'] },
-    { name: 'QOTD', file: '/qotd.mp3', bpm: '143', moods: ['Eerie', 'Mellow', 'Ethnic', 'Dark'] },
-    { name: 'SHIFTING', file: '/shifting.mp3', bpm: '142', moods: ['Aggressive', 'Gritty', 'Minimalistic'] },
+    { name: 'SUSPECT', file: '/suspect.mp3', bpm: '141', moods: ['Mellow', 'Retro', 'Minimalistic'], addedAt: '2026-04-18' },
+    { name: 'EAGLE', file: '/eagle.mp3', bpm: '143', moods: ['Ethnic', 'Aggressive', 'Gritty'], addedAt: '2026-04-18' },
+    { name: 'AAJA', file: '/aaja.mp3', bpm: '144', moods: ['Ethnic', 'Jumpy', 'Gritty'], addedAt: '2026-04-18' },
+    { name: 'PERIL', file: '/peril.mp3', bpm: '145', moods: ['Eerie', 'Dark', 'Gritty'], addedAt: '2026-04-18' },
+    { name: 'RECKONING', file: '/reckoning.mp3', bpm: '144', moods: ['Ethnic', 'Chaotic', 'Gritty'], addedAt: '2026-04-18' },
+    { name: 'NEEKY', file: '/neeky.mp3', bpm: '143', moods: ['Mellow', 'Jumpy', 'Eerie', 'Atmospheric'], addedAt: '2026-04-18' },
+    { name: 'POMPEII', file: '/pompeii.mp3', bpm: '144', moods: ['Atmospheric', 'Dark', 'Hybrid'], addedAt: '2026-04-18' },
+    { name: 'HOW GREEDY', file: '/howgreedy.mp3', bpm: '145', moods: ['Aggressive', 'Gritty'], addedAt: '2026-04-18' },
+    { name: 'TSUNAMI', file: '/tsunami.mp3', bpm: '143', moods: ['Melodic', 'Dark', 'Atmospheric', 'Producer Favourite'], addedAt: '2026-04-18' },
+    { name: 'BLUE LIGHTS', file: '/bluelights.mp3', bpm: '145', moods: ['Eerie', 'Mellow', 'Gritty'], addedAt: '2026-04-18' },
+    { name: 'N.F.S', file: '/nfs.mp3', bpm: '143', moods: ['Ethnic', 'Chaotic', 'Gritty'], addedAt: '2026-04-18' },
+    { name: 'SAYONARA', file: '/sayonara.mp3', bpm: '142', moods: ['Melodic', 'Producer Favourite', 'Atmospheric', 'Ethnic'], addedAt: '2026-04-18' },
+    { name: 'TYPICAL', file: '/typical.mp3', bpm: '140', moods: ['Melodic', 'Dark', 'Used for Battle', 'Producer Favourite'], addedAt: '2026-04-18' },
+    { name: 'BUILT DIFFERENT', file: '/builtdifferent.mp3', bpm: '143', moods: ['Dark', 'Used for Battle', 'Aggressive', 'Jumpy', 'Producer Favourite', 'Gritty'], addedAt: '2026-04-18' },
+    { name: 'CZARS & EMIRS', file: '/czarsandemirs.mp3', bpm: '142', moods: ['Ethnic', 'Gritty'], addedAt: '2026-04-18' },
+    { name: 'HK', file: '/hk.mp3', bpm: '143', moods: ['Dark', 'Mellow', 'Dramatic'], addedAt: '2026-04-18' },
+    { name: 'KNOWN', file: '/known.mp3', bpm: '100', moods: ['Hip Hop', 'Gritty', 'Minimalistic'], addedAt: '2026-04-18' },
+    { name: 'LUCID', file: '/lucid.mp3', bpm: '143', moods: ['Melodic', 'Hybrid', 'Mellow', 'Dubstep'], addedAt: '2026-04-18' },
+    { name: 'RUDE', file: '/rude.mp3', bpm: '143', moods: ['Aggressive', 'Gritty', 'Hybrid'], addedAt: '2026-04-18' },
+    { name: 'OLYMPUS', file: '/olympus.mp3', bpm: '146', moods: ['Aggressive', 'Dramatic', 'Hybrid'], addedAt: '2026-04-18' },
+    { name: 'COLLISION COURSE', file: '/collisioncourse.mp3', bpm: '144', moods: ['Aggressive', 'Chaotic', 'Jumpy', 'Ethnic'], addedAt: '2026-04-18' },
+    { name: 'DOWNLOAD', file: '/download.mp3', bpm: '143', moods: ['Melodic', 'Upbeat', 'Hybrid'], addedAt: '2026-04-18' },
+    { name: 'WRATH', file: '/wrath.mp3', bpm: '144', moods: ['Minimalistic', 'Angry', 'Gritty', 'Eerie'], addedAt: '2026-04-18' },
+    { name: 'HIGHEST', file: '/highest.mp3', bpm: '144', moods: ['Eerie', 'Dark', 'Atmospheric', 'Minimalistic', 'Gritty'], addedAt: '2026-04-18' },
+    { name: 'INSANE', file: '/insane.mp3', bpm: '143', moods: ['Eerie', 'Gritty', 'Dramatic'], addedAt: '2026-04-18' },
+    { name: 'HOODED UP', file: '/hoodedup.mp3', bpm: '144', moods: ['Aggressive', 'Gritty', 'Hybrid', 'Dramatic'], addedAt: '2026-04-18' },
+    { name: 'PUNCHLINE', file: '/punchline.mp3', bpm: '146', moods: ['Hybrid', 'Jumpy', 'Wavy'], addedAt: '2026-04-18' },
+    { name: 'ZYWIOL', file: '/zywiol.mp3', bpm: '143', moods: ['Wavy', 'Upbeat'], addedAt: '2026-04-18' },
+    { name: 'ANKARA', file: '/ankara.mp3', bpm: '142', moods: ['Ethnic', 'Jumpy', 'Dark'], addedAt: '2026-04-18' },
+    { name: 'CAUSE', file: '/cause.mp3', bpm: '144', moods: ['Melodic', 'Wavy', 'Producer Favourite', 'Upbeat'], addedAt: '2026-04-18' },
+    { name: 'CONFLICT', file: '/conflict.mp3', bpm: '144', moods: ['Dark', 'Producer Favourite', 'Mellow', 'Jumpy'], addedAt: '2026-04-18' },
+    { name: 'CRASHOUT', file: '/crashout.mp3', bpm: '150', moods: ['Hybrid', 'Aggressive', 'Gritty', 'Violent', 'Hip Hop'], addedAt: '2026-04-18' },
+    { name: 'DERRY', file: '/derry.mp3', bpm: '143', moods: ['Dark', 'Violent', 'Gritty'], addedAt: '2026-04-18' },
+    { name: 'JOHTO', file: '/johto.mp3', bpm: '150', moods: ['Upbeat', 'Hybrid', 'Retro'], addedAt: '2026-04-18' },
+    { name: 'MONSOON', file: '/monsoon.mp3', bpm: '140', moods: ['Dark', 'Gritty', 'Eerie'], addedAt: '2026-04-18' },
+    { name: 'MORTIFY', file: '/mortify.mp3', bpm: '141', moods: ['Dark', 'Dramatic', 'Eerie'], addedAt: '2026-04-18' },
+    { name: 'PERSIAN', file: '/persian.mp3', bpm: '141', moods: ['Ethnic', 'Aggressive', 'Minimalistic'], addedAt: '2026-04-18' },
+    { name: 'PREMIUM', file: '/premium.mp3', bpm: '150', moods: ['Hybrid', 'Producer Favourite', 'Hip Hop'], addedAt: '2026-04-18' },
+    { name: 'QOTD', file: '/qotd.mp3', bpm: '143', moods: ['Eerie', 'Mellow', 'Ethnic', 'Dark'], addedAt: '2026-04-18' },
+    { name: 'SHIFTING', file: '/shifting.mp3', bpm: '142', moods: ['Aggressive', 'Gritty', 'Minimalistic'], addedAt: '2026-04-18' },
     {
       name: 'STEREO TYPICAL',
       file: '/stereotypical.mp3',
       bpm: '142',
-      moods: ['Eerie', 'Dubstep', 'Dark', 'Atmospheric', 'Melodic']
+      moods: ['Eerie', 'Dubstep', 'Dark', 'Atmospheric', 'Melodic'],
+      addedAt: '2026-04-18'
     },
-    { name: 'TPW', file: '/tpw.mp3', bpm: '145', moods: ['Ethnic', 'Jumpy', 'Dark'] },
+    { name: 'TPW', file: '/tpw.mp3', bpm: '145', moods: ['Ethnic', 'Jumpy', 'Dark'], addedAt: '2026-04-18' },
     {
       name: 'BELKI',
       file: '/belki.mp3',
       bpm: '145',
-      moods: ['Ethnic', 'Grimy', 'Minimalistic', 'Producer Favourite', 'Aggressive']
+      moods: ['Ethnic', 'Grimy', 'Minimalistic', 'Producer Favourite', 'Aggressive'],
+      addedAt: '2026-04-18'
     },
-    { name: 'KITE', file: '/kite.mp3', bpm: '145', moods: ['Ethnic', 'Eerie', 'Mellow', 'Dark'] },
-    { name: 'FRANKFURT', file: '/frankfurt.mp3', bpm: '144', moods: ['Ethnic', 'Eerie', 'Minimalistic', 'Dark'] },
-    { name: 'SKITZ', file: '/skitz.mp3', bpm: '145', moods: ['Aggressive', 'Chaotic', 'Jumpy', 'Wavy'] },
-    { name: 'RAGEQUIT', file: '/ragequit.mp3', bpm: '145', moods: ['Grimy', 'Angry', 'Gritty', 'Retro'] },
-    { name: 'DAI', file: '/dai.mp3', bpm: '143', moods: ['Dubstep', 'Hybrid', 'Mellow', 'Melodic'] },
-    { name: 'FINISHED', file: '/finished.mp3', bpm: '144', moods: ['Dark', 'Gritty', 'Eerie', 'Ethnic'] },
-    { name: 'TRIDENT', file: '/trident.mp3', bpm: '143', moods: ['Dramatic', 'Atmospheric', 'Mellow', 'Dark', 'Melodic'] },
+    { name: 'KITE', file: '/kite.mp3', bpm: '145', moods: ['Ethnic', 'Eerie', 'Mellow', 'Dark'], addedAt: '2026-04-18' },
+    { name: 'FRANKFURT', file: '/frankfurt.mp3', bpm: '144', moods: ['Ethnic', 'Eerie', 'Minimalistic', 'Dark'], addedAt: '2026-04-18' },
+    { name: 'SKITZ', file: '/skitz.mp3', bpm: '145', moods: ['Aggressive', 'Chaotic', 'Jumpy', 'Wavy'], addedAt: '2026-04-18' },
+    { name: 'RAGEQUIT', file: '/ragequit.mp3', bpm: '145', moods: ['Grimy', 'Angry', 'Gritty', 'Retro'], addedAt: '2026-04-18' },
+    { name: 'DAI', file: '/dai.mp3', bpm: '143', moods: ['Dubstep', 'Hybrid', 'Mellow', 'Melodic'], addedAt: '2026-04-18' },
+    { name: 'FINISHED', file: '/finished.mp3', bpm: '144', moods: ['Dark', 'Gritty', 'Eerie', 'Ethnic'], addedAt: '2026-04-18' },
+    { name: 'TRIDENT', file: '/trident.mp3', bpm: '143', moods: ['Dramatic', 'Atmospheric', 'Mellow', 'Dark', 'Melodic'], addedAt: '2026-04-18' },
     {
       name: 'THE GAME',
       file: '/thegame.mp3',
       bpm: '150',
-      moods: ['Hybrid', 'Aggressive', 'Hip Hop', 'Retro']
+      moods: ['Hybrid', 'Aggressive', 'Hip Hop', 'Retro'],
+      addedAt: '2026-04-18'
     },
-    { name: 'NOTORIETY', file: '/notoriety.mp3', bpm: '143', moods: ['Eerie', 'Jumpy', 'Minimalistic'] },
+    { name: 'NOTORIETY', file: '/notoriety.mp3', bpm: '143', moods: ['Eerie', 'Jumpy', 'Minimalistic'], addedAt: '2026-04-18' },
     {
       name: 'SUBZERO',
       file: '/subzero.mp3',
       bpm: '144',
-      moods: ['Aggressive', 'Atmospheric', 'Producer Favourite']
+      moods: ['Aggressive', 'Atmospheric', 'Producer Favourite'],
+      addedAt: '2026-04-18'
     },
-    { name: 'CUBE', file: '/cube.mp3', bpm: '146', moods: ['Retro', 'Hybrid'] },
-    { name: 'OMEN', file: '/omen.mp3', bpm: '145', moods: ['Dramatic', 'Gritty', 'Eerie'] },
-    { name: 'WINTERS', file: '/winters.mp3', bpm: '145', moods: ['Eerie', 'Atmospheric', 'Dramatic'] },
+    { name: 'CUBE', file: '/cube.mp3', bpm: '146', moods: ['Retro', 'Hybrid'], addedAt: '2026-04-18' },
+    { name: 'OMEN', file: '/omen.mp3', bpm: '145', moods: ['Dramatic', 'Gritty', 'Eerie'], addedAt: '2026-04-18' },
+    { name: 'WINTERS', file: '/winters.mp3', bpm: '145', moods: ['Eerie', 'Atmospheric', 'Dramatic'], addedAt: '2026-04-18' },
     {
       name: 'FAMILY TREE',
       file: '/familytree.mp3',
       bpm: '147',
-      moods: ['Dramatic', 'Mellow', 'Insightful', 'Hip Hop']
+      moods: ['Dramatic', 'Mellow', 'Insightful', 'Hip Hop'],
+      addedAt: '2026-04-18'
     },
     {
       name: 'CHURCH',
       file: '/church.mp3',
       bpm: '144',
-      moods: ['Dramatic', 'Grimy', 'Gritty', 'Aggressive']
+      moods: ['Dramatic', 'Grimy', 'Gritty', 'Aggressive'],
+      addedAt: '2026-04-18'
     },
-    { name: 'L1TNESS', file: '/l1tness.mp3', bpm: '143', moods: ['Grimy', 'Used for Battle', 'Wavy', 'Jumpy', 'Minimalistic'] },
-    { name: 'F4TALITY', file: '/f4tality.mp3', bpm: '143', moods: ['Dramatic', 'Used for Battle', 'Dark', 'Gritty'] }
+    { name: 'L1TNESS', file: '/l1tness.mp3', bpm: '143', moods: ['Grimy', 'Used for Battle', 'Wavy', 'Jumpy', 'Minimalistic'], addedAt: '2026-04-18' },
+    { name: 'F4TALITY', file: '/f4tality.mp3', bpm: '143', moods: ['Dramatic', 'Used for Battle', 'Dark', 'Gritty'], addedAt: '2026-04-18' }
   ]
+
+  const isRecentlyAdded = (addedAt) => {
+    if (!addedAt) return false
+
+    const addedDate = new Date(`${addedAt}T00:00:00`)
+    const now = new Date()
+    const diffInDays = (now - addedDate) / (1000 * 60 * 60 * 24)
+
+    return diffInDays >= 0 && diffInDays <= 5
+  }
 
   const sortedBeats = [...beats].sort((a, b) => a.name.localeCompare(b.name))
 
@@ -847,6 +863,7 @@ export default function App() {
           >
             {filteredBeats.map((beat) => {
               const isPlaying = currentFile === beat.file
+              const isNew = isRecentlyAdded(beat.addedAt)
 
               return (
                 <button
@@ -855,8 +872,14 @@ export default function App() {
                   style={{
                     width: '100%',
                     padding: '10px 8px',
-                    background: isPlaying ? '#c40000' : 'rgba(15, 15, 15, 0.88)',
-                    border: '1px solid rgba(255, 255, 255, 0.16)',
+                    background: isPlaying
+                      ? '#c40000'
+                      : isNew
+                        ? '#b68b2f'
+                        : 'rgba(15, 15, 15, 0.88)',
+                    border: isNew
+                      ? '1px solid rgba(214, 175, 54, 0.7)'
+                      : '1px solid rgba(255, 255, 255, 0.16)',
                     borderRadius: 14,
                     color: 'white',
                     cursor: 'pointer',
@@ -870,7 +893,9 @@ export default function App() {
                     whiteSpace: 'normal',
                     boxShadow: isPlaying
                       ? '0 10px 30px rgba(196, 0, 0, 0.35)'
-                      : '0 8px 24px rgba(0, 0, 0, 0.22)'
+                      : isNew
+                        ? '0 10px 30px rgba(182, 139, 47, 0.28)'
+                        : '0 8px 24px rgba(0, 0, 0, 0.22)'
                   }}
                 >
                   {beat.name}
