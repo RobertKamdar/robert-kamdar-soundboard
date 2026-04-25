@@ -782,10 +782,10 @@ export default function App() {
               display: 'grid',
               gridTemplateColumns: isMobile
                 ? '1fr'
-                : 'minmax(0, 120px) minmax(0, 140px) auto',
+                : 'minmax(0, 120px) minmax(0, 210px) auto',
               justifyContent: 'center',
               gap: 10,
-              maxWidth: isMobile ? 320 : 420,
+              maxWidth: isMobile ? 320 : 490,
               margin: '0 auto 20px'
             }}
           >
