@@ -340,7 +340,7 @@ export default function App() {
     { name: 'CZARS & EMIRS', file: '/czarsandemirs.mp3', bpm: '142', moods: ['Ethnic', 'Gritty'], addedAt: '2026-04-18' },
     { name: 'HK', file: '/hk.mp3', bpm: '143', moods: ['Dark', 'Mellow', 'Dramatic'], addedAt: '2026-04-18' },
     { name: 'KNOWN', file: '/known.mp3', bpm: '100', moods: ['Hip Hop', 'Gritty', 'Minimalistic'], addedAt: '2026-04-18' },
-    { name: 'LUCID', file: '/lucid.mp3', bpm: '143', moods: ['Melodic', 'Hybrid', 'Mellow', 'Dubstep'], addedAt: '2026-04-18' },
+    { name: 'LUCID', file: '/lucid.mp3', bpm: '143', moods: ['Melodic', 'Club', 'Hybrid', 'Mellow', 'Dubstep'], addedAt: '2026-04-18' },
     { name: 'RUDE', file: '/rude.mp3', bpm: '143', moods: ['Aggressive', 'Gritty', 'Hybrid'], addedAt: '2026-04-18' },
     { name: 'OLYMPUS', file: '/olympus.mp3', bpm: '146', moods: ['Aggressive', 'Dramatic', 'Hybrid'], addedAt: '2026-04-18' },
     { name: 'COLLISION COURSE', file: '/collisioncourse.mp3', bpm: '144', moods: ['Aggressive', 'Chaotic', 'Jumpy', 'Ethnic'], addedAt: '2026-04-18' },
@@ -406,7 +406,7 @@ export default function App() {
     { name: 'FRANKFURT', file: '/frankfurt.mp3', bpm: '144', moods: ['Ethnic', 'Eerie', 'Minimalistic', 'Dark'], addedAt: '2026-04-18' },
     { name: 'SKITZ', file: '/skitz.mp3', bpm: '145', moods: ['Aggressive', 'Chaotic', 'Jumpy', 'Wavy'], addedAt: '2026-04-18' },
     { name: 'RAGEQUIT', file: '/ragequit.mp3', bpm: '145', moods: ['Grimy', 'Angry', 'Gritty', 'Retro'], addedAt: '2026-04-18' },
-    { name: 'DAI', file: '/dai.mp3', bpm: '143', moods: ['Dubstep', 'Hybrid', 'Mellow', 'Melodic'], addedAt: '2026-04-18' },
+    { name: 'DAI', file: '/dai.mp3', bpm: '143', moods: ['Dubstep', 'Club', 'Hybrid', 'Mellow', 'Melodic'], addedAt: '2026-04-18' },
     { name: 'FINISHED', file: '/finished.mp3', bpm: '144', moods: ['Dark', 'Gritty', 'Eerie', 'Ethnic'], addedAt: '2026-04-18' },
     { name: 'TRIDENT', file: '/trident.mp3', bpm: '143', moods: ['Dramatic', 'Atmospheric', 'Mellow', 'Dark', 'Melodic'], addedAt: '2026-04-18' },
     {
