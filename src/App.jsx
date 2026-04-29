@@ -1,4 +1,3 @@
-```jsx
 import { useEffect, useRef, useState } from 'react'
 
 function CustomSelect({ value, onChange, options, placeholder, multiple = false }) {
@@ -1310,4 +1309,3 @@ export default function App() {
     </div>
   )
 }
-```
