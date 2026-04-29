@@ -472,14 +472,13 @@ export default function App() {
   const moodOptions = [...new Set(sortedBeats.flatMap((beat) => beat.moods || []))].sort()
 
   const filteredBeats = sortedBeats.filter((beat) => {
-  const matchesBpm = selectedBpm === '' || beat.bpm === selectedBpm
-  const matchesMood =
-    selectedMoods.length === 0 ||
-    selectedMoods.every((mood) => beat.moods.includes(mood))
-  const matchesNewOnly = !showNewOnly || isRecentlyAdded(beat.addedAt)
+    const matchesBpm = selectedBpm === '' || beat.bpm === selectedBpm
+    const matchesMood =
+      selectedMoods.length === 0 || selectedMoods.every((mood) => beat.moods.includes(mood))
+    const matchesNewOnly = !showNewOnly || isRecentlyAdded(beat.addedAt)
 
-  return matchesBpm && matchesMood && matchesNewOnly
-})
+    return matchesBpm && matchesMood && matchesNewOnly
+  })
 
   const formatTime = (seconds) => {
     if (!seconds || Number.isNaN(seconds)) return '0:00'
@@ -570,6 +569,14 @@ export default function App() {
     setElapsed(nextTime)
   }
 
+  const handleSkipForward = () => {
+    if (!audioRef.current || !duration) return
+
+    const nextTime = Math.min(audioRef.current.currentTime + 30, duration)
+    audioRef.current.currentTime = nextTime
+    setElapsed(nextTime)
+  }
+
   const handleResetFilters = () => {
     setSelectedBpm('')
     setSelectedMoods([])
@@ -611,9 +618,7 @@ export default function App() {
     padding: '12px 10px',
     borderRadius: 14,
     background:
-      hoveredCard === id
-        ? 'rgba(255, 255, 255, 0.12)'
-        : 'rgba(255, 77, 77, 0.08)',
+      hoveredCard === id ? 'rgba(255, 255, 255, 0.12)' : 'rgba(255, 77, 77, 0.08)',
     color: 'white',
     textDecoration: 'none',
     border:
@@ -621,10 +626,7 @@ export default function App() {
         ? '1px solid rgba(255, 77, 77, 0.35)'
         : '1px solid rgba(255, 255, 255, 0.08)',
     transform: hoveredCard === id ? 'translateY(-1px)' : 'translateY(0)',
-    boxShadow:
-      hoveredCard === id
-        ? '0 10px 20px rgba(0, 0, 0, 0.22)'
-        : 'none',
+    boxShadow: hoveredCard === id ? '0 10px 20px rgba(0, 0, 0, 0.22)' : 'none',
     transition: 'all 160ms ease'
   })
 
@@ -965,15 +967,15 @@ export default function App() {
 
           <div
             style={{
-            display: 'grid',
-            gridTemplateColumns: isMobile
-              ? 'repeat(2, minmax(0, 1fr))'
-              : 'minmax(0, 120px) minmax(0, 210px) auto auto',
-            justifyContent: 'center',
-            gap: 10,
-            maxWidth: isMobile ? 320 : 620,
-            margin: '0 auto 20px'
-          }}
+              display: 'grid',
+              gridTemplateColumns: isMobile
+                ? 'repeat(2, minmax(0, 1fr))'
+                : 'minmax(0, 120px) minmax(0, 210px) auto auto',
+              justifyContent: 'center',
+              gap: 10,
+              maxWidth: isMobile ? 320 : 620,
+              margin: '0 auto 20px'
+            }}
           >
             <CustomSelect
               value={selectedBpm}
@@ -1219,17 +1221,71 @@ export default function App() {
             }}
           >
             {nowPlaying !== 'None' && (
-              <span
-                style={{
-                  color: 'rgba(255, 255, 255, 0.75)',
-                  fontSize: 12,
-                  fontWeight: 500,
-                  whiteSpace: 'nowrap',
-                  fontVariantNumeric: 'tabular-nums'
-                }}
-              >
-                {formatTime(elapsed)} / {formatTime(duration)}
-              </span>
+              <>
+                <button
+                  type="button"
+                  onClick={handleSkipForward}
+                  aria-label="Skip forward 30 seconds"
+                  style={{
+                    width: 36,
+                    height: 36,
+                    borderRadius: 999,
+                    border: '1px solid rgba(255, 255, 255, 0.2)',
+                    background: 'transparent',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    padding: 0,
+                    cursor: 'pointer'
+                  }}
+                >
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M12 5a7 7 0 1 1-6.2 3.75"
+                      stroke="white"
+                      strokeWidth="1.8"
+                      strokeLinecap="round"
+                    />
+                    <path
+                      d="M4.7 4.9v4.2h4.2"
+                      stroke="white"
+                      strokeWidth="1.8"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    <text
+                      x="12"
+                      y="15.2"
+                      textAnchor="middle"
+                      fill="white"
+                      fontSize="7"
+                      fontWeight="700"
+                      fontFamily="Arial, sans-serif"
+                    >
+                      30
+                    </text>
+                  </svg>
+                </button>
+
+                <span
+                  style={{
+                    color: 'rgba(255, 255, 255, 0.75)',
+                    fontSize: 12,
+                    fontWeight: 500,
+                    whiteSpace: 'nowrap',
+                    fontVariantNumeric: 'tabular-nums'
+                  }}
+                >
+                  {formatTime(elapsed)} / {formatTime(duration)}
+                </span>
+              </>
             )}
 
             <span
