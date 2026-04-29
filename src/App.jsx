@@ -1,3 +1,4 @@
+```jsx
 import { useEffect, useRef, useState } from 'react'
 
 function CustomSelect({ value, onChange, options, placeholder, multiple = false }) {
@@ -1154,13 +1155,13 @@ export default function App() {
       >
         <div
           style={{
-            maxWidth: 1100,
+            maxWidth: 1180,
             margin: '0 auto',
             padding: '12px 18px 14px',
             display: 'grid',
-            gridTemplateColumns: isMobile ? '1fr' : '140px minmax(160px, 1fr) 125px',
+            gridTemplateColumns: isMobile ? '1fr' : '140px minmax(220px, 1fr) 220px',
             alignItems: 'center',
-            gap: isMobile ? 8 : 16
+            gap: isMobile ? 8 : 18
           }}
         >
           <span
@@ -1217,7 +1218,8 @@ export default function App() {
               display: 'flex',
               alignItems: 'center',
               justifyContent: isMobile ? 'center' : 'flex-end',
-              gap: 12
+              gap: 12,
+              minWidth: 0
             }}
           >
             {nowPlaying !== 'None' && (
@@ -1236,7 +1238,8 @@ export default function App() {
                     alignItems: 'center',
                     justifyContent: 'center',
                     padding: 0,
-                    cursor: 'pointer'
+                    cursor: 'pointer',
+                    flexShrink: 0
                   }}
                 >
                   <svg
@@ -1307,3 +1310,4 @@ export default function App() {
     </div>
   )
 }
+```
