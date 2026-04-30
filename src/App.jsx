@@ -1127,7 +1127,7 @@ export default function App() {
         </div>
       </div>
 
-            <div
+                  <div
         style={{
           position: 'fixed',
           left: 0,
@@ -1144,11 +1144,11 @@ export default function App() {
           style={{
             maxWidth: 1180,
             margin: '0 auto',
-            padding: '12px 18px 14px',
+            padding: isMobile ? '10px 14px 12px' : '12px 18px 14px',
             display: 'grid',
             gridTemplateColumns: isMobile ? '1fr' : '140px minmax(220px, 1fr)',
             alignItems: 'center',
-            gap: isMobile ? 8 : 18
+            gap: isMobile ? 6 : 18
           }}
         >
           <span
@@ -1169,9 +1169,9 @@ export default function App() {
             <div
               style={{
                 display: 'grid',
-                gridTemplateColumns: 'minmax(0, 1fr) auto',
+                gridTemplateColumns: isMobile ? '1fr' : 'minmax(0, 1fr) auto',
                 alignItems: 'center',
-                gap: 12,
+                gap: isMobile ? 4 : 12,
                 marginBottom: nowPlaying === 'None' ? 0 : 8
               }}
             >
@@ -1194,9 +1194,9 @@ export default function App() {
                 style={{
                   display: 'flex',
                   alignItems: 'center',
-                  justifyContent: 'flex-end',
-                  gap: 12,
-                  minWidth: 'fit-content'
+                  justifyContent: isMobile ? 'center' : 'flex-end',
+                  gap: 10,
+                  minWidth: isMobile ? 0 : 'fit-content'
                 }}
               >
                 {nowPlaying !== 'None' && (
@@ -1248,6 +1248,7 @@ export default function App() {
           </div>
         </div>
       </div>
+
 
     </div>
   )
