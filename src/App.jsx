@@ -1145,7 +1145,7 @@ export default function App() {
           style={{
             maxWidth: 1180,
             margin: '0 auto',
-            padding: isMobile ? '12px 16px 14px' : '14px 22px',
+            padding: isMobile ? '12px 16px 14px' : '14px 12px',
             display: 'grid',
             gridTemplateColumns: isMobile ? '1fr' : '260px minmax(260px, 1fr) 140px',
             alignItems: 'center',
