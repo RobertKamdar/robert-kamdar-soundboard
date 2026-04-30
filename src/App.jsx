@@ -1211,59 +1211,6 @@ export default function App() {
           >
             {nowPlaying !== 'None' && (
               <>
-                <button
-                  type="button"
-                  onClick={handleSkipForward}
-                  aria-label="Skip forward 30 seconds"
-                  style={{
-                    width: 36,
-                    height: 36,
-                    borderRadius: 999,
-                    border: '1px solid rgba(255, 255, 255, 0.2)',
-                    background: 'transparent',
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    padding: 0,
-                    cursor: 'pointer',
-                    flexShrink: 0
-                  }}
-                >
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M12 5a7 7 0 1 1-6.2 3.75"
-                      stroke="white"
-                      strokeWidth="1.8"
-                      strokeLinecap="round"
-                    />
-                    <path
-                      d="M4.7 4.9v4.2h4.2"
-                      stroke="white"
-                      strokeWidth="1.8"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <text
-                      x="12"
-                      y="15.2"
-                      textAnchor="middle"
-                      fill="white"
-                      fontSize="7"
-                      fontWeight="700"
-                      fontFamily="Arial, sans-serif"
-                    >
-                      30
-                    </text>
-                  </svg>
-                </button>
-
                 <span
                   style={{
                     color: 'rgba(255, 255, 255, 0.75)',
