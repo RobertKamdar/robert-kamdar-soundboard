@@ -1248,6 +1248,7 @@ export default function App() {
               ? `${formatTime(elapsed)} / ${formatTime(duration)}`
               : ''}
           </span>
+          </div>
         </div>
       </div>
 
