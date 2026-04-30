@@ -1127,7 +1127,7 @@ export default function App() {
         </div>
       </div>
 
-                  <div
+   <div
         style={{
           position: 'fixed',
           left: 0,
@@ -1166,88 +1166,81 @@ export default function App() {
           </span>
 
           <div style={{ minWidth: 0 }}>
-            <div
+            <span
               style={{
-                display: 'grid',
-                gridTemplateColumns: isMobile ? '1fr' : 'minmax(0, 1fr) auto',
-                alignItems: 'center',
-                gap: isMobile ? 4 : 12,
+                display: 'block',
+                color: 'white',
+                fontSize: 'clamp(14px, 3vw, 16px)',
+                fontWeight: 600,
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                whiteSpace: 'nowrap',
+                textAlign: 'center',
                 marginBottom: nowPlaying === 'None' ? 0 : 8
               }}
             >
-              <span
-                style={{
-                  display: 'block',
-                  color: 'white',
-                  fontSize: 'clamp(14px, 3vw, 16px)',
-                  fontWeight: 600,
-                  overflow: 'hidden',
-                  textOverflow: 'ellipsis',
-                  whiteSpace: 'nowrap',
-                  textAlign: isMobile ? 'center' : 'left'
-                }}
-              >
-                {nowPlaying}
-              </span>
+              {nowPlaying}
+            </span>
 
-              <div
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: isMobile ? 'center' : 'flex-end',
-                  gap: 10,
-                  minWidth: isMobile ? 0 : 'fit-content'
-                }}
-              >
-                {nowPlaying !== 'None' && (
-                  <span
-                    style={{
-                      color: 'rgba(255, 255, 255, 0.75)',
-                      fontSize: 12,
-                      fontWeight: 500,
-                      whiteSpace: 'nowrap',
-                      fontVariantNumeric: 'tabular-nums'
-                    }}
-                  >
-                    {formatTime(elapsed)} / {formatTime(duration)}
-                  </span>
-                )}
-
-                <span
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: isMobile ? '1fr' : 'minmax(220px, 1fr) auto auto',
+                alignItems: 'center',
+                gap: isMobile ? 6 : 12
+              }}
+            >
+              {nowPlaying !== 'None' && (
+                <input
+                  type="range"
+                  min="0"
+                  max={duration || 0}
+                  step="0.1"
+                  value={Math.min(elapsed, duration || 0)}
+                  onChange={handleSeek}
+                  aria-label="Skip through current beat"
                   style={{
-                    width: 10,
-                    height: 10,
-                    borderRadius: 999,
-                    flexShrink: 0,
-                    background: nowPlaying === 'None' ? '#666' : '#ff2a2a',
-                    boxShadow:
-                      nowPlaying === 'None'
-                        ? 'none'
-                        : '0 0 12px rgba(255, 42, 42, 0.9)'
+                    width: '100%',
+                    accentColor: '#ff2a2a',
+                    cursor: 'pointer'
                   }}
                 />
-              </div>
-            </div>
+              )}
 
-            {nowPlaying !== 'None' && (
-              <input
-                type="range"
-                min="0"
-                max={duration || 0}
-                step="0.1"
-                value={Math.min(elapsed, duration || 0)}
-                onChange={handleSeek}
-                aria-label="Skip through current beat"
+              <span
                 style={{
-                  width: '100%',
-                  accentColor: '#ff2a2a',
-                  cursor: 'pointer'
+                  width: 10,
+                  height: 10,
+                  borderRadius: 999,
+                  justifySelf: isMobile ? 'center' : 'auto',
+                  flexShrink: 0,
+                  background: nowPlaying === 'None' ? '#666' : '#ff2a2a',
+                  boxShadow:
+                    nowPlaying === 'None'
+                      ? 'none'
+                      : '0 0 12px rgba(255, 42, 42, 0.9)'
                 }}
               />
-            )}
+
+              {nowPlaying !== 'None' && (
+                <span
+                  style={{
+                    color: 'rgba(255, 255, 255, 0.75)',
+                    fontSize: 12,
+                    fontWeight: 500,
+                    whiteSpace: 'nowrap',
+                    fontVariantNumeric: 'tabular-nums',
+                    textAlign: isMobile ? 'center' : 'right'
+                  }}
+                >
+                  {formatTime(elapsed)} / {formatTime(duration)}
+                </span>
+              )}
+            </div>
           </div>
         </div>
       </div>
+
 
 
     </div>
