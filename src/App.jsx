@@ -1127,7 +1127,7 @@ export default function App() {
         </div>
       </div>
 
-      <div
+            <div
         style={{
           position: 'fixed',
           left: 0,
@@ -1146,7 +1146,7 @@ export default function App() {
             margin: '0 auto',
             padding: '12px 18px 14px',
             display: 'grid',
-            gridTemplateColumns: isMobile ? '1fr' : '140px minmax(220px, 1fr) 220px',
+            gridTemplateColumns: isMobile ? '1fr' : '140px minmax(220px, 1fr)',
             alignItems: 'center',
             gap: isMobile ? 8 : 18
           }}
@@ -1166,21 +1166,68 @@ export default function App() {
           </span>
 
           <div style={{ minWidth: 0 }}>
-            <span
+            <div
               style={{
-                display: 'block',
-                color: 'white',
-                fontSize: 'clamp(14px, 3vw, 16px)',
-                fontWeight: 600,
-                overflow: 'hidden',
-                textOverflow: 'ellipsis',
-                whiteSpace: 'nowrap',
-                textAlign: 'center',
+                display: 'grid',
+                gridTemplateColumns: 'minmax(0, 1fr) auto',
+                alignItems: 'center',
+                gap: 12,
                 marginBottom: nowPlaying === 'None' ? 0 : 8
               }}
             >
-              {nowPlaying}
-            </span>
+              <span
+                style={{
+                  display: 'block',
+                  color: 'white',
+                  fontSize: 'clamp(14px, 3vw, 16px)',
+                  fontWeight: 600,
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  whiteSpace: 'nowrap',
+                  textAlign: isMobile ? 'center' : 'left'
+                }}
+              >
+                {nowPlaying}
+              </span>
+
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'flex-end',
+                  gap: 12,
+                  minWidth: 'fit-content'
+                }}
+              >
+                {nowPlaying !== 'None' && (
+                  <span
+                    style={{
+                      color: 'rgba(255, 255, 255, 0.75)',
+                      fontSize: 12,
+                      fontWeight: 500,
+                      whiteSpace: 'nowrap',
+                      fontVariantNumeric: 'tabular-nums'
+                    }}
+                  >
+                    {formatTime(elapsed)} / {formatTime(duration)}
+                  </span>
+                )}
+
+                <span
+                  style={{
+                    width: 10,
+                    height: 10,
+                    borderRadius: 999,
+                    flexShrink: 0,
+                    background: nowPlaying === 'None' ? '#666' : '#ff2a2a',
+                    boxShadow:
+                      nowPlaying === 'None'
+                        ? 'none'
+                        : '0 0 12px rgba(255, 42, 42, 0.9)'
+                  }}
+                />
+              </div>
+            </div>
 
             {nowPlaying !== 'None' && (
               <input
@@ -1199,48 +1246,9 @@ export default function App() {
               />
             )}
           </div>
-
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: isMobile ? 'center' : 'flex-end',
-              gap: 12,
-              minWidth: 0
-            }}
-          >
-            {nowPlaying !== 'None' && (
-              <>
-                <span
-                  style={{
-                    color: 'rgba(255, 255, 255, 0.75)',
-                    fontSize: 12,
-                    fontWeight: 500,
-                    whiteSpace: 'nowrap',
-                    fontVariantNumeric: 'tabular-nums'
-                  }}
-                >
-                  {formatTime(elapsed)} / {formatTime(duration)}
-                </span>
-              </>
-            )}
-
-            <span
-              style={{
-                width: 10,
-                height: 10,
-                borderRadius: 999,
-                flexShrink: 0,
-                background: nowPlaying === 'None' ? '#666' : '#ff2a2a',
-                boxShadow:
-                  nowPlaying === 'None'
-                    ? 'none'
-                    : '0 0 12px rgba(255, 42, 42, 0.9)'
-              }}
-            />
-          </div>
         </div>
       </div>
+
     </div>
   )
 }
