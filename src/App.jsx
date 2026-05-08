@@ -325,6 +325,7 @@ const playbackIdRef = useRef(0)
 const beats = [
     { name: 'SUSPECT', file: '/suspect.mp3', bpm: '141', moods: ['Mellow', 'No Vocals', 'Retro', 'Minimalistic'], addedAt: '2026-04-18' },
     { name: 'EAGLE', file: '/eagle.mp3', bpm: '143', moods: ['Ethnic', 'No Vocals', 'Aggressive', 'Gritty'], addedAt: '2026-04-18' },
+    { name: 'MEDICATE', file: '/medicate.mp3', bpm: '93', moods: ['Gritty', 'No Vocals', 'Hybrid', 'Insightful', 'Mellow', 'Dramatic'], addedAt: '2026-05-08' },
     { name: 'AAJA', file: '/aaja.mp3', bpm: '144', moods: ['Ethnic', 'Jumpy', 'Gritty'], addedAt: '2026-04-18' },
     { name: 'PERIL', file: '/peril.mp3', bpm: '145', moods: ['Eerie', 'No Vocals', 'Dramatic', 'Dark', 'Gritty'], addedAt: '2026-04-18' },
     { name: 'RECKONING', file: '/reckoning.mp3', bpm: '144', moods: ['Ethnic', 'Chaotic', 'Gritty'], addedAt: '2026-04-18' },
