@@ -345,6 +345,10 @@ const beats = [
     { name: 'RUDE', file: '/rude.mp3', bpm: '143', moods: ['Aggressive', 'No Vocals', 'Gritty', 'Hybrid'], addedAt: '2026-04-18' },
     { name: 'OLYMPUS', file: '/olympus.mp3', bpm: '146', moods: ['Aggressive', 'Dramatic', 'Hybrid'], addedAt: '2026-04-18' },
     { name: 'COLLISION COURSE', file: '/collisioncourse.mp3', bpm: '144', moods: ['Aggressive', 'Chaotic', 'Jumpy', 'Ethnic'], addedAt: '2026-04-18' },
+    { name: 'WHEREVER', file: '/wherever.mp3', bpm: '140', moods: ['Mellow', 'Eerie', 'Upbeat', 'No Vocals', 'Gritty'], addedAt: '2026-05-11' },
+    { name: 'SPLITTER', file: '/splitter.mp3', bpm: '144', moods: ['Dark', 'Dramatic', 'Aggressive', 'No Vocals'], addedAt: '2026-05-11' },
+    { name: 'FALSE 9', file: '/false9.mp3', bpm: '144', moods: ['Mellow', 'Gritty', 'No Vocals', 'Dramatic'], addedAt: '2026-05-11' },
+    { name: 'CONVICTION', file: '/conviction.mp3', bpm: '145', moods: ['Aggressive', 'Gritty', 'No Vocals', 'Dramatic'], addedAt: '2026-05-11' },
     { name: 'DOWNLOAD', file: '/download.mp3', bpm: '143', moods: ['Melodic', 'Upbeat', 'No Vocals', 'Hybrid'], addedAt: '2026-04-18' },
     { name: 'WRATH', file: '/wrath.mp3', bpm: '144', moods: ['Minimalistic', 'Angry', 'No Vocals', 'Gritty', 'Eerie'], addedAt: '2026-04-18' },
     { name: 'HIGHEST', file: '/highest.mp3', bpm: '144', moods: ['Eerie', 'Dark', 'Atmospheric', 'Minimalistic', 'Gritty'], addedAt: '2026-04-18' },
@@ -438,8 +442,8 @@ const beats = [
       moods: ['Dramatic', 'Grimy', 'Gritty', 'Aggressive'],
       addedAt: '2026-04-18'
     },
-    { name: 'L1TNESS', file: '/l1tness.mp3', bpm: '143', moods: ['Grimy', 'Used for Battle', 'No Vocals', 'Wavy', 'Jumpy', 'Minimalistic'], addedAt: '2026-04-18' },
-    { name: 'F4TALITY', file: '/f4tality.mp3', bpm: '143', moods: ['Dramatic', 'Used for Battle', 'No Vocals', 'Dark', 'Gritty'], addedAt: '2026-04-18' }
+    { name: 'L1TNESS', file: '/l1tness.mp3', bpm: '143', moods: ['Grimy', 'No Vocals', 'Wavy', 'Jumpy', 'Minimalistic'], addedAt: '2026-04-18' },
+    { name: 'F4TALITY', file: '/f4tality.mp3', bpm: '143', moods: ['Dramatic', 'No Vocals', 'Dark', 'Gritty'], addedAt: '2026-04-18' }
   ]
 
 const isRecentlyAdded = (addedAt) => {
