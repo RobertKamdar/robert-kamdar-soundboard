@@ -380,6 +380,7 @@ const beats = [
     { name: 'MILITANT', file: '/militia.mp3', bpm: '146', moods: ['Hybrid', 'Chaotic', 'No Vocals', 'Aggressive', 'Dramatic', 'Gritty', 'Violent'], addedAt: '2026-04-18' },
     { name: 'EASTWAY', file: '/eastway.mp3', bpm: '143', moods: ['Dark', 'Mellow', 'No Vocals', 'Eerie', 'Minimalistic'], addedAt: '2026-04-18' },
     { name: 'MADNESS', file: '/madness.mp3', bpm: '144', moods: ['Atmospheric', 'Mellow', 'Melodic', 'Eerie'], addedAt: '2026-04-18' },
+    { name: 'SUPERLIFE', file: '/superlife.mp3', bpm: '93', moods: ['Hybrid', 'Mellow', 'Melodic', 'Chill', 'Wavy'], addedAt: '2026-05-11' },     
     { name: 'CARA', file: '/cara.mp3', bpm: '116', moods: ['Summer', 'Chill', 'Upbeat', 'Mellow', 'Melodic', 'No Vocals', 'Wavy'], addedAt: '2026-04-18' },
     { name: 'WAVEY', file: '/wavey.mp3', bpm: '140', moods: ['Jumpy', 'No Vocals', 'Mellow', 'Wavy', 'Minimalistic'], addedAt: '2026-04-18' },
     { name: 'POSSESSION', file: '/possession.mp3', bpm: '145', moods: ['Dark', 'Mellow', 'Jumpy', 'No Vocals', 'Eerie', 'Dramatic'], addedAt: '2026-04-18' },
