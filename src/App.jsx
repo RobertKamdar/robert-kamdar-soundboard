@@ -722,84 +722,71 @@ letterSpacing: 2,
 textTransform: 'uppercase'
 }}
 >
-Previous Credit(s)
+Previous Credits
 </p>
 
-<p
+<div
 style={{
-margin: '0 0 12px',
+display: 'grid',
+gap: 8,
+textAlign: 'left'
+}}
+>
+{[
+{
+title: 'Drizz GB Round 2 vs Anbu Senseii',
+link: 'https://open.spotify.com/track/25Kv09CJz0LkRyxrkn89Ts'
+}
+].map((credit) => (
+<a
+key={credit.title}
+href={credit.link}
+target="_blank"
+rel="noreferrer"
+onMouseEnter={() => setHoveredCard(credit.title)}
+onMouseLeave={() => setHoveredCard('')}
+style={{
+display: 'grid',
+gridTemplateColumns: '1fr auto',
+alignItems: 'center',
+gap: 10,
+padding: '10px 12px',
+borderRadius: 12,
+background:
+hoveredCard === credit.title
+? 'rgba(255, 255, 255, 0.12)'
+: 'rgba(255, 77, 77, 0.08)',
+border:
+hoveredCard === credit.title
+? '1px solid rgba(255, 77, 77, 0.35)'
+: '1px solid rgba(255, 255, 255, 0.08)',
 color: 'white',
+textDecoration: 'none',
+transition: 'all 160ms ease'
+}}
+>
+<span
+style={{
 fontSize: 12,
 fontWeight: 700,
 lineHeight: 1.35
 }}
 >
-Drizz GB Round 2 vs Anbu Senseii
-</p>
+{credit.title}
+</span>
 
-<a
-href="https://open.spotify.com/track/25Kv09CJz0LkRyxrkn89Ts"
-target="_blank"
-rel="noreferrer"
-onMouseEnter={() => setHoveredCard('credit')}
-onMouseLeave={() => setHoveredCard('')}
-style={{
-position: 'relative',
-display: 'inline-flex',
-justifyContent: 'center',
-alignItems: 'center',
-width: 170,
-height: 170,
-borderRadius: 18,
-overflow: 'hidden',
-textDecoration: 'none',
-boxShadow:
-hoveredCard === 'credit'
-? '0 18px 34px rgba(0, 0, 0, 0.38)'
-: '0 14px 28px rgba(0, 0, 0, 0.3)',
-transform: hoveredCard === 'credit' ? 'translateY(-2px)' : 'translateY(0)',
-transition: 'all 180ms ease'
-}}
->
-<img
-src="/anbu.jpg"
-alt="Drizz GB Round 2 vs Anbu Senseii artwork"
-style={{
-width: '100%',
-height: '100%',
-objectFit: 'cover',
-display: 'block',
-filter: 'brightness(0.82)',
-transform: hoveredCard === 'credit' ? 'scale(1.04)' : 'scale(1)',
-transition: 'transform 180ms ease'
-}}
-/>
 <span
 style={{
-position: 'absolute',
-width: 54,
-height: 54,
-borderRadius: 999,
-background: 'rgba(196, 0, 0, 0.9)',
-border: '1px solid rgba(255, 255, 255, 0.22)',
-display: 'flex',
-alignItems: 'center',
-justifyContent: 'center',
-boxShadow: '0 8px 18px rgba(0, 0, 0, 0.35)'
-}}
->
-<span
-style={{
-color: 'white',
-fontSize: 18,
-marginLeft: 3,
-lineHeight: 1
+fontSize: 14,
+lineHeight: 1,
+color: '#ff4d4d'
 }}
 >
 ▶
 </span>
-</span>
 </a>
+))}
+</div>
 </aside>
 )}
 </div>
