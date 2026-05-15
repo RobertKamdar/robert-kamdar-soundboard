@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { Analytics } from '@vercel/analytics/react'
 
 function CustomSelect({ value, onChange, options, placeholder, multiple = false }) {
 const [isOpen, setIsOpen] = useState(false)
@@ -1228,6 +1229,7 @@ nowPlaying === 'None'
 </div>
 </div>
 </div>
+<Analytics />
 </div>
 )
 }
