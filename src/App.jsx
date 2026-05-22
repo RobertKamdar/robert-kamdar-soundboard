@@ -399,6 +399,9 @@ const beats = [
     { name: 'ALLEY', file: '/alley.mp3', bpm: '142', moods: ['Aggressive', 'Gritty', 'No Vocals', 'Eerie', 'Minimalistic'], addedAt: '2026-04-18' },
     { name: 'VIRTUOSO', file: '/virtuoso.mp3', bpm: '142', moods: ['Grimy', 'Gritty', 'No Vocals', 'Minimalistic', 'Mellow'], addedAt: '2026-04-18' },
     { name: 'MELODY', file: '/melody.mp3', bpm: '142', moods: ['Mellow', 'Melodic', 'Hybrid', 'No Vocals', 'Minimalistic'], addedAt: '2026-04-18' },
+    { name: 'SACRIFICE', file: '/sacrifice.mp3', bpm: '143', moods: ['No Vocals', 'Gritty', 'Hybrid', 'Aggressive', 'Dark', 'Eerie'], addedAt: '2026-05-22' },
+    { name: '11TH HOUR', file: '/11thhour.mp3', bpm: '145', moods: ['Hybrid', 'Gritty', 'Dramatic', 'No Vocals'], addedAt: '2026-05-22' },
+    { name: 'CANNONS', file: '/cannons.mp3', bpm: '143', moods: ['Aggressive', 'Melodic', 'Hybrid', 'No Vocals', 'Ethnic', 'Gritty', 'Jumpy'], addedAt: '2026-05-22' },
     { name: 'KARZZZ', file: '/karzzz.mp3', bpm: '142', moods: ['Aggressive', 'Hybrid', 'No Vocals', 'Gritty', 'Violent'], addedAt: '2026-04-18' },
     { name: 'SHIFTING', file: '/shifting.mp3', bpm: '142', moods: ['Aggressive', 'Gritty', 'Minimalistic'], addedAt: '2026-04-18' },
     {
