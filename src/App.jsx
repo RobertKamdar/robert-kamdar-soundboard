@@ -430,6 +430,9 @@ const beats = [
     { name: 'NOTORIETY', file: '/notoriety.mp3', bpm: '143', moods: ['Eerie', 'Jumpy', 'Minimalistic'], addedAt: '2026-04-18' },
     { name: 'SUBZERO', file: '/subzero.mp3', bpm: '144', moods: ['Aggressive', 'Atmospheric', 'No Vocals', 'Producer Favourite'], addedAt: '2026-04-18' },
     { name: 'CUBE', file: '/cube.mp3', bpm: '146', moods: ['Retro', 'No Vocals', 'Hybrid'], addedAt: '2026-04-18' },
+    { name: 'HUMBLED', file: '/humbled.mp3', bpm: '150', moods: ['Retro', 'Mellow', 'Insight', 'Chill', 'No Vocals', 'Hybrid'], addedAt: '2026-05-27' },
+    { name: 'ECHO CHAMBER', file: '/echochamber.mp3', bpm: '145', moods: ['Gritty', 'Dramatic', 'Violent', 'Dark'], addedAt: '2026-05-27' },
+    { name: 'INTRO', file: '/intro.mp3', bpm: '146', moods: ['Retro', 'No Vocals', 'Hybrid', 'Minimalistic', 'Dark', 'Gritty'], addedAt: '2026-05-27' },
     { name: 'OMEN', file: '/omen.mp3', bpm: '145', moods: ['Dramatic', 'Gritty', 'No Vocals', 'Eerie'], addedAt: '2026-04-18' },
     { name: 'WINTERS', file: '/winters.mp3', bpm: '145', moods: ['Eerie', 'Atmospheric', 'No Vocals', 'Dramatic'], addedAt: '2026-04-18' },
     {
