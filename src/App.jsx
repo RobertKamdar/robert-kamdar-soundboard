@@ -389,7 +389,7 @@ const beats = [
     { name: 'CYCLE OF LIFE', file: '/cycleoflife.mp3', bpm: '143', moods: ['Gritty', 'No Vocals', 'Mellow', 'Grimy'], addedAt: '2026-04-18' },
     { name: 'RAMPAGE', file: '/rampage.mp3', bpm: '143', moods: ['Dark', 'Aggressive', 'No Vocals', 'Gritty'], addedAt: '2026-04-18' },
     { name: 'PREMIUM', file: '/premium.mp3', bpm: '150', moods: ['Hybrid', 'Producer Favourite', 'No Vocals', 'Hip Hop'], addedAt: '2026-04-18' },
-    { name: 'QOTD', file: '/qotd.mp3', bpm: '143', moods: ['Eerie', 'Mellow', 'Ethnic', 'Dark'], addedAt: '2026-04-18' },
+    { name: 'QOTD', file: '/qotd.mp3', bpm: '143', moods: ['Eerie', 'Mellow', 'Ethnic', 'Dark', 'Used for Battle'], addedAt: '2026-04-18' },
     { name: 'REMEMBER ME', file: '/rememberme.mp3', bpm: '140', moods: ['Dramatic', 'Gritty', 'Minimalistic'], addedAt: '2026-04-18' },
     { name: 'SCRATCH', file: '/scratch.mp3', bpm: '145', moods: ['Aggressive', 'No Vocals', 'Angry', 'Violent'], addedAt: '2026-04-18' },
     { name: 'HILAL 2', file: '/hilal2.mp3', bpm: '143', moods: ['Ethnic', 'No Vocals', 'Mellow', 'Eerie'], addedAt: '2026-04-18' },
