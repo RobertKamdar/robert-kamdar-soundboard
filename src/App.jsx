@@ -428,6 +428,8 @@ const beats = [
       addedAt: '2026-04-18'
     },
     { name: 'NOTORIETY', file: '/notoriety.mp3', bpm: '143', moods: ['Eerie', 'Jumpy', 'Minimalistic'], addedAt: '2026-04-18' },
+    { name: 'THOU SHALL NOT', file: '/thoushallnot.mp3', bpm: '140', moods: ['Ethnic', 'No Vocals', 'Hybrid', 'Gritty', 'Dark', 'Grimy', 'Mellow', 'Oriental'], addedAt: '2026-06-05' },
+    { name: 'TOPKNOT', file: '/topknot.mp3', bpm: '142', moods: ['Dark', 'Grimy', 'Minimalistic', 'Oriental', 'Ethnic', 'Mellow', 'Hybrid', 'Aggressive'], addedAt: '2026-06-05' },
     { name: 'SUBZERO', file: '/subzero.mp3', bpm: '144', moods: ['Aggressive', 'Atmospheric', 'No Vocals', 'Producer Favourite'], addedAt: '2026-04-18' },
     { name: 'CUBE', file: '/cube.mp3', bpm: '146', moods: ['Retro', 'No Vocals', 'Hybrid'], addedAt: '2026-04-18' },
     { name: 'HUMBLED', file: '/humbled.mp3', bpm: '150', moods: ['Retro', 'Mellow', 'Insight', 'Chill', 'No Vocals', 'Hybrid'], addedAt: '2026-05-27' },
