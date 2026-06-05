@@ -397,6 +397,8 @@ const beats = [
     { name: 'MIND THE GAP', file: '/mindthegap.mp3', bpm: '145', moods: ['Mellow', 'No Vocals', 'Gritty', 'Minimalistic'], addedAt: '2026-04-18' },
     { name: 'NGOLO', file: '/ngolo.mp3', bpm: '141', moods: ['Melodic', 'Chill', 'Upbeat'], addedAt: '2026-04-18' },
     { name: 'ALLEY', file: '/alley.mp3', bpm: '142', moods: ['Aggressive', 'Gritty', 'No Vocals', 'Eerie', 'Minimalistic'], addedAt: '2026-04-18' },
+    { name: 'JADED', file: '/jaded.mp3', bpm: '142', moods: ['Melodic', 'Mellow', 'Dramatic', 'Eerie', 'Minimalistic'], addedAt: '2026-06-05' },
+    { name: 'SAKE', file: '/sake.mp3', bpm: '144', moods: ['Oriental', 'Gritty', 'Ethnic', 'Chaotic'], addedAt: '2026-06-05' },
     { name: 'VIRTUOSO', file: '/virtuoso.mp3', bpm: '142', moods: ['Grimy', 'Gritty', 'No Vocals', 'Minimalistic', 'Mellow'], addedAt: '2026-04-18' },
     { name: 'MELODY', file: '/melody.mp3', bpm: '142', moods: ['Mellow', 'Melodic', 'Hybrid', 'No Vocals', 'Minimalistic'], addedAt: '2026-04-18' },
     { name: 'SACRIFICE', file: '/sacrifice.mp3', bpm: '143', moods: ['No Vocals', 'Gritty', 'Hybrid', 'Aggressive', 'Dark', 'Eerie'], addedAt: '2026-05-22' },
