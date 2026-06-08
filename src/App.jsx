@@ -657,7 +657,7 @@ whiteSpace: 'nowrap'
 }}
 >
 <marquee behavior="scroll" direction="right" scrollamount="6">
-NEW BEATS RELEASED EVERY WEEK
+NEW BEATS RELEASED EVERY WEEK | LATEST UPDATE - 08/06/2026
 </marquee>
 </div>
 <div
