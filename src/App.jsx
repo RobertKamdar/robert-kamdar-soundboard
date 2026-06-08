@@ -395,7 +395,11 @@ const beats = [
     { name: 'HILAL 2', file: '/hilal2.mp3', bpm: '143', moods: ['Ethnic', 'No Vocals', 'Mellow', 'Eerie'], addedAt: '2026-04-18' },
     { name: 'SAMBA', file: '/samba.mp3', bpm: '140', moods: ['Melodic', 'Chill', 'Ethnic', 'Upbeat', 'No Vocals', 'Wavy', 'Mellow'], addedAt: '2026-04-18' },
     { name: 'MIND THE GAP', file: '/mindthegap.mp3', bpm: '145', moods: ['Mellow', 'No Vocals', 'Gritty', 'Minimalistic'], addedAt: '2026-04-18' },
+    { name: 'METEORA', file: '/metoera.mp3', bpm: '145', moods: ['Mellow', 'Dramatic', 'No Vocals', 'Aggressive', 'Dark', 'Gritty', 'Chaotic', 'Minimalistic'], addedAt: '2026-06-08' },
+    { name: 'CRUSADERS', file: '/crusaders.mp3', bpm: '140', moods: ['Aggressive', 'Minimalistic', 'Hybrid', 'No Vocals'], addedAt: '2026-06-08' },
+    { name: 'THE FAMILY', file: '/thefamily.mp3', bpm: '141', moods: ['Dark', 'Dramatic', 'Aggressive', 'Gritty'], addedAt: '2026-06-08' },
     { name: 'NGOLO', file: '/ngolo.mp3', bpm: '141', moods: ['Melodic', 'Chill', 'Upbeat'], addedAt: '2026-04-18' },
+         
     { name: 'ALLEY', file: '/alley.mp3', bpm: '142', moods: ['Aggressive', 'Gritty', 'No Vocals', 'Eerie', 'Minimalistic'], addedAt: '2026-04-18' },
     { name: 'JADED', file: '/jaded.mp3', bpm: '142', moods: ['Melodic', 'Mellow', 'Dramatic', 'Eerie', 'Minimalistic'], addedAt: '2026-06-05' },
     { name: 'SAKE', file: '/sake.mp3', bpm: '144', moods: ['Oriental', 'Gritty', 'Ethnic', 'Chaotic'], addedAt: '2026-06-05' },
@@ -406,13 +410,7 @@ const beats = [
     { name: 'CANNONS', file: '/cannons.mp3', bpm: '143', moods: ['Aggressive', 'Melodic', 'Hybrid', 'No Vocals', 'Ethnic', 'Gritty', 'Jumpy'], addedAt: '2026-05-22' },
     { name: 'KARZZZ', file: '/karzzz.mp3', bpm: '142', moods: ['Aggressive', 'Hybrid', 'No Vocals', 'Gritty', 'Violent'], addedAt: '2026-04-18' },
     { name: 'SHIFTING', file: '/shifting.mp3', bpm: '142', moods: ['Aggressive', 'Gritty', 'Minimalistic'], addedAt: '2026-04-18' },
-    {
-      name: 'STEREO TYPICAL',
-      file: '/stereotypical.mp3',
-      bpm: '142',
-      moods: ['Eerie', 'Dubstep', 'Dark', 'Atmospheric', 'Melodic'],
-      addedAt: '2026-04-18'
-    },
+    { name: 'STEREO TYPICAL', file: '/stereotypical.mp3', bpm: '142', moods: ['Eerie', 'Dubstep', 'Dark', 'Atmospheric', 'Melodic'], addedAt: '2026-04-18' },
     { name: 'TPW', file: '/tpw.mp3', bpm: '145', moods: ['Ethnic', 'No Vocals', 'Jumpy', 'Dark'], addedAt: '2026-04-18' },
     { name: 'BELKI', file: '/belki.mp3', bpm: '145', moods: ['Ethnic', 'Grimy', 'Minimalistic', 'Producer Favourite', 'No Vocals', 'Aggressive'], addedAt: '2026-04-18' },
     { name: 'KITE', file: '/kite.mp3', bpm: '145', moods: ['Ethnic', 'Eerie', 'Mellow', 'Dark'], addedAt: '2026-04-18' },
@@ -434,7 +432,7 @@ const beats = [
     { name: 'TOPKNOT', file: '/topknot.mp3', bpm: '142', moods: ['Dark', 'Grimy', 'Minimalistic', 'Oriental', 'Ethnic', 'Mellow', 'Hybrid', 'Aggressive'], addedAt: '2026-06-05' },
     { name: 'SUBZERO', file: '/subzero.mp3', bpm: '144', moods: ['Aggressive', 'Atmospheric', 'No Vocals', 'Producer Favourite'], addedAt: '2026-04-18' },
     { name: 'CUBE', file: '/cube.mp3', bpm: '146', moods: ['Retro', 'No Vocals', 'Hybrid'], addedAt: '2026-04-18' },
-    { name: 'HUMBLED', file: '/humbled.mp3', bpm: '150', moods: ['Retro', 'Mellow', 'Insight', 'Chill', 'No Vocals', 'Hybrid'], addedAt: '2026-05-27' },
+    { name: 'HUMBLED', file: '/humbled.mp3', bpm: '150', moods: ['Retro', 'Mellow', 'Insightful', 'Chill', 'No Vocals', 'Hybrid'], addedAt: '2026-05-27' },
     { name: 'ECHO CHAMBER', file: '/echochamber.mp3', bpm: '145', moods: ['Gritty', 'Dramatic', 'Violent', 'Dark'], addedAt: '2026-05-27' },
     { name: 'INTRO', file: '/intro.mp3', bpm: '146', moods: ['Retro', 'No Vocals', 'Hybrid', 'Minimalistic', 'Dark', 'Gritty'], addedAt: '2026-05-27' },
     { name: 'OMEN', file: '/omen.mp3', bpm: '145', moods: ['Dramatic', 'Gritty', 'No Vocals', 'Eerie'], addedAt: '2026-04-18' },
@@ -745,6 +743,8 @@ textAlign: 'left'
 {[
 { title: 'Drizz GB Round 2 vs Anbu Senseii', link: 'https://open.spotify.com/track/25Kv09CJz0LkRyxrkn89Ts' },
 { title: 'LC Round 3 vs Who Is Orion', link: 'https://open.spotify.com/track/7wFYVWOgpOyNxm1mTikEvR' }
+{ title: 'Varntae Round 2 vs JM', link: 'https://open.spotify.com/track/2sh8tprVvZGQzJjiiB1I84?si=1c730697341145eb' }
+{ title: 'Varntae Round 3 vs JM', link: 'https://open.spotify.com/track/5XbLYyPqCDs7pza1CYEnNY?si=3e593dcb73964f2a }
 
 ].map((credit) => (
 <a
