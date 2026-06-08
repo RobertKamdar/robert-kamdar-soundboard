@@ -645,23 +645,6 @@ color: 'white'
 >
 <div
 style={{
-width: '100%',
-overflow: 'hidden',
-margin: '0 auto 24px',
-background: 'linear-gradient(90deg, #c40000, #000)',
-color: 'white',
-fontWeight: 800,
-letterSpacing: 2,
-padding: '10px 0',
-whiteSpace: 'nowrap'
-}}
->
-<marquee behavior="scroll" direction="right" scrollamount="6">
-NEW BEATS RELEASED EVERY WEEK | LATEST UPDATE - 08/06/2026
-</marquee>
-</div>
-<div
-style={{
 maxWidth: 1320,
 margin: '0 auto',
 display: 'flex',
