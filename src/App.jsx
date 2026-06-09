@@ -395,7 +395,7 @@ const beats = [
     { name: 'HILAL 2', file: '/hilal2.mp3', bpm: '143', moods: ['Ethnic', 'No Vocals', 'Mellow', 'Eerie'], addedAt: '2026-04-18' },
     { name: 'SAMBA', file: '/samba.mp3', bpm: '140', moods: ['Melodic', 'Chill', 'Ethnic', 'Upbeat', 'No Vocals', 'Wavy', 'Mellow'], addedAt: '2026-04-18' },
     { name: 'MIND THE GAP', file: '/mindthegap.mp3', bpm: '145', moods: ['Mellow', 'No Vocals', 'Gritty', 'Minimalistic'], addedAt: '2026-04-18' },
-    { name: 'METEORA', file: '/metoera.mp3', bpm: '145', moods: ['Mellow', 'Dramatic', 'No Vocals', 'Aggressive', 'Dark', 'Gritty', 'Chaotic', 'Minimalistic'], addedAt: '2026-06-08' },
+    { name: 'METEORA', file: '/meteora.mp3', bpm: '145', moods: ['Mellow', 'Dramatic', 'No Vocals', 'Aggressive', 'Dark', 'Gritty', 'Chaotic', 'Minimalistic'], addedAt: '2026-06-08' },
     { name: 'CRUSADERS', file: '/crusaders.mp3', bpm: '140', moods: ['Aggressive', 'Minimalistic', 'Hybrid', 'No Vocals'], addedAt: '2026-06-08' },
     { name: 'THE FAMILY', file: '/thefamily.mp3', bpm: '141', moods: ['Dark', 'Dramatic', 'Aggressive', 'Gritty'], addedAt: '2026-06-08' },
     { name: 'NGOLO', file: '/ngolo.mp3', bpm: '141', moods: ['Melodic', 'Chill', 'Upbeat'], addedAt: '2026-04-18' },
