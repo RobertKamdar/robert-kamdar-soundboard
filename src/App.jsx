@@ -430,6 +430,10 @@ const beats = [
     { name: 'NOTORIETY', file: '/notoriety.mp3', bpm: '143', moods: ['Eerie', 'Jumpy', 'Minimalistic'], addedAt: '2026-04-18' },
     { name: 'THOU SHALL NOT', file: '/thoushallnot.mp3', bpm: '140', moods: ['Ethnic', 'No Vocals', 'Hybrid', 'Gritty', 'Dark', 'Grimy', 'Mellow', 'Oriental'], addedAt: '2026-06-05' },
     { name: 'TOPKNOT', file: '/topknot.mp3', bpm: '142', moods: ['Dark', 'Grimy', 'Minimalistic', 'Oriental', 'Ethnic', 'Mellow', 'Hybrid', 'Aggressive'], addedAt: '2026-06-05' },
+    { name: 'SPEEDRUN', file: '/speedrun.mp3', bpm: '145', moods: ['Chaotic', 'Aggressive', 'No Vocals', 'Dark'], addedAt: '2026-06-10' },
+    { name: 'NWO', file: '/nwo.mp3', bpm: '143', moods: ['Mellow', 'Eerie', 'No Vocals', 'Minimalistic'], addedAt: '2026-06-10' },
+    { name: 'THE FINAL WAR', file: '/thefinalwar.mp3', bpm: '142', moods: ['Dramatic', 'Dark', 'Mellow', 'No Vocals', 'Eerie', 'Minimalistic'], addedAt: '2026-06-10' },
+         
     { name: 'SUBZERO', file: '/subzero.mp3', bpm: '144', moods: ['Aggressive', 'Atmospheric', 'No Vocals', 'Producer Favourite'], addedAt: '2026-04-18' },
     { name: 'CUBE', file: '/cube.mp3', bpm: '146', moods: ['Retro', 'No Vocals', 'Hybrid'], addedAt: '2026-04-18' },
     { name: 'HUMBLED', file: '/humbled.mp3', bpm: '150', moods: ['Retro', 'Mellow', 'Insightful', 'Chill', 'No Vocals', 'Hybrid'], addedAt: '2026-05-27' },
