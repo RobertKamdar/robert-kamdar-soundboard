@@ -342,6 +342,7 @@ const beats = [
     { name: 'CZARS & EMIRS', file: '/czarsandemirs.mp3', bpm: '142', moods: ['Ethnic', 'Gritty'], addedAt: '2026-04-18' },
     { name: 'HK', file: '/hk.mp3', bpm: '143', moods: ['Dark', 'No Vocals', 'Mellow', 'Dramatic'], addedAt: '2026-04-18' },
     { name: 'KNOWN', file: '/known.mp3', bpm: '100', moods: ['Hip Hop', 'Gritty', 'No Vocals', 'Minimalistic'], addedAt: '2026-04-18' },
+    { name: 'SILVER BULLET', file: '/silverbullet.mp3', bpm: '140', moods: ['Grimy', 'Gritty', 'No Vocals', 'Retro', 'Aggressive'], addedAt: '2026-06-15' },
     { name: 'LUCID', file: '/lucid.mp3', bpm: '143', moods: ['Melodic', 'Club', 'Hybrid', 'Mellow', 'Dubstep'], addedAt: '2026-04-18' },
     { name: 'RUDE', file: '/rude.mp3', bpm: '143', moods: ['Aggressive', 'No Vocals', 'Gritty', 'Hybrid'], addedAt: '2026-04-18' },
     { name: 'OLYMPUS', file: '/olympus.mp3', bpm: '146', moods: ['Aggressive', 'Dramatic', 'Hybrid'], addedAt: '2026-04-18' },
