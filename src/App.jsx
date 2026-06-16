@@ -359,6 +359,7 @@ const beats = [
     { name: 'PUNCHLINE', file: '/punchline.mp3', bpm: '146', moods: ['Hybrid', 'Jumpy', 'No Vocals', 'Wavy'], addedAt: '2026-04-18' },
     { name: 'ZYWIOL', file: '/zywiol.mp3', bpm: '143', moods: ['Wavy', 'Mellow', 'No Vocals', 'Upbeat'], addedAt: '2026-04-18' },
     { name: 'ANKARA', file: '/ankara.mp3', bpm: '142', moods: ['Ethnic', 'Jumpy', 'Dark'], addedAt: '2026-04-18' },
+    { name: 'WARDUB', file: '/wardub.mp3', bpm: '140', moods: ['Grimy', 'Hybrid', 'Dark', 'Dramatic', 'No Vocals', 'Gritty'], addedAt: '2026-06-16 },
     { name: 'CAUSE', file: '/cause.mp3', bpm: '144', moods: ['Melodic', 'Wavy', 'Chill', 'No Vocals', 'Producer Favourite', 'Upbeat'], addedAt: '2026-04-18' },
     { name: 'CONFLICT', file: '/conflict.mp3', bpm: '144', moods: ['Dark', 'Producer Favourite', 'Gritty', 'No Vocals', 'Mellow', 'Jumpy'], addedAt: '2026-04-18' },
     { name: 'CRASHOUT', file: '/crashout.mp3', bpm: '150', moods: ['Hybrid', 'Aggressive', 'Gritty', 'No Vocals', 'Violent', 'Hip Hop'], addedAt: '2026-04-18' },
