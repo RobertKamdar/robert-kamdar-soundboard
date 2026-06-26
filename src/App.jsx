@@ -962,7 +962,7 @@ lineHeight: 1.6,
 textAlign: 'center'
 }}
 >
-Preview my beats here, you can filter through instrumentals by BPM and moods.
+Preview my beats here, you can filter through instrumentals by BPM and moods. Beats with striked out text have already been used in Pengame Rap Battles but are available for use elsewhere.
 </p>
 
 <div
