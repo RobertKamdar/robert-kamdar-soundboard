@@ -1097,7 +1097,8 @@ margin: '0 auto'
 {filteredBeats.map((beat) => {
 const isPlaying = currentFile === beat.file
 const isNew = isRecentlyAdded(beat.addedAt)
-
+const isUsedForBattle = beat.moods.includes('Used for Battle')
+         
 return (
 <button
 key={beat.name}
@@ -1121,6 +1122,7 @@ fontSize: 'clamp(9px, 2.6vw, 11px)',
 fontWeight: 600,
 letterSpacing: 0.1,
 lineHeight: 1.15,
+textDecoration: isUsedForBattle ? 'line-through' : 'none',
 wordBreak: 'normal',
 overflowWrap: 'normal',
 whiteSpace: 'normal',
