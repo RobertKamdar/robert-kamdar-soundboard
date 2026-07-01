@@ -441,6 +441,10 @@ const beats = [
     { name: 'SPEEDRUN', file: '/speedrun.mp3', bpm: '145', moods: ['Chaotic', 'Aggressive', 'No Vocals', 'Dark'], addedAt: '2026-06-10' },
     { name: 'NWO', file: '/nwo.mp3', bpm: '143', moods: ['Mellow', 'Eerie', 'No Vocals', 'Minimalistic'], addedAt: '2026-06-10' },
     { name: 'THE FINAL WAR', file: '/thefinalwar.mp3', bpm: '142', moods: ['Dramatic', 'Dark', 'Mellow', 'No Vocals', 'Used for Battle', 'Eerie', 'Minimalistic'], addedAt: '2026-06-10' },
+    { name: 'POWERFUL', file: '/powerful.mp3', bpm: '140', moods: ['Dark', 'Dramatic', 'No Vocals', 'Grimy', 'Aggressive', 'Violent'], addedAt: '2026-07-01' },
+    { name: 'SET PACE', file: '/setpace.mp3', bpm: '140', moods: ['Grimy', 'Gritty', 'Hybrid', 'Chaotic'], addedAt: '2026-07-01' },
+    { name: 'REVENGE', file: '/revenge.mp3', bpm: '142', moods: ['Dramatic', 'Eerie', 'No Vocals', 'Mellow', 'Gritty'], addedAt: '2026-07-01' },
+    { name: 'THE EMPIRE', file: '/theempire.mp3', bpm: '140', moods: ['Hybrid', 'Gritty', 'Hip Hop', 'Dramatic', 'Gritty', 'Aggressive', 'Violent', ], addedAt: '2026-07-01' },
          
     { name: 'SUBZERO', file: '/subzero.mp3', bpm: '144', moods: ['Aggressive', 'Atmospheric', 'No Vocals', 'Producer Favourite'], addedAt: '2026-04-18' },
     { name: 'CUBE', file: '/cube.mp3', bpm: '146', moods: ['Retro', 'No Vocals', 'Hybrid'], addedAt: '2026-04-18' },
