@@ -367,6 +367,7 @@ const beats = [
     { name: 'CRASHOUT', file: '/crashout.mp3', bpm: '150', moods: ['Hybrid', 'Aggressive', 'Gritty', 'No Vocals', 'Violent', 'Hip Hop'], addedAt: '2026-04-18' },
     { name: 'DERRY', file: '/derry.mp3', bpm: '143', moods: ['Dark', 'Violent', 'No Vocals', 'Gritty'], addedAt: '2026-04-18' },
     { name: 'WILLPOWER', file: '/willpower.mp3', bpm: '144', moods: ['Dark', 'Eerie', 'Melodic', 'Mellow'], addedAt: '2026-04-29' },
+    { name: 'APOCALYPSE: JERSEY', file: '/apocalypsejersey.mp3', bpm: '140', moods: ['Dark', 'Hybrid', 'Dramatic', 'Jumpy', 'Mellow'], addedAt: '2026-07-02' },
     { name: 'BLOOMING', file: '/blooming.mp3', bpm: '144', moods: ['Oriental', 'Ethnic', 'Eerie', 'Melodic'], addedAt: '2026-04-29' },
     { name: 'THE HYBRID', file: '/thehybrid.mp3', bpm: '144', moods: ['Oriental', 'Ethnic', 'Gritty', 'Hybrid', 'Dramatic', 'Melodic', 'Aggressive', 'Chaotic'], addedAt: '2026-04-29' },
     { name: 'LILY', file: '/lily.mp3', bpm: '142', moods: ['Ethnic', 'Oriental', 'Mellow', 'Chill', 'Melodic', 'Insightful'], addedAt: '2026-04-29' },
