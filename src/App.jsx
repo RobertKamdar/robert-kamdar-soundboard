@@ -762,6 +762,7 @@ textAlign: 'left'
 { title: 'LC Round 3 vs Who Is Orion', link: 'https://open.spotify.com/track/7wFYVWOgpOyNxm1mTikEvR' },
 { title: 'Varntae Round 2 vs JM', link: 'https://open.spotify.com/track/2sh8tprVvZGQzJjiiB1I84?si=1c730697341145eb' },
 { title: 'Varntae Round 3 vs JM', link: 'https://open.spotify.com/track/5XbLYyPqCDs7pza1CYEnNY?si=3e593dcb73964f2a' },
+{ title: 'Kandi Round 3 vs Monroe', link: 'https://open.spotify.com/track/0KMsYuBabz7J2yhiOY6Tab?si=d53a4bc6558748ad' },
 
 ].map((credit) => (
 <a
