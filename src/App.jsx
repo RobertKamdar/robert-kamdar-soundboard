@@ -762,10 +762,11 @@ textAlign: 'left'
 >
 {[
 { title: 'Drizz GB Round 2 vs Anbu Senseii', link: 'https://open.spotify.com/track/25Kv09CJz0LkRyxrkn89Ts' },
-{ title: 'LC Round 3 vs Who Is Orion', link: 'https://open.spotify.com/track/7wFYVWOgpOyNxm1mTikEvR' },
+{ title: 'LC Round 3 vs WhoIsOrion', link: 'https://open.spotify.com/track/7wFYVWOgpOyNxm1mTikEvR' },
 { title: 'Varntae Round 2 vs JM', link: 'https://open.spotify.com/track/2sh8tprVvZGQzJjiiB1I84?si=1c730697341145eb' },
 { title: 'Varntae Round 3 vs JM', link: 'https://open.spotify.com/track/5XbLYyPqCDs7pza1CYEnNY?si=3e593dcb73964f2a' },
 { title: 'Kandi Round 3 vs Monroe', link: 'https://open.spotify.com/track/0KMsYuBabz7J2yhiOY6Tab?si=d53a4bc6558748ad' },
+{ title: 'WhoIsOrion Round 1 vs Star Co', link: 'https://open.spotify.com/track/5lVT4sLQ1dtTF4iJ3S7OK6?si=bf29891a91184677' },
 
 ].map((credit) => (
 <a
