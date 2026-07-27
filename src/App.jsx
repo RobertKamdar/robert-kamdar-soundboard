@@ -332,7 +332,7 @@ const beats = [
     { name: 'STREET FIGHT', file: '/streetfight.mp3', bpm: '145', moods: ['Violent', 'Melodic', 'Aggressive', 'Hybrid', 'Gritty'], addedAt: '2026-07-12' },
     { name: 'DARK 3QUENCE', file: '/dark3quence.mp3', bpm: '143', moods: ['Dark', 'Jumpy', 'Gritty', 'Hybrid', 'Eerie', 'Mellow'], addedAt: '2026-07-12' },
     { name: 'HUNTELAAR', file: '/huntelaar.mp3', bpm: '140', moods: ['Eerie', 'Jumpy', 'Dramatic', 'Atmospheric', 'Grimy', 'Hybrid', 'Melodic'], addedAt: '2026-06-25' },
-    { name: '3 ALBUS', file: '/czaralbus.mp3', bpm: '142', moods: ['Mellow', 'No Vocals', 'Chill', 'Eerie', 'Minimalistic'], addedAt: '2026-06-16' },
+    { name: '3 ALBUS', file: '/czaralbus.mp3', bpm: '142', moods: ['Mellow', 'No Vocals', 'Chill', 'Eerie', 'Minimalistic', 'Used for Battle'], addedAt: '2026-06-16' },
     { name: 'PERIL', file: '/peril.mp3', bpm: '145', moods: ['Eerie', 'No Vocals', 'Dramatic', 'Dark', 'Gritty'], addedAt: '2026-04-18' },
     { name: 'RECKONING', file: '/reckoning.mp3', bpm: '144', moods: ['Ethnic', 'Chaotic', 'Gritty'], addedAt: '2026-04-18' },
     { name: 'NEEKY', file: '/neeky.mp3', bpm: '143', moods: ['Mellow', 'Jumpy', 'No Vocals', 'Eerie', 'Atmospheric'], addedAt: '2026-04-18' },
@@ -767,7 +767,8 @@ textAlign: 'left'
 { title: 'Varntae Round 3 vs JM', link: 'https://open.spotify.com/track/5XbLYyPqCDs7pza1CYEnNY?si=3e593dcb73964f2a' },
 { title: 'Kandi Round 3 vs Monroe', link: 'https://open.spotify.com/track/0KMsYuBabz7J2yhiOY6Tab?si=d53a4bc6558748ad' },
 { title: 'WhoIsOrion Round 1 vs Star Co', link: 'https://open.spotify.com/track/5lVT4sLQ1dtTF4iJ3S7OK6?si=bf29891a91184677' },
-
+{ title: 'iiiBEREALZ Round 3 vs Domi Dusk', link: 'https://open.spotify.com/track/3qRXOpk2XbEq1eAirDuHX3?si=b31dee2773e14ec6' },
+{ title: 'Skamz Round 3 vs Jaycee', link: 'https://open.spotify.com/track/1s825zw0djgWG4vf44Sud9?si=fa4f46a3d1bd4f68' },
 ].map((credit) => (
 <a
 key={credit.title}
