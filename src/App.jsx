@@ -419,7 +419,7 @@ const beats = [
     { name: 'DYBALA', file: '/dybala.mp3', bpm: '140', moods: ['Hybrid', 'Gritty', 'Club', 'No Vocals', 'Upbeat'], addedAt: '2026-07-27' },
     { name: 'XATU', file: '/sake.mp3', bpm: '140', moods: ['No Vocals', 'Gritty', 'Eerie', 'Hybrid'], addedAt: '2026-07-27' },
     { name: 'HIDDEN POWER', file: '/hiddenpower.mp3', bpm: '140', moods: ['Dramatic', 'Gritty', 'No Vocals', 'Minimalistic'], addedAt: '2026-07-27' },
-    { name: 'PIRLO V1', file: '/prilov1.mp3', bpm: '140', moods: ['Grimy', 'Gritty', 'Hybrid', 'Chaotic', 'No Vocals', 'Wavy'], addedAt: '2026-07-27' },
+    { name: 'PIRLO V1', file: '/pirlov1.mp3', bpm: '140', moods: ['Grimy', 'Gritty', 'Hybrid', 'Chaotic', 'No Vocals', 'Wavy'], addedAt: '2026-07-27' },
     { name: 'FIRST BLOOD', file: '/firstblood.mp3', bpm: '145', moods: ['Dramatic', 'Gritty', 'No Vocals', 'Chaotic'], addedAt: '2026-07-27' },
     { name: 'VIRTUOSO', file: '/virtuoso.mp3', bpm: '142', moods: ['Grimy', 'Gritty', 'No Vocals', 'Minimalistic', 'Mellow'], addedAt: '2026-04-18' },
     { name: 'MELODY', file: '/melody.mp3', bpm: '142', moods: ['Mellow', 'Melodic', 'Hybrid', 'No Vocals', 'Minimalistic'], addedAt: '2026-04-18' },
