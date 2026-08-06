@@ -324,7 +324,7 @@ const playbackIdRef = useRef(0)
 
 const beats = [
     { name: 'SUSPECT', file: '/suspect.mp3', bpm: '141', moods: ['Mellow', 'No Vocals', 'Retro', 'Minimalistic'], addedAt: '2026-04-18' },
-    { name: 'CRYPTIC', file: '/crpytic.mp3', bpm: '140', moods: ['Chill', 'No Vocals', 'Gritty', 'Grimy', 'Dramatic', 'Minimalistic', 'Hybrid'], addedAt: '2026-08-06' },
+    { name: 'CRYPTIC', file: '/cryptic.mp3', bpm: '140', moods: ['Chill', 'No Vocals', 'Gritty', 'Grimy', 'Dramatic', 'Minimalistic', 'Hybrid'], addedAt: '2026-08-06' },
     { name: 'UNFAITHFUL', file: '/unfaithful.mp3', bpm: '144', moods: ['Aggressive', 'Gritty', 'Dramatic', 'Mellow', 'Producer Favourite', 'Grimy', 'Hybrid'], addedAt: '2026-08-06' },
     { name: 'SHOWDOWN', file: '/showdown.mp3', bpm: '140', moods: ['Dramatic', 'Producer Favourite', 'Gritty', 'Hybrid'], addedAt: '2026-08-06' },
     { name: 'LUV DUBSTEP', file: '/luvdubstep.mp3', bpm: '140', moods: ['Aggressive', 'No Vocals', 'Dubstep', 'Grimy', 'Hybrid'], addedAt: '2026-08-06' },
