@@ -324,6 +324,12 @@ const playbackIdRef = useRef(0)
 
 const beats = [
     { name: 'SUSPECT', file: '/suspect.mp3', bpm: '141', moods: ['Mellow', 'No Vocals', 'Retro', 'Minimalistic'], addedAt: '2026-04-18' },
+    { name: 'CRYPTIC', file: '/crpytic.mp3', bpm: '140', moods: ['Chill', 'No Vocals', 'Gritty', 'Grimy', 'Dramatic', 'Minimalistic', 'Hybrid'], addedAt: '2026-08-06' },
+    { name: 'UNFAITHFUL', file: '/unfaithful.mp3', bpm: '144', moods: ['Aggressive', 'Gritty', 'Dramatic', 'Mellow', 'Producer Favourite', 'Grimy', 'Hybrid'], addedAt: '2026-08-06' },
+    { name: 'SHOWDOWN', file: '/showdown.mp3', bpm: '140', moods: ['Dramatic', 'Producer Favourite', 'Gritty', 'Hybrid'], addedAt: '2026-08-06' },
+    { name: 'LUV DUBSTEP', file: '/luvdubstep.mp3', bpm: '140', moods: ['Aggressive', 'No Vocals', 'Dubstep', 'Grimy', 'Hybrid'], addedAt: '2026-08-06' },
+    { name: 'LONG LIVE THE SMOKE', file: '/longlivethesmoke.mp3', bpm: '145', moods: ['Retro', 'Gritty', 'No Vocals', 'Dubstep', 'Grimy', 'Hybrid'], addedAt: '2026-08-06' },
+    { name: 'LOCAL ALIEN', file: '/localalien.mp3', bpm: '140', moods: ['Mellow', 'No Vocals', 'Grimy', 'Dark', 'Chill', 'Dubstep', 'Eerie', 'Hybrid', 'Minimalistic'], addedAt: '2026-08-06' },
     { name: 'TELEKINESIS', file: '/telekinesisv3.mp3', bpm: '140', moods: ['Melodic', 'Dramatic', 'Gritty', 'Hybrid', 'Atmospheric', 'Dark', 'Eerie'], addedAt: '2026-06-12' },
     { name: 'EAGLE', file: '/eagle.mp3', bpm: '143', moods: ['Ethnic', 'No Vocals', 'Aggressive', 'Gritty'], addedAt: '2026-04-18' },
     { name: 'MEDICATE', file: '/medicate.mp3', bpm: '93', moods: ['Gritty', 'No Vocals', 'Hybrid', 'Insightful', 'Mellow', 'Dramatic'], addedAt: '2026-05-08' },
