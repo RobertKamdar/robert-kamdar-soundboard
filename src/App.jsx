@@ -781,6 +781,8 @@ textAlign: 'left'
 { title: 'WhoIsOrion Round 1 vs Star Co', link: 'https://open.spotify.com/track/5lVT4sLQ1dtTF4iJ3S7OK6?si=bf29891a91184677' },
 { title: 'iiiBEREALZ Round 3 vs Domi Dusk', link: 'https://open.spotify.com/track/3qRXOpk2XbEq1eAirDuHX3?si=b31dee2773e14ec6' },
 { title: 'Skamz Round 3 vs Jaycee', link: 'https://open.spotify.com/track/1s825zw0djgWG4vf44Sud9?si=fa4f46a3d1bd4f68' },
+{ title: 'Skamz Round 1 vs Anbu Senseii', link: 'https://open.spotify.com/track/2lhquqQwM7ZACFPTaT7fjy?si=c699ebe4a2d04dea' },
+
 ].map((credit) => (
 <a
 key={credit.title}
